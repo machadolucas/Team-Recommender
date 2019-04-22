@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cc2a949-c4da-4fc7-bf40-5b917b517a91" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,14 +15,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="242" column="55" selection-start-line="242" selection-start-column="55" selection-end-line="242" selection-end-column="55" />
+            <state relative-caret-position="163">
+              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#2293#2398#0" />
-                <element signature="e#2463#2574#0" />
-                <element signature="e#2634#2727#0" />
-                <element signature="e#2815#3340#0" />
                 <element signature="e#6818#7053#1" />
                 <element signature="e#7696#8096#1" />
               </folding>
@@ -44,6 +39,10 @@
       <find>]</find>
       <find>set(</find>
       <find>for</find>
+      <find>default</find>
+      <find>get_set_p</find>
+      <find>terms[1]</find>
+      <find>])</find>
     </findStrings>
     <replaceStrings>
       <replace>single_heuristic</replace>
@@ -52,6 +51,9 @@
       <replace>}</replace>
       <replace>frozenset([</replace>
       <replace>])</replace>
+      <replace>term1</replace>
+      <replace>term2</replace>
+      <replace>]))</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -149,31 +151,31 @@
       <workItem from="1554129187829" duration="10247000" />
       <workItem from="1554491157581" duration="1973000" />
       <workItem from="1554849641836" duration="61000" />
-      <workItem from="1555238202292" duration="20821000" />
+      <workItem from="1555238202292" duration="39350000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42304000" />
+    <option name="totallyTimeSpent" value="60833000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1702432" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1423462" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28915662" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.52771086" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3987952" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32884097" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32771084" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.32884097" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.52771086" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.32771084" />
       <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49928468" weight="0.32771084" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -187,29 +189,79 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Team_Recommender$main.coverage" NAME="main Coverage Results" MODIFIED="1555278916622" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Team_Recommender$main.coverage" NAME="main Coverage Results" MODIFIED="1555926150156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
-        <expression-string>distances</expression-string>
+        <expression-string>project_applicants_scores[project]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>skills_dict</expression-string>
+        <expression-string>len(project_available)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>project_available</expression-string>
+        <expression-string>p_available[best_applicant[0]]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>for item in project_available:
-    if item[1] &gt; 2:</expression-string>
+        <expression-string>p_available[best_applicant]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>len(p_available)</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>[m for p, t in best_teams.items() for m in t]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>[m[0] for p, t in best_teams.items() for m in t]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>[m for tm in t for p, t in best_teams.items()]</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>[1,2]+[3,4]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -298,16 +350,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/Team-Recommender/lib/python3.7/site-packages/networkx/utils/misc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="250" selection-start-line="250" selection-end-line="250" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/Team-Recommender/lib/python3.7/site-packages/networkx/algorithms/simple_paths.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="242" column="55" selection-start-line="242" selection-start-column="55" selection-end-line="242" selection-end-column="55" />
+        <state relative-caret-position="163">
+          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#2293#2398#0" />
-            <element signature="e#2463#2574#0" />
-            <element signature="e#2634#2727#0" />
-            <element signature="e#2815#3340#0" />
             <element signature="e#6818#7053#1" />
             <element signature="e#7696#8096#1" />
           </folding>
