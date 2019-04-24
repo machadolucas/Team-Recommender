@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cc2a949-c4da-4fc7-bf40-5b917b517a91" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,12 +16,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+            <state relative-caret-position="365">
+              <caret line="319" selection-start-line="319" selection-end-line="319" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
-                <element signature="e#6818#7053#1" />
-                <element signature="e#7696#8096#1" />
               </folding>
             </state>
           </provider>
@@ -40,9 +39,15 @@
       <find>set(</find>
       <find>for</find>
       <find>default</find>
-      <find>get_set_p</find>
       <find>terms[1]</find>
       <find>])</find>
+      <find>range</find>
+      <find>get_set_p</find>
+      <find>set_p</find>
+      <find>sh_</find>
+      <find>pair</find>
+      <find>ph</find>
+      <find>_dh</find>
     </findStrings>
     <replaceStrings>
       <replace>single_heuristic</replace>
@@ -54,6 +59,12 @@
       <replace>term1</replace>
       <replace>term2</replace>
       <replace>]))</replace>
+      <replace>ph_</replace>
+      <replace>dumb</replace>
+      <replace>dh</replace>
+      <replace>group</replace>
+      <replace>gh_</replace>
+      <replace>_gh</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -66,7 +77,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1440" />
     <option name="height" value="900" />
   </component>
@@ -92,6 +103,9 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
@@ -151,23 +165,25 @@
       <workItem from="1554129187829" duration="10247000" />
       <workItem from="1554491157581" duration="1973000" />
       <workItem from="1554849641836" duration="61000" />
-      <workItem from="1555238202292" duration="39350000" />
+      <workItem from="1555238202292" duration="40193000" />
+      <workItem from="1555946901404" duration="11926000" />
+      <workItem from="1556060962621" duration="62000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60833000" />
+    <option name="totallyTimeSpent" value="73664000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="834" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1423462" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14592275" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.52771086" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32891566" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" weight="0.96385545" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3987952" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -214,9 +230,23 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Team_Recommender$main.coverage" NAME="main Coverage Results" MODIFIED="1555926150156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Team_Recommender$main.coverage" NAME="main Coverage Results" MODIFIED="1556016750888" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
@@ -364,14 +394,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/Team-Recommender/lib/python3.7/random.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="320" selection-start-line="320" selection-end-line="320" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.conda/envs/Team-Recommender/lib/python3.7/statistics.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="289" column="10" lean-forward="true" selection-start-line="289" selection-start-column="10" selection-end-line="289" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="17" column="39" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+        <state relative-caret-position="365">
+          <caret line="319" selection-start-line="319" selection-end-line="319" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
-            <element signature="e#6818#7053#1" />
-            <element signature="e#7696#8096#1" />
           </folding>
         </state>
       </provider>

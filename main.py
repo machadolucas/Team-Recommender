@@ -3,10 +3,11 @@ import time
 import operator
 import nltk
 import pickle
+import random
+from statistics import mean
 from collections import defaultdict
 from nltk.corpus import wordnet as wn
 
-nltk.download('wordnet')
 '''
 Number of applicants: 7428
 Number of different skills: 4480
@@ -17,11 +18,14 @@ a = (identifier, {skill1, skill2, ...})
 Likewise, a project 'p' is a tuple in the following format:
 a = (identifier, {skill1, skill2, ...})
 '''
+
+nltk.download('wordnet')
 set_A = set()
 distances = {}
+most_freq = []
 
 
-def get_set_a():
+def prepare_data():
     # Read skills file and create applicants tuples in set_A
     global set_A
     with open("DBLP_skill.csv", 'r', encoding='latin1') as temp_f:
@@ -62,22 +66,17 @@ def get_set_a():
         print('Done! Saving "distances.dat" pre-computed term similarities file.')
         pickle.dump(distances, open("distances.dat", "wb"))
 
-        # Gets 2k most frequent terms from all the 4480 terms
-        most_freq = sorted(freq_skills.items(), key=lambda item: item[1], reverse=True)[:2000]
+    # Gets 2k most frequent terms from all the 4480 terms
+    global most_freq
+    most_freq = sorted(freq_skills.items(), key=lambda item: item[1], reverse=True)[:2000]
 
 
-def get_set_p():
-    set_p = [
-        ('Project 1', frozenset(['learning', 'networks', 'knowledge', 'study', 'graphs', 'inference', 'analysis'])),
-        ('Project 2', frozenset(['learning', 'fuzzy', 'algorithms', 'networks', 'classification', 'analysis'])),
-        ('Project 3', frozenset(['graphs', 'clustering', 'distributed', 'algorithms', 'analysis'])),
-        ('Project 4', frozenset(['graphs', 'clustering', 'distributed', 'algorithms', 'analysis', 'data'])),
-        ('Project 5', frozenset(['graphs', 'clustering', 'distributed', 'algorithms', 'analysis', 'data'])),
-        ('Project 6', frozenset(['graphs', 'clustering', 'distributed', 'algorithms', 'analysis', 'data'])),
-        ('Project 7', frozenset(['graphs', 'clustering', 'distributed', 'algorithms', 'analysis', 'data'])),
-        ('Project 8', frozenset(['graphs', 'clustering', 'distributed', 'algorithms', 'analysis', 'data'])),
-        ('Project 9', frozenset(['graphs', 'clustering', 'distributed', 'algorithms', 'analysis', 'data'])),
-    ]
+# Generates a set of amount_projects, with skills amount_s_per_p, based on skill_set
+def generate_set_p(amount_projects, amount_s_per_p, skill_set):
+    set_p = []
+    for i in range(0, amount_projects):
+        sample = random.sample(skill_set, amount_s_per_p)
+        set_p.append(('Project ' + str(i + 1), frozenset([x[0] for x in sample])))
     return set_p
 
 
@@ -123,6 +122,30 @@ def brute_force_teams(applicants, projects, k):
         best_teams[project] = (best_team_for_project, team_scores[best_team_for_project])
         for member in best_team_for_project:
             applicants.remove(member)
+    return best_teams
+
+
+# Find best teams for each project individually
+def group_heuristic_teams(applicants, projects, k):
+    best_teams = {}
+    project_applicants_scores = {}
+    for project in projects:
+        for applicant in applicants:
+            score = score_ap(applicant, project)
+            if project in project_applicants_scores:
+                project_applicants_scores[project][applicant] = score
+            else:
+                project_applicants_scores[project] = {applicant: score}
+    for project in projects:
+        for m in range(k):
+            project_available = project_applicants_scores[project]
+            best_applicant = max(project_available.items(), key=operator.itemgetter(1))
+            if project in best_teams:
+                best_teams[project].append(best_applicant)
+            else:
+                best_teams[project] = [best_applicant]
+            for p_available in project_applicants_scores.values():
+                p_available.pop(best_applicant[0], None)
     return best_teams
 
 
@@ -179,35 +202,34 @@ def pair_heuristic_teams(applicants, projects, k):
     return best_teams
 
 
-def print_results():
-    get_set_a()
-    set_p = get_set_p()
+# Do tests and print results with a given set of projects
+def test_with_projects(set_p, full_output):
     '''
-    print('Calculating brute force method...')
     start_brute_force = time.time()
     res_bf = brute_force_teams(set_A, set_p, 6)
     end_brute_force = time.time()
     time_brute_force = end_brute_force - start_brute_force
     '''
 
-    print('Input: --------------')
-    for project in set_p:
-        print('\t"{}",\trequirements:"{}"'.format(project[0], list(project[1])))
+    print('Test input:')
     print('\tAmount of applicants: {}'.format(len(set_A)))
+    for project in set_p:
+        print('\t->{}:\trequirements:{}'.format(project[0], list(project[1])))
 
-    print('\nCalculating single heuristic method...')
     start_single_heuristic = time.time()
-    res_sh = single_heuristic_teams(set_A, set_p, 6)
+    res_sh = single_heuristic_teams(set_A, set_p, 10)
     end_single_heuristic = time.time()
     time_single_heuristic = end_single_heuristic - start_single_heuristic
 
-    print('Calculating pair heuristic method...')
     start_pair_heuristic = time.time()
-    res_ph = pair_heuristic_teams(set_A, set_p, 6)
+    res_ph = pair_heuristic_teams(set_A, set_p, 10)
     end_pair_heuristic = time.time()
     time_pair_heuristic = end_pair_heuristic - start_pair_heuristic
 
-    print('\n\nResults:')
+    start_group_heuristic = time.time()
+    res_gh = group_heuristic_teams(set_A, set_p, 10)
+    end_group_heuristic = time.time()
+    time_group_heuristic = end_group_heuristic - start_group_heuristic
 
     '''
     print('Brute force: -------------------')
@@ -219,23 +241,95 @@ def print_results():
             print('\t\t"{}",\tskills:{},\tscoreAP:{}'
                   .format(member[0], [skills_dict[skill] for skill in member[1]], score_ap(member, project)))
     '''
-    print('\nSingle heuristic: --------------')
-    print('Execution time:\t{}'.format(time_single_heuristic))
-    for project, team in res_sh.items():
-        print('\t->"{0!s}":\tscoreTP:{1:.3f},\trequirements:{2!s}'
-              .format(project[0], score_tp([m[0] for m in team], project), project[1]))
-        for member in team:
-            print('\t\t->Applicant {0!s}:\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1], member[0][1]))
 
-    print('\nPair heuristic: ----------------')
-    print('Execution time:\t{}'.format(time_pair_heuristic))
+    print('\nSingle heuristic results:\tTook: {0:.3f}s'.format(time_single_heuristic))
+    sh_teams_scores = []
+    for project, team in res_sh.items():
+        score_team = score_tp([m[0] for m in team], project)
+        sh_teams_scores.append(score_team)
+        print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
+        if full_output:
+            for member in team:
+                print('\t\t->Applicant {0!s}:\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1],
+                                                                                     list(member[0][1])))
+    sh_score_max = max(sh_teams_scores)
+    sh_score_min = min(sh_teams_scores)
+    sh_score_range = sh_score_max - sh_score_min
+    sh_score_mean = mean(sh_teams_scores)
+    sh_score_sum = sum(sh_teams_scores)
+    print('Teams scores:\tMax:{0:.3f}\tMin:{1:.3f}\tRange:{2:.3f}\tMean:{3:.3f}\tSum:{4:.3f}'.format(sh_score_max,
+                                                                                                     sh_score_min,
+                                                                                                     sh_score_range,
+                                                                                                     sh_score_mean,
+                                                                                                     sh_score_sum))
+
+    print('\nPair heuristic results:\tTook: {0:.3f}s'.format(time_pair_heuristic))
+    ph_teams_scores = []
     for project, team in res_ph.items():
-        print('\t->"{0!s}":\tscoreTP:{1:.3f},\trequirements:{2!s}'
-              .format(project[0], score_tp([m[0] for m in team], project), project[1]))
-        for member in team:
-            print('\t\t->Applicant {0!s}:\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1], member[0][1]))
+        score_team = score_tp([m[0] for m in team], project)
+        ph_teams_scores.append(score_team)
+        print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
+        if full_output:
+            for member in team:
+                print('\t\t->Applicant {0!s}:\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1],
+                                                                                     list(member[0][1])))
+    ph_score_max = max(ph_teams_scores)
+    ph_score_min = min(ph_teams_scores)
+    ph_score_range = ph_score_max - ph_score_min
+    ph_score_mean = mean(ph_teams_scores)
+    ph_score_sum = sum(ph_teams_scores)
+    print('Teams scores:\tMax:{0:.3f}\tMin:{1:.3f}\tRange:{2:.3f}\tMean:{3:.3f}\tSum:{4:.3f}'.format(ph_score_max,
+                                                                                                     ph_score_min,
+                                                                                                     ph_score_range,
+                                                                                                     ph_score_mean,
+                                                                                                     ph_score_sum))
+
+    print('\nGroup heuristic results:\tTook: {0:.3f}s'.format(time_group_heuristic))
+    gh_teams_scores = []
+    for project, team in res_gh.items():
+        score_team = score_tp([m[0] for m in team], project)
+        gh_teams_scores.append(score_team)
+        print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
+        if full_output:
+            for member in team:
+                print('\t\t->Applicant {0!s}:\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1],
+                                                                                     list(member[0][1])))
+    gh_score_max = max(gh_teams_scores)
+    gh_score_min = min(gh_teams_scores)
+    gh_score_range = gh_score_max - gh_score_min
+    gh_score_mean = mean(gh_teams_scores)
+    gh_score_sum = sum(gh_teams_scores)
+    print('Teams scores:\tMax:{0:.3f}\tMin:{1:.3f}\tRange:{2:.3f}\tMean:{3:.3f}\tSum:{4:.3f}'.format(gh_score_max,
+                                                                                                     gh_score_min,
+                                                                                                     gh_score_range,
+                                                                                                     gh_score_mean,
+                                                                                                     gh_score_sum))
 
 
 # Execute algorithms and print results
 if __name__ == "__main__":
-    print_results()
+    prepare_data()
+
+    print('\n\n----------------------------------------\n25 skills p/ proj, 2000 skills:')
+    set_p_several_skills_avg_frequent = generate_set_p(10, 25, most_freq)
+    test_with_projects(set_p_several_skills_avg_frequent, False)
+
+    print('\n\n----------------------------------------\n25 skills p/ proj, 200 most frequent skills:')
+    set_p_several_skills_more_frequent = generate_set_p(10, 25, most_freq[:200])
+    test_with_projects(set_p_several_skills_more_frequent, False)
+
+    print('\n\n----------------------------------------\n25 skills p/ proj, 200 less frequent skills:')
+    set_p_several_skills_less_frequent = generate_set_p(10, 25, most_freq[-200:])
+    test_with_projects(set_p_several_skills_less_frequent, False)
+
+    print('\n\n----------------------------------------\n5 skills p/ proj, 2000 skills:')
+    set_p_several_skills_avg_frequent = generate_set_p(10, 5, most_freq)
+    test_with_projects(set_p_several_skills_avg_frequent, False)
+
+    print('\n\n----------------------------------------\n5 skills p/ proj, 200 most frequent skills:')
+    set_p_several_skills_more_frequent = generate_set_p(10, 5, most_freq[:200])
+    test_with_projects(set_p_several_skills_more_frequent, False)
+
+    print('\n\n----------------------------------------\n5 skills p/ proj, 200 less frequent skills:')
+    set_p_several_skills_less_frequent = generate_set_p(10, 5, most_freq[-200:])
+    test_with_projects(set_p_several_skills_less_frequent, False)
