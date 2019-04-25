@@ -4,6 +4,8 @@ import operator
 import nltk
 import pickle
 import random
+import numpy as np
+import matplotlib.pyplot as plt
 from statistics import mean
 from collections import defaultdict
 from nltk.corpus import wordnet as wn
@@ -203,133 +205,238 @@ def pair_heuristic_teams(applicants, projects, k):
 
 
 # Do tests and print results with a given set of projects
-def test_with_projects(set_p, full_output):
-    '''
-    start_brute_force = time.time()
-    res_bf = brute_force_teams(set_A, set_p, 6)
-    end_brute_force = time.time()
-    time_brute_force = end_brute_force - start_brute_force
-    '''
-
-    print('Test input:')
-    print('\tAmount of applicants: {}'.format(len(set_A)))
-    for project in set_p:
-        print('\t->{}:\trequirements:{}'.format(project[0], list(project[1])))
-
-    start_single_heuristic = time.time()
-    res_sh = single_heuristic_teams(set_A, set_p, 10)
-    end_single_heuristic = time.time()
-    time_single_heuristic = end_single_heuristic - start_single_heuristic
-
-    start_pair_heuristic = time.time()
-    res_ph = pair_heuristic_teams(set_A, set_p, 10)
-    end_pair_heuristic = time.time()
-    time_pair_heuristic = end_pair_heuristic - start_pair_heuristic
+def test_with_projects(set_p, k, full_output):
+    print('\n---------- Test input: ----------')
+    print('\tApplicants: {}\tProjects: {}\tk: {}'.format(len(set_A), len(set_p), k))
+    if full_output:
+        for project in set_p:
+            print('\t->{}:\trequirements:{}'.format(project[0], list(project[1])))
 
     start_group_heuristic = time.time()
-    res_gh = group_heuristic_teams(set_A, set_p, 10)
+    res_gh = group_heuristic_teams(set_A, set_p, k)
     end_group_heuristic = time.time()
     time_group_heuristic = end_group_heuristic - start_group_heuristic
+    if log_graphs['time_p']:
+        dt_time_p[0][0].append(len(set_p))
+        dt_time_p[0][1].append(time_group_heuristic)
+    if log_graphs['time_k']:
+        dt_time_k[0][0].append(k)
+        dt_time_k[0][1].append(time_group_heuristic)
 
-    '''
-    print('Brute force: -------------------')
-    print('Execution time:\t{}'.format(time_brute_force))
-    for project, team in res_bf:
-        print('\tTeam for project "{}",\trequirements:{},\tscoreTP:{}'
-              .format(project[0], [skills_dict[skill] for skill in project[1]], team[1]))
-        for member in team[0]:
-            print('\t\t"{}",\tskills:{},\tscoreAP:{}'
-                  .format(member[0], [skills_dict[skill] for skill in member[1]], score_ap(member, project)))
-    '''
+    start_single_heuristic = time.time()
+    res_sh = single_heuristic_teams(set_A, set_p, k)
+    end_single_heuristic = time.time()
+    time_single_heuristic = end_single_heuristic - start_single_heuristic
+    if log_graphs['time_p']:
+        dt_time_p[1][0].append(len(set_p))
+        dt_time_p[1][1].append(time_single_heuristic)
+    if log_graphs['time_k']:
+        dt_time_k[1][0].append(k)
+        dt_time_k[1][1].append(time_single_heuristic)
 
-    print('\nSingle heuristic results:\tTook: {0:.3f}s'.format(time_single_heuristic))
-    sh_teams_scores = []
-    for project, team in res_sh.items():
-        score_team = score_tp([m[0] for m in team], project)
-        sh_teams_scores.append(score_team)
-        print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
-        if full_output:
-            for member in team:
-                print('\t\t->Applicant {0!s}:\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1],
-                                                                                     list(member[0][1])))
-    sh_score_max = max(sh_teams_scores)
-    sh_score_min = min(sh_teams_scores)
-    sh_score_range = sh_score_max - sh_score_min
-    sh_score_mean = mean(sh_teams_scores)
-    sh_score_sum = sum(sh_teams_scores)
-    print('Teams scores:\tMax:{0:.3f}\tMin:{1:.3f}\tRange:{2:.3f}\tMean:{3:.3f}\tSum:{4:.3f}'.format(sh_score_max,
-                                                                                                     sh_score_min,
-                                                                                                     sh_score_range,
-                                                                                                     sh_score_mean,
-                                                                                                     sh_score_sum))
+    start_pair_heuristic = time.time()
+    res_ph = pair_heuristic_teams(set_A, set_p, k)
+    end_pair_heuristic = time.time()
+    time_pair_heuristic = end_pair_heuristic - start_pair_heuristic
+    if log_graphs['time_p']:
+        dt_time_p[2][0].append(len(set_p))
+        dt_time_p[2][1].append(time_pair_heuristic)
+    if log_graphs['time_k']:
+        dt_time_k[2][0].append(k)
+        dt_time_k[2][1].append(time_pair_heuristic)
 
-    print('\nPair heuristic results:\tTook: {0:.3f}s'.format(time_pair_heuristic))
-    ph_teams_scores = []
-    for project, team in res_ph.items():
-        score_team = score_tp([m[0] for m in team], project)
-        ph_teams_scores.append(score_team)
-        print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
-        if full_output:
-            for member in team:
-                print('\t\t->Applicant {0!s}:\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1],
-                                                                                     list(member[0][1])))
-    ph_score_max = max(ph_teams_scores)
-    ph_score_min = min(ph_teams_scores)
-    ph_score_range = ph_score_max - ph_score_min
-    ph_score_mean = mean(ph_teams_scores)
-    ph_score_sum = sum(ph_teams_scores)
-    print('Teams scores:\tMax:{0:.3f}\tMin:{1:.3f}\tRange:{2:.3f}\tMean:{3:.3f}\tSum:{4:.3f}'.format(ph_score_max,
-                                                                                                     ph_score_min,
-                                                                                                     ph_score_range,
-                                                                                                     ph_score_mean,
-                                                                                                     ph_score_sum))
-
-    print('\nGroup heuristic results:\tTook: {0:.3f}s'.format(time_group_heuristic))
+    print('\nHeuristic results:\tTook: {0:.3f}s'.format(time_group_heuristic))
     gh_teams_scores = []
     for project, team in res_gh.items():
         score_team = score_tp([m[0] for m in team], project)
         gh_teams_scores.append(score_team)
-        print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
         if full_output:
+            print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
             for member in team:
-                print('\t\t->Applicant {0!s}:\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1],
-                                                                                     list(member[0][1])))
+                print('\t\t->Applicant {0!s}:'
+                      '\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1], list(member[0][1])))
+
     gh_score_max = max(gh_teams_scores)
     gh_score_min = min(gh_teams_scores)
     gh_score_range = gh_score_max - gh_score_min
     gh_score_mean = mean(gh_teams_scores)
     gh_score_sum = sum(gh_teams_scores)
-    print('Teams scores:\tMax:{0:.3f}\tMin:{1:.3f}\tRange:{2:.3f}\tMean:{3:.3f}\tSum:{4:.3f}'.format(gh_score_max,
-                                                                                                     gh_score_min,
-                                                                                                     gh_score_range,
-                                                                                                     gh_score_mean,
-                                                                                                     gh_score_sum))
+    gh_score_fd = sum([abs(s - gh_score_mean) for s in gh_teams_scores]) / len(gh_teams_scores)
+    if log_graphs['fairness']:
+        dt_fairness[0][0].append(len(set_p) * k)
+        dt_fairness[0][1].append(gh_score_fd)
+
+    print('Scores:\tMax:{0:.3f}\tMin:{1:.3f}'
+          '\tRange:{2:.3f}\tMean:{3:.3f}'
+          '\tSum:{4:.3f}\tf-deviation:{5:.3f}'.format(gh_score_max,
+                                                      gh_score_min,
+                                                      gh_score_range,
+                                                      gh_score_mean,
+                                                      gh_score_sum,
+                                                      gh_score_fd))
+
+    print('\nK-rounds heuristic results:\tTook: {0:.3f}s'.format(time_single_heuristic))
+    sh_teams_scores = []
+    for project, team in res_sh.items():
+        score_team = score_tp([m[0] for m in team], project)
+        sh_teams_scores.append(score_team)
+        if full_output:
+            print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
+            for member in team:
+                print('\t\t->Applicant {0!s}:'
+                      '\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1], list(member[0][1])))
+
+    sh_score_max = max(sh_teams_scores)
+    sh_score_min = min(sh_teams_scores)
+    sh_score_range = sh_score_max - sh_score_min
+    sh_score_mean = mean(sh_teams_scores)
+    sh_score_sum = sum(sh_teams_scores)
+    sh_score_fd = sum([abs(s - sh_score_mean) for s in sh_teams_scores]) / len(sh_teams_scores)
+    if log_graphs['fairness']:
+        dt_fairness[1][0].append(len(set_p) * k)
+        dt_fairness[1][1].append(sh_score_fd)
+    print('Scores:\tMax:{0:.3f}\tMin:{1:.3f}'
+          '\tRange:{2:.3f}\tMean:{3:.3f}'
+          '\tSum:{4:.3f}\tf-deviation:{5:.3f}'.format(sh_score_max,
+                                                      sh_score_min,
+                                                      sh_score_range,
+                                                      sh_score_mean,
+                                                      sh_score_sum,
+                                                      sh_score_fd))
+
+    print('\nPair-rounds heuristic results:\tTook: {0:.3f}s'.format(time_pair_heuristic))
+    ph_teams_scores = []
+    for project, team in res_ph.items():
+        score_team = score_tp([m[0] for m in team], project)
+        ph_teams_scores.append(score_team)
+        if full_output:
+            print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
+            for member in team:
+                print('\t\t->Applicant {0!s}:'
+                      '\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1], list(member[0][1])))
+
+    ph_score_max = max(ph_teams_scores)
+    ph_score_min = min(ph_teams_scores)
+    ph_score_range = ph_score_max - ph_score_min
+    ph_score_mean = mean(ph_teams_scores)
+    ph_score_sum = sum(ph_teams_scores)
+    ph_score_fd = sum([abs(s - ph_score_mean) for s in ph_teams_scores]) / len(ph_teams_scores)
+    if log_graphs['fairness']:
+        dt_fairness[2][0].append(len(set_p) * k)
+        dt_fairness[2][1].append(ph_score_fd)
+    print('Scores:\tMax:{0:.3f}\tMin:{1:.3f}'
+          '\tRange:{2:.3f}\tMean:{3:.3f}'
+          '\tSum:{4:.3f}\tf-deviation:{5:.3f}'.format(ph_score_max,
+                                                      ph_score_min,
+                                                      ph_score_range,
+                                                      ph_score_mean,
+                                                      ph_score_sum,
+                                                      ph_score_fd))
+
+
+log_graphs = defaultdict(bool)
+dt_time_p = [[[], []], [[], []], [[], []]]
+dt_time_k = [[[], []], [[], []], [[], []]]
+dt_fairness = [[[], []], [[], []], [[], []]]
+
+
+def plot_graphs():
+    fig_time, axs_time = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
+
+    axs_time[0].plot(dt_time_p[0][0], dt_time_p[0][1], label='heuristic')
+    axs_time[0].plot(dt_time_p[1][0], dt_time_p[1][1], label='k-rounds')
+    axs_time[0].plot(dt_time_p[2][0], dt_time_p[2][1], label='pairs-rounds')
+    axs_time[0].set_xlabel("Amount of projects")
+    axs_time[0].set_ylabel("Time (s)")
+    axs_time[0].legend()
+
+    axs_time[1].plot(dt_time_k[0][0], dt_time_k[0][1], label='heuristic')
+    axs_time[1].plot(dt_time_k[1][0], dt_time_k[1][1], label='k-rounds')
+    axs_time[1].plot(dt_time_k[2][0], dt_time_k[2][1], label='pairs-rounds')
+    axs_time[1].set_xlabel("k")
+    axs_time[1].set_ylabel("Time (s)")
+    axs_time[1].legend()
+
+    fig_time.tight_layout()
+    fig_time.savefig("results_time.png", dpi=250)
+
+    fig_fairness, ax_fairness = plt.subplots(figsize=(10, 10))
+
+    colors = ("red", "green", "blue")
+    groups = ("heuristic", "k-rounds", "pairs-rounds")
+    data = tuple(dt_fairness)
+    for data, clr, group in zip(data, colors, groups):
+        x = data[0]
+        y = data[1]
+        ax_fairness.scatter(x, y, alpha=0.8, c=clr, edgecolors='none', s=30, label=group)
+        z = np.polyfit(x, y, 1)
+        p = np.poly1d(z)
+        ax_fairness.plot(x, p(x), color=clr, linestyle=':', linewidth=1.0)
+    ax_fairness.set_xlabel("k * P")
+    ax_fairness.set_ylabel("fairness-deviation")
+    ax_fairness.legend(loc=2)
+
+    fig_fairness.tight_layout()
+    fig_fairness.savefig("results_fairness.png", dpi=250)
 
 
 # Execute algorithms and print results
 if __name__ == "__main__":
     prepare_data()
 
-    print('\n\n----------------------------------------\n25 skills p/ proj, 2000 skills:')
-    set_p_several_skills_avg_frequent = generate_set_p(10, 25, most_freq)
-    test_with_projects(set_p_several_skills_avg_frequent, False)
+    log_graphs['fairness'] = True
+    log_graphs['time_p'] = True
+    generated_set_p = generate_set_p(5, 20, most_freq)
+    test_with_projects(generated_set_p, 9, False)
 
-    print('\n\n----------------------------------------\n25 skills p/ proj, 200 most frequent skills:')
-    set_p_several_skills_more_frequent = generate_set_p(10, 25, most_freq[:200])
-    test_with_projects(set_p_several_skills_more_frequent, False)
+    generated_set_p = generate_set_p(10, 20, most_freq)
+    test_with_projects(generated_set_p, 9, False)
 
-    print('\n\n----------------------------------------\n25 skills p/ proj, 200 less frequent skills:')
-    set_p_several_skills_less_frequent = generate_set_p(10, 25, most_freq[-200:])
-    test_with_projects(set_p_several_skills_less_frequent, False)
+    generated_set_p = generate_set_p(15, 20, most_freq)
+    test_with_projects(generated_set_p, 9, False)
 
-    print('\n\n----------------------------------------\n5 skills p/ proj, 2000 skills:')
-    set_p_several_skills_avg_frequent = generate_set_p(10, 5, most_freq)
-    test_with_projects(set_p_several_skills_avg_frequent, False)
+    generated_set_p = generate_set_p(20, 20, most_freq)
+    test_with_projects(generated_set_p, 9, False)
 
-    print('\n\n----------------------------------------\n5 skills p/ proj, 200 most frequent skills:')
-    set_p_several_skills_more_frequent = generate_set_p(10, 5, most_freq[:200])
-    test_with_projects(set_p_several_skills_more_frequent, False)
+    generated_set_p = generate_set_p(30, 20, most_freq)
+    test_with_projects(generated_set_p, 9, False)
+    log_graphs['time_p'] = False
 
-    print('\n\n----------------------------------------\n5 skills p/ proj, 200 less frequent skills:')
-    set_p_several_skills_less_frequent = generate_set_p(10, 5, most_freq[-200:])
-    test_with_projects(set_p_several_skills_less_frequent, False)
+    log_graphs['time_k'] = True
+    generated_set_p = generate_set_p(11, 20, most_freq)
+    test_with_projects(generated_set_p, 5, False)
+
+    generated_set_p = generate_set_p(11, 20, most_freq)
+    test_with_projects(generated_set_p, 10, False)
+
+    generated_set_p = generate_set_p(11, 20, most_freq)
+    test_with_projects(generated_set_p, 15, False)
+
+    generated_set_p = generate_set_p(11, 20, most_freq)
+    test_with_projects(generated_set_p, 20, False)
+
+    generated_set_p = generate_set_p(11, 20, most_freq)
+    test_with_projects(generated_set_p, 25, False)
+    log_graphs['time_k'] = False
+
+    generated_set_p = generate_set_p(10, 20, most_freq[-200:])
+    test_with_projects(generated_set_p, 12, False)
+
+    generated_set_p = generate_set_p(10, 20, most_freq[-200:])
+    test_with_projects(generated_set_p, 8, False)
+
+    generated_set_p = generate_set_p(15, 20, most_freq[-200:])
+    test_with_projects(generated_set_p, 12, False)
+
+    generated_set_p = generate_set_p(20, 20, most_freq[:200])
+    test_with_projects(generated_set_p, 8, False)
+
+    generated_set_p = generate_set_p(9, 20, most_freq[:200])
+    test_with_projects(generated_set_p, 8, False)
+
+    generated_set_p = generate_set_p(16, 20, most_freq[:200])
+    test_with_projects(generated_set_p, 12, False)
+
+    plot_graphs()
+
+    print('\n---------- END ----------')
