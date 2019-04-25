@@ -343,16 +343,16 @@ dt_fairness = [[[], []], [[], []], [[], []]]
 def plot_graphs():
     fig_time, axs_time = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
 
-    axs_time[0].plot(dt_time_p[0][0], dt_time_p[0][1], label='heuristic')
-    axs_time[0].plot(dt_time_p[1][0], dt_time_p[1][1], label='k-rounds')
-    axs_time[0].plot(dt_time_p[2][0], dt_time_p[2][1], label='pairs-rounds')
+    axs_time[0].plot(dt_time_p[0][0], dt_time_p[0][1], label='Simple heuristic')
+    axs_time[0].plot(dt_time_p[1][0], dt_time_p[1][1], label='K-rounds')
+    axs_time[0].plot(dt_time_p[2][0], dt_time_p[2][1], label='Pairs-rounds')
     axs_time[0].set_xlabel("Amount of projects")
     axs_time[0].set_ylabel("Time (s)")
     axs_time[0].legend()
 
-    axs_time[1].plot(dt_time_k[0][0], dt_time_k[0][1], label='heuristic')
-    axs_time[1].plot(dt_time_k[1][0], dt_time_k[1][1], label='k-rounds')
-    axs_time[1].plot(dt_time_k[2][0], dt_time_k[2][1], label='pairs-rounds')
+    axs_time[1].plot(dt_time_k[0][0], dt_time_k[0][1], label='Simple heuristic')
+    axs_time[1].plot(dt_time_k[1][0], dt_time_k[1][1], label='K-rounds')
+    axs_time[1].plot(dt_time_k[2][0], dt_time_k[2][1], label='Pairs-rounds')
     axs_time[1].set_xlabel("k")
     axs_time[1].set_ylabel("Time (s)")
     axs_time[1].legend()
@@ -363,7 +363,7 @@ def plot_graphs():
     fig_fairness, ax_fairness = plt.subplots(figsize=(10, 10))
 
     colors = ("red", "green", "blue")
-    groups = ("heuristic", "k-rounds", "pairs-rounds")
+    groups = ("Simple heuristic", "K-rounds", "Pairs-rounds")
     data = tuple(dt_fairness)
     for data, clr, group in zip(data, colors, groups):
         x = data[0]
@@ -371,8 +371,8 @@ def plot_graphs():
         ax_fairness.scatter(x, y, alpha=0.8, c=clr, edgecolors='none', s=30, label=group)
         z = np.polyfit(x, y, 1)
         p = np.poly1d(z)
-        ax_fairness.plot(x, p(x), color=clr, linestyle=':', linewidth=1.0)
-    ax_fairness.set_xlabel("k * P")
+        ax_fairness.plot(x, p(x), color=clr, linestyle='dashed', linewidth=1.0)
+    ax_fairness.set_xlabel("choices")
     ax_fairness.set_ylabel("fairness-deviation")
     ax_fairness.legend(loc=2)
 
@@ -386,56 +386,28 @@ if __name__ == "__main__":
 
     log_graphs['fairness'] = True
     log_graphs['time_p'] = True
-    generated_set_p = generate_set_p(5, 20, most_freq)
-    test_with_projects(generated_set_p, 9, False)
-
-    generated_set_p = generate_set_p(10, 20, most_freq)
-    test_with_projects(generated_set_p, 9, False)
-
-    generated_set_p = generate_set_p(15, 20, most_freq)
-    test_with_projects(generated_set_p, 9, False)
-
-    generated_set_p = generate_set_p(20, 20, most_freq)
-    test_with_projects(generated_set_p, 9, False)
-
-    generated_set_p = generate_set_p(30, 20, most_freq)
-    test_with_projects(generated_set_p, 9, False)
+    for p in range(3, 30, 3):
+        generated_set_p = generate_set_p(p, 20, most_freq)
+        test_with_projects(generated_set_p, 9, False)
     log_graphs['time_p'] = False
 
     log_graphs['time_k'] = True
-    generated_set_p = generate_set_p(11, 20, most_freq)
-    test_with_projects(generated_set_p, 5, False)
-
-    generated_set_p = generate_set_p(11, 20, most_freq)
-    test_with_projects(generated_set_p, 10, False)
-
-    generated_set_p = generate_set_p(11, 20, most_freq)
-    test_with_projects(generated_set_p, 15, False)
-
-    generated_set_p = generate_set_p(11, 20, most_freq)
-    test_with_projects(generated_set_p, 20, False)
-
-    generated_set_p = generate_set_p(11, 20, most_freq)
-    test_with_projects(generated_set_p, 25, False)
+    for k in range(3, 30, 3):
+        generated_set_p = generate_set_p(11, 20, most_freq)
+        test_with_projects(generated_set_p, k, False)
     log_graphs['time_k'] = False
 
-    generated_set_p = generate_set_p(10, 20, most_freq[-200:])
-    test_with_projects(generated_set_p, 12, False)
+    for p in random.sample(range(5, 35), 10):
+        for k in random.sample(range(3, 12), 5):
+            generated_set_p = generate_set_p(p, 20, most_freq[-200:])
+            test_with_projects(generated_set_p, k, False)
 
-    generated_set_p = generate_set_p(10, 20, most_freq[-200:])
-    test_with_projects(generated_set_p, 8, False)
+    for p in random.sample(range(5, 35), 10):
+        for k in random.sample(range(3, 12), 5):
+            generated_set_p = generate_set_p(p, 20, most_freq[:200])
+            test_with_projects(generated_set_p, k, False)
 
-    generated_set_p = generate_set_p(15, 20, most_freq[-200:])
-    test_with_projects(generated_set_p, 12, False)
-
-    generated_set_p = generate_set_p(20, 20, most_freq[:200])
-    test_with_projects(generated_set_p, 8, False)
-
-    generated_set_p = generate_set_p(9, 20, most_freq[:200])
-    test_with_projects(generated_set_p, 8, False)
-
-    generated_set_p = generate_set_p(16, 20, most_freq[:200])
-    test_with_projects(generated_set_p, 12, False)
+    pickle.dump((dt_time_p, dt_time_k, dt_fairness), open("stats.dat", "wb"))
 
     plot_graphs()
 
