@@ -489,7 +489,7 @@ dt_time_p = [[[], []], [[], []], [[], []]]
 dt_time_k = [[[], []], [[], []], [[], []]]
 dt_maxs = [[[], []], [[], []], [[], []]]
 dt_fairness = [[[], []], [[], []], [[], []]]
-brute_force = True
+brute_force = False
 
 if brute_force:
     dt_time_p.append([[], []])
