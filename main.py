@@ -113,9 +113,10 @@ def score_tp(team, project):
 
 # Find best teams by brute force
 def brute_force_teams(applicants, projects, k):
+    available_applicants = list(applicants)
     best_teams = {}
     for project in projects:
-        possible_teams = itertools.combinations(applicants, k)
+        possible_teams = itertools.combinations(available_applicants, k)
         team_scores = {}
         for team in possible_teams:
             score_team = score_tp(team, project)
@@ -123,7 +124,7 @@ def brute_force_teams(applicants, projects, k):
         best_team_for_project = max(team_scores, key=team_scores.get)
         best_teams[project] = (best_team_for_project, team_scores[best_team_for_project])
         for member in best_team_for_project:
-            applicants.remove(member)
+            available_applicants.remove(member)
     return best_teams
 
 
@@ -245,6 +246,20 @@ def test_with_projects(set_p, k, full_output):
         dt_time_k[2][0].append(k)
         dt_time_k[2][1].append(time_pair_heuristic)
 
+    res_bf = None
+    time_brute_force = None
+    if brute_force:
+        start_brute_force = time.time()
+        res_bf = brute_force_teams(set_A, set_p, k)
+        end_brute_force = time.time()
+        time_brute_force = end_brute_force - start_brute_force
+        if log_graphs['time_p']:
+            dt_time_p[3][0].append(len(set_p))
+            dt_time_p[3][1].append(time_brute_force)
+        if log_graphs['time_k']:
+            dt_time_k[3][0].append(k)
+            dt_time_k[3][1].append(time_brute_force)
+
     print('\nHeuristic results:\tTook: {0:.3f}s'.format(time_group_heuristic))
     gh_teams_scores = []
     for project, team in res_gh.items():
@@ -341,12 +356,37 @@ def test_with_projects(set_p, k, full_output):
                                                       ph_score_sum,
                                                       ph_score_fd))
 
-
-log_graphs = defaultdict(bool)
-dt_time_p = [[[], []], [[], []], [[], []]]
-dt_time_k = [[[], []], [[], []], [[], []]]
-dt_maxs = [[[], []], [[], []], [[], []]]
-dt_fairness = [[[], []], [[], []], [[], []]]
+    if brute_force:
+        print('\nBrute force results:\tTook: {0:.3f}s'.format(time_brute_force))
+        bf_teams_scores = []
+        for project, team in res_bf.items():
+            bf_teams_scores.append(team[1])
+            if full_output:
+                print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], team[1]))
+                for member in team[0]:
+                    print('\t\t->Applicant {0!s}:'
+                          '\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0], score_ap(member, project),
+                                                                   list(member[1])))
+        bf_score_max = max(bf_teams_scores)
+        bf_score_min = min(bf_teams_scores)
+        bf_score_range = bf_score_max - bf_score_min
+        bf_score_mean = mean(bf_teams_scores)
+        bf_score_sum = sum(bf_teams_scores)
+        bf_score_fd = sum([abs(s - bf_score_mean) for s in bf_teams_scores]) / len(bf_teams_scores)
+        if log_graphs['fairness']:
+            dt_fairness[3][0].append(len(set_p) * k)
+            dt_fairness[3][1].append(bf_score_fd)
+        if log_graphs['maxs']:
+            dt_maxs[3][0].append(len(set_p) * k)
+            dt_maxs[3][1].append(bf_score_sum)
+        print('Scores:\tMax:{0:.3f}\tMin:{1:.3f}'
+              '\tRange:{2:.3f}\tMean:{3:.3f}'
+              '\tSum:{4:.3f}\tf-deviation:{5:.3f}'.format(bf_score_max,
+                                                          bf_score_min,
+                                                          bf_score_range,
+                                                          bf_score_mean,
+                                                          bf_score_sum,
+                                                          bf_score_fd))
 
 
 def plot_graphs():
@@ -355,6 +395,8 @@ def plot_graphs():
     axs_time[0].plot(dt_time_p[0][0], dt_time_p[0][1], label='Simple heuristic')
     axs_time[0].plot(dt_time_p[1][0], dt_time_p[1][1], label='K-rounds')
     axs_time[0].plot(dt_time_p[2][0], dt_time_p[2][1], label='Pairs-rounds')
+    if brute_force:
+        axs_time[0].plot(dt_time_p[3][0], dt_time_p[3][1], label='Brute force')
     axs_time[0].set_xlabel("Amount of projects")
     axs_time[0].set_ylabel("Time (s)")
     axs_time[0].legend()
@@ -362,6 +404,8 @@ def plot_graphs():
     axs_time[1].plot(dt_time_k[0][0], dt_time_k[0][1], label='Simple heuristic')
     axs_time[1].plot(dt_time_k[1][0], dt_time_k[1][1], label='K-rounds')
     axs_time[1].plot(dt_time_k[2][0], dt_time_k[2][1], label='Pairs-rounds')
+    if brute_force:
+        axs_time[1].plot(dt_time_k[3][0], dt_time_k[3][1], label='Brute force')
     axs_time[1].set_xlabel("k")
     axs_time[1].set_ylabel("Time (s)")
     axs_time[1].legend()
@@ -381,6 +425,14 @@ def plot_graphs():
         z = np.polyfit(x, y, 1)
         p = np.poly1d(z)
         ax_fairness.plot(x, p(x), color=clr, linestyle='dashed', linewidth=1.0)
+    if brute_force:
+        data = dt_fairness[3]
+        x = data[0]
+        y = data[1]
+        ax_fairness.scatter(x, y, alpha=0.8, c="yellow", edgecolors='none', s=30, label="Brute force")
+        z = np.polyfit(x, y, 1)
+        p = np.poly1d(z)
+        ax_fairness.plot(x, p(x), color="yellow", linestyle='dashed', linewidth=1.0)
     ax_fairness.set_xlabel("choices")
     ax_fairness.set_ylabel("fairness-deviation")
     ax_fairness.legend(loc=2)
@@ -400,6 +452,14 @@ def plot_graphs():
         z = np.polyfit(x, y, 1)
         p = np.poly1d(z)
         ax_maxs.plot(x, p(x), color=clr, linestyle='dashed', linewidth=1.0)
+    if brute_force:
+        data = dt_maxs[3]
+        x = data[0]
+        y = data[1]
+        ax_maxs.scatter(x, y, alpha=0.8, c="yellow", edgecolors='none', s=30, label="Brute force")
+        z = np.polyfit(x, y, 1)
+        p = np.poly1d(z)
+        ax_maxs.plot(x, p(x), color="yellow", linestyle='dashed', linewidth=1.0)
     ax_maxs.set_xlabel("choices")
     ax_maxs.set_ylabel("scoreTP sum")
     ax_maxs.legend(loc=2)
@@ -408,41 +468,82 @@ def plot_graphs():
     fig_maxs.savefig("results_maxs.png", dpi=250)
 
 
+def plot_graphs_bf():
+    fig_time, ax_time = plt.subplots(figsize=(5, 5))
+
+    objects = ("Simple heuristic", "K-rounds", "Pairs-rounds", "Brute force")
+    y_pos = np.arange(len(objects))
+    performance = [dt_time_p[0][1][0], dt_time_p[1][1][0], dt_time_p[2][1][0], dt_time_p[3][1][0]]
+
+    ax_time.bar(y_pos, performance, align='center', alpha=0.5)
+    ax_time.set_yticks(objects)
+    ax_time.set_ylabel('Time (s)')
+    ax_time.legend(loc=2)
+
+    fig_time.tight_layout()
+    fig_time.savefig("results_time_bf.png", dpi=250)
+
+
+log_graphs = defaultdict(bool)
+dt_time_p = [[[], []], [[], []], [[], []]]
+dt_time_k = [[[], []], [[], []], [[], []]]
+dt_maxs = [[[], []], [[], []], [[], []]]
+dt_fairness = [[[], []], [[], []], [[], []]]
+brute_force = True
+
+if brute_force:
+    dt_time_p.append([[], []])
+    dt_time_k.append([[], []])
+    dt_maxs.append([[], []])
+    dt_fairness.append([[], []])
+
 # Execute algorithms and print results
 if __name__ == "__main__":
 
-    try:
-        stats = pickle.load(open("stats.dat", "rb"))
-        dt_time_p, dt_time_k, dt_fairness, dt_maxs = stats
-    except (OSError, IOError) as e:
-        prepare_data()
+    prepare_data()
 
-        log_graphs['fairness'] = True
-        log_graphs['maxs'] = True
-        log_graphs['time_p'] = True
-        for p in range(3, 30, 3):
-            generated_set_p = generate_set_p(p, 20, most_freq)
-            test_with_projects(generated_set_p, 9, False)
-        log_graphs['time_p'] = False
+    log_graphs['fairness'] = True
+    log_graphs['maxs'] = True
+    log_graphs['time_p'] = True
 
-        log_graphs['time_k'] = True
-        for k in range(3, 30, 3):
-            generated_set_p = generate_set_p(11, 20, most_freq)
-            test_with_projects(generated_set_p, k, False)
-        log_graphs['time_k'] = False
+    if brute_force:
+        try:
+            stats = pickle.load(open("stats_bf.dat", "rb"))
+            dt_time_p, dt_time_k, dt_fairness, dt_maxs = stats
+        except (OSError, IOError) as e:
+            set_A = random.sample(set_A, 100)
+            log_graphs['time_k'] = True
+            generated_set_p = generate_set_p(4, 20, most_freq)
+            test_with_projects(generated_set_p, 4, True)
+            pickle.dump((dt_time_p, dt_time_k, dt_fairness, dt_maxs), open("stats_bf.dat", "wb"))
+        plot_graphs_bf()
+    else:
+        try:
+            stats = pickle.load(open("stats.dat", "rb"))
+            dt_time_p, dt_time_k, dt_fairness, dt_maxs = stats
+        except (OSError, IOError) as e:
+            for p in range(3, 30, 3):
+                generated_set_p = generate_set_p(p, 20, most_freq)
+                test_with_projects(generated_set_p, 9, False)
+            log_graphs['time_p'] = False
 
-        for p in random.sample(range(5, 35), 10):
-            for k in random.sample(range(3, 12), 5):
-                generated_set_p = generate_set_p(p, 20, most_freq[-200:])
+            log_graphs['time_k'] = True
+            for k in range(3, 30, 3):
+                generated_set_p = generate_set_p(11, 20, most_freq)
                 test_with_projects(generated_set_p, k, False)
+            log_graphs['time_k'] = False
 
-        for p in random.sample(range(5, 35), 10):
-            for k in random.sample(range(3, 12), 5):
-                generated_set_p = generate_set_p(p, 20, most_freq[:200])
-                test_with_projects(generated_set_p, k, False)
+            for p in random.sample(range(5, 35), 10):
+                for k in random.sample(range(3, 12), 5):
+                    generated_set_p = generate_set_p(p, 20, most_freq[-200:])
+                    test_with_projects(generated_set_p, k, False)
 
-        pickle.dump((dt_time_p, dt_time_k, dt_fairness, dt_maxs), open("stats.dat", "wb"))
+            for p in random.sample(range(5, 35), 10):
+                for k in random.sample(range(3, 12), 5):
+                    generated_set_p = generate_set_p(p, 20, most_freq[:200])
+                    test_with_projects(generated_set_p, k, False)
 
-    plot_graphs()
+            pickle.dump((dt_time_p, dt_time_k, dt_fairness, dt_maxs), open("stats.dat", "wb"))
+        plot_graphs()
 
     print('\n---------- END ----------')
