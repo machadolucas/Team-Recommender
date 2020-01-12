@@ -105,3 +105,4 @@ venv.bak/
 
 # Ignore data files
 *.dat
+*.tsv

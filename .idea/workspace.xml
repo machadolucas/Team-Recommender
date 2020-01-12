@@ -2,169 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cc2a949-c4da-4fc7-bf40-5b917b517a91" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data-imdb/IMDB_skill.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DBLP_skill.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data-dblp/DBLP_skill.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results_fairness.png" beforeDir="false" afterPath="$PROJECT_DIR$/results_fairness.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results_maxs.png" beforeDir="false" afterPath="$PROJECT_DIR$/results_maxs.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results_time.png" beforeDir="false" afterPath="$PROJECT_DIR$/results_time.png" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/main.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="208">
-                  <caret line="494" column="30" lean-forward="true" selection-start-line="494" selection-start-column="30" selection-end-line="494" selection-end-column="30" />
-                  <folding>
-                    <element signature="e#0#16#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/main.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="213">
-                  <caret line="257" column="24" selection-start-line="257" selection-start-column="24" selection-end-line="257" selection-end-column="27" />
-                  <folding>
-                    <element signature="e#0#16#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>.</find>
-      <find>score_ap</find>
-      <find>single</find>
-      <find>skills</find>
-      <find>enumer</find>
-      <find>skill</find>
-      <find>]</find>
-      <find>set(</find>
-      <find>for</find>
-      <find>default</find>
-      <find>terms[1]</find>
-      <find>])</find>
-      <find>range</find>
-      <find>get_set_p</find>
-      <find>set_p</find>
-      <find>sh_</find>
-      <find>pair</find>
-      <find>_dh</find>
-      <find>----------------------------------------</find>
-      <find>sh</find>
-      <find>score_tp</find>
-      <find>set_p_several_skills_more_frequent</find>
-      <find>set_p_several_skills_less_frequent</find>
-      <find>Teams scores</find>
-      <find>dt_time_p</find>
-      <find>axs_time</find>
-      <find>fairness</find>
-      <find>ph</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>single_heuristic</replace>
-      <replace>pair</replace>
-      <replace>{</replace>
-      <replace>}</replace>
-      <replace>frozenset([</replace>
-      <replace>])</replace>
-      <replace>term1</replace>
-      <replace>term2</replace>
-      <replace>]))</replace>
-      <replace>ph_</replace>
-      <replace>dumb</replace>
-      <replace>dh</replace>
-      <replace>group</replace>
-      <replace>gh_</replace>
-      <replace>_gh</replace>
-      <replace>-------</replace>
-      <replace>ph</replace>
-      <replace>gh</replace>
-      <replace>dt_time_k</replace>
-      <replace>generated_set_p</replace>
-      <replace>Scores</replace>
-      <replace>dt_fairness</replace>
-      <replace>axs_fairness</replace>
-      <replace>maxs</replace>
-      <replace>bf</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/main.py" />
-      </list>
-    </option>
+  <component name="ProjectId" id="1VyGuFOPUBiearjKzP13LECLWjo" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="989" />
-    <option name="y" value="27" />
-    <option name="width" value="1910" />
-    <option name="height" value="2065" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Team-Recommender" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Team-Recommender" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$USER_HOME$/anaconda3/bin/conda" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -195,6 +72,18 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -215,40 +104,15 @@
       <workItem from="1556189787633" duration="10550000" />
       <workItem from="1556204800118" duration="5194000" />
       <workItem from="1556212317248" duration="2301000" />
-      <workItem from="1556271503810" duration="10397000" />
+      <workItem from="1556271503810" duration="10466000" />
+      <workItem from="1578218145235" duration="4601000" />
+      <workItem from="1578329510105" duration="6911000" />
+      <workItem from="1578507102513" duration="2418000" />
+      <workItem from="1578588401300" duration="7652000" />
+      <workItem from="1578830023992" duration="168000" />
+      <workItem from="1578830204168" duration="10136000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107931000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="27" width="3840" height="2069" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.056200527" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32868937" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49928468" visible="true" weight="0.6408669" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3983488" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32765737" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5007153" side_tool="true" weight="0.52771086" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32771084" />
-      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49928468" weight="0.32610938" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49799198" weight="0.3297568" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" x="0" y="0" width="310" height="634" id="Documentation" order="5" sideWeight="0.502008" side_tool="true" weight="0.27181688" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -259,20 +123,7 @@
         <entry key="MAIN">
           <value>
             <State>
-              <option name="RECENTLY_FILTERED_USER_GROUPS">
-                <collection />
-              </option>
-              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-                <collection />
-              </option>
-              <option name="COLUMN_ORDER">
-                <list>
-                  <option value="0" />
-                  <option value="1" />
-                  <option value="2" />
-                  <option value="3" />
-                </list>
-              </option>
+              <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
@@ -292,6 +143,31 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1193" y="1085" width="636" height="711" key="FileChooserDialogImpl" timestamp="1578830484427">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="1193" y="1085" width="636" height="711" key="FileChooserDialogImpl/0.41.3840.2039@0.41.3840.2039" timestamp="1578830484427" />
+    <state x="1553" y="632" width="724" height="856" key="RollbackChangesDialog" timestamp="1578839153987">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="1553" y="632" width="724" height="856" key="RollbackChangesDialog/0.41.3840.2039@0.41.3840.2039" timestamp="1578839153987" />
+    <state x="1154" y="520" key="SettingsEditor" timestamp="1578830586675">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="1154" y="520" key="SettingsEditor/0.41.3840.2039@0.41.3840.2039" timestamp="1578830586675" />
+    <state x="1591" y="605" width="648" height="909" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578510404531">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="1591" y="605" width="648" height="909" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.41.3840.2039@0.41.3840.2039" timestamp="1578510404531" />
+    <state x="1413" y="502" key="search.everywhere.popup" timestamp="1578823925943">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="1413" y="502" key="search.everywhere.popup/0.41.3840.2039@0.41.3840.2039" timestamp="1578823925943" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Team_Recommender$main.coverage" NAME="main Coverage Results" MODIFIED="1556397954119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -371,62 +247,5 @@
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2019.1/python_stubs/1011664943/builtins.py" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/3/builtins.pyi">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="854" column="32" selection-start-line="854" selection-start-column="32" selection-end-line="854" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Documents/UTA/Past/Recommender Systems/Assignment 3/group.py" />
-    <entry file="file://$USER_HOME$/Documents/UTA/Past/Recommender Systems/Project/movies.py" />
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-170">
-          <caret line="1134" selection-start-line="1134" selection-end-line="1134" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.conda/envs/Team-Recommender/lib/python3.7/site-packages/networkx/classes/coreviews.py" />
-    <entry file="file://$USER_HOME$/.conda/envs/Team-Recommender/lib/python3.7/site-packages/networkx/utils/misc.py" />
-    <entry file="file://$USER_HOME$/.conda/envs/Team-Recommender/lib/python3.7/site-packages/networkx/algorithms/simple_paths.py" />
-    <entry file="file://$USER_HOME$/.conda/envs/Team-Recommender/lib/python3.7/random.py" />
-    <entry file="file://$USER_HOME$/.conda/envs/Team-Recommender/lib/python3.7/statistics.py" />
-    <entry file="file://$PROJECT_DIR$/DBLP_skill.csv" />
-    <entry file="file://$PROJECT_DIR$/stats.dat">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results_time_bf.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results_time.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results_fairness.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/results_maxs.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="494" column="30" lean-forward="true" selection-start-line="494" selection-start-column="30" selection-end-line="494" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
   </component>
 </project>

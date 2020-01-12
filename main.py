@@ -6,6 +6,7 @@ import pickle
 import random
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
 from statistics import mean
 from collections import defaultdict
 from nltk.corpus import wordnet as wn
@@ -22,36 +23,39 @@ a = (identifier, {skill1, skill2, ...})
 '''
 
 nltk.download('wordnet')
-set_A = set()
-distances = {}
-most_freq = []
+set_students_dblp = set()
+set_students_imdb = set()
+distances_dblp = {}
+distances_imdb = {}
+skills_dblp = []
+skills_imdb = []
 
 
-def prepare_data():
+def prepare_data_dblp():
     # Read skills file and create applicants tuples in set_A
-    global set_A
-    with open("DBLP_skill.csv", 'r', encoding='latin1') as temp_f:
+    global set_students_dblp
+    with open("data-dblp/DBLP_skill.csv", 'r', encoding='latin1') as temp_f:
         lines = temp_f.readlines()
         for index, line in enumerate(lines):
             split_line = line.rstrip('\n').split(',')
             if len(split_line) > 1:
-                set_A.add((index, frozenset(split_line[1:])))
+                set_students_dblp.add((index, frozenset(split_line[1:])))
     temp_f.close()
 
     # Gets frequency of terms
     freq_skills = defaultdict(int)
-    for applicant in set_A:
+    for applicant in set_students_dblp:
         applicant_skills = applicant[1]
         for skill in applicant_skills:
             freq_skills[skill] += 1
 
-    global distances
+    global distances_dblp
     try:
-        print('Found "distances.dat" pre-computed term similarities file.')
-        distances = pickle.load(open("distances.dat", "rb"))
+        print('Found DBLP "distances.dat" pre-computed term similarities file.')
+        distances_dblp = pickle.load(open("data-dblp/distances.dat", "rb"))
     except (OSError, IOError) as e:
         # Pre compute all shortest distances between skills in the tree
-        print('Not found "distances.dat" pre-computed term similarities file. Calculating...')
+        print('Not found DBLP "distances.dat" pre-computed term similarities file. Calculating...')
         for term1 in freq_skills.keys():
             print('\tCalculating similarity for term "{}"'.format(term1))
             for term2 in freq_skills.keys():
@@ -61,16 +65,121 @@ def prepare_data():
                     score = term1_synset.path_similarity(term2_synset)
                 except nltk.corpus.reader.wordnet.WordNetError:
                     score = 0
-                if term1 in distances:
-                    distances[term1][term2] = score
+                if term1 in distances_dblp:
+                    distances_dblp[term1][term2] = score
                 else:
-                    distances[term1] = {term2: score}
-        print('Done! Saving "distances.dat" pre-computed term similarities file.')
-        pickle.dump(distances, open("distances.dat", "wb"))
+                    distances_dblp[term1] = {term2: score}
+        print('Done! Saving DBLP "distances.dat" pre-computed term similarities file.')
+        pickle.dump(distances_dblp, open("data-dblp/distances.dat", "wb"))
 
     # Gets 2k most frequent terms from all the 4480 terms
-    global most_freq
-    most_freq = sorted(freq_skills.items(), key=lambda item: item[1], reverse=True)[:2000]
+    global skills_dblp
+    skills_dblp = sorted(freq_skills.items(), key=lambda item: item[1], reverse=True)[:2000]
+
+
+def get_genres_from_titles(titles, tid):
+    try:
+        genres = titles.loc[tid].genres
+        if genres == '\\N':
+            return ''
+        else:
+            return genres
+    except KeyError:
+        return ''
+
+
+def prepare_data_imdb():
+    global directors
+    try:
+        directors = pickle.load(open("data-imdb/directors.dat", "rb"))
+        print('Found IMDB "directors.dat" pre-computed data file.')
+    except (OSError, IOError) as e:
+        print('Not found IMDB "directors.dat" pre-computed term similarities file. Calculating...')
+        # Reads all 9.798.254 names and removes not needed columns - https://datasets.imdbws.com/name.basics.tsv.gz
+        namebasics = pd.read_csv('data-imdb/name.basics.tsv', delimiter='\t', encoding='utf-8', low_memory=False)
+        del namebasics['birthYear']
+        del namebasics['deathYear']
+        # Filters to 301.153 directors from names, and removes comma char
+        directors = namebasics[namebasics['primaryProfession'].str.match('(?<!_)director', na=False)]
+        del directors['primaryProfession']
+        directors['primaryName'] = directors['primaryName'].str.replace(',', '')
+        # Filters to 274.058 directors who have at least one movie
+        directors = directors[directors['knownForTitles'].str.len() > 2]
+        directors = directors.set_index('nconst')
+        # Converts strings of titles to lists
+        directors.knownForTitles = directors.knownForTitles.apply(lambda x: x.split(','))
+
+        # Reads titles file and removes not needed columns - https://datasets.imdbws.com/title.basics.tsv.gz
+        titlebasics = pd.read_csv('data-imdb/title.basics.tsv', delimiter='\t', encoding='utf-8', low_memory=False)
+        del titlebasics['titleType']
+        del titlebasics['originalTitle']
+        del titlebasics['isAdult']
+        del titlebasics['startYear']
+        del titlebasics['endYear']
+        del titlebasics['runtimeMinutes']
+        # Removes null items
+        titlebasics = titlebasics.dropna()
+        titlebasics = titlebasics.set_index('tconst')
+        # Get list of all 28 genres
+        genres = set(",".join(list(map(lambda x: str(x), titlebasics.genres.unique()))).split(','))
+        genres.remove('\\N')
+
+        # Get all genres of knownForTitles for all directors, filter out directors without genres
+        directors.knownForTitles = directors.knownForTitles.apply(
+            lambda x: [get_genres_from_titles(titlebasics, m) for m in x])
+        directors.knownForTitles = directors.knownForTitles.apply(lambda x: ",".join(x))
+        directors = directors[directors['knownForTitles'].str.len() > 2]
+        pickle.dump(directors, open("data-imdb/directors.dat", "wb"))
+
+    # Saves "skills" file and remove quotes chars
+    directors.to_csv('data-imdb/IMDB_skill.csv', index=False, header=False, encoding='utf-8')
+    fin = open("data-imdb/IMDB_skill.csv", "rt")
+    data = fin.read()
+    data = data.replace('"', '')
+    fin.close()
+    fin = open("data-imdb/IMDB_skill.csv", "wt")
+    fin.write(data)
+    fin.close()
+
+    global skills_imdb
+    skills_imdb = ['Crime', 'Horror', 'Biography', 'Animation', 'Drama', 'Comedy', 'Musical', 'News', 'Reality-TV',
+                   'Western', 'Game-Show', 'History', 'Short', 'Adult', 'Adventure', 'Romance', 'Sport', 'Fantasy',
+                   'Action', 'Film-Noir', 'Family', 'Talk-Show', 'Documentary', 'Mystery', 'Thriller', 'War',
+                   'Sci-Fi', 'Music']
+    genres = skills_imdb
+
+    # Read skills file and create applicants tuples in set_A
+    global set_students_imdb
+    with open("data-imdb/IMDB_skill.csv", 'r', encoding='utf-8') as temp_f:
+        lines = temp_f.readlines()
+        for index, line in enumerate(lines):
+            split_line = line.rstrip('\n').split(',')
+            if len(split_line) > 1:
+                set_students_imdb.add((index, frozenset(split_line[1:])))
+    temp_f.close()
+
+    global distances_imdb
+    try:
+        print('Found IMDB "distances.dat" pre-computed term similarities file.')
+        distances_imdb = pickle.load(open("data-imdb/distances.dat", "rb"))
+    except (OSError, IOError) as e:
+        # Pre compute all shortest distances between skills in the tree
+        print('Not found "distances.dat" pre-computed term similarities file. Calculating...')
+        for term1 in genres:
+            print('\tCalculating similarity for term "{}"'.format(term1))
+            for term2 in genres:
+                try:
+                    term1_synset = wn.synset(term1 + '.n.01')
+                    term2_synset = wn.synset(term2 + '.n.01')
+                    score = term1_synset.path_similarity(term2_synset)
+                except nltk.corpus.reader.wordnet.WordNetError:
+                    score = 0
+                if term1 in distances_imdb:
+                    distances_imdb[term1][term2] = score
+                else:
+                    distances_imdb[term1] = {term2: score}
+        print('Done! Saving IMDB "distances.dat" pre-computed term similarities file.')
+        pickle.dump(distances_imdb, open("data-imdb/distances.dat", "wb"))
 
 
 # Generates a set of amount_projects, with skills amount_s_per_p, based on skill_set
@@ -84,7 +193,7 @@ def generate_set_p(amount_projects, amount_s_per_p, skill_set):
 
 # Similarity function (using pre computed values)
 def similarity(s1, s2):
-    return distances[s1][s2]
+    return distances_dblp[s1][s2]
 
 
 # scoreAR(a,r) function
@@ -111,8 +220,8 @@ def score_tp(team, project):
     return score
 
 
-# Find best teams by brute force
-def brute_force_teams(applicants, projects, k):
+# Find best teams by naive approach
+def naive_teams(applicants, projects, k):
     available_applicants = list(applicants)
     best_teams = {}
     for project in projects:
@@ -208,13 +317,13 @@ def pair_heuristic_teams(applicants, projects, k):
 # Do tests and print results with a given set of projects
 def test_with_projects(set_p, k, full_output):
     print('\n---------- Test input: ----------')
-    print('\tApplicants: {}\tProjects: {}\tk: {}'.format(len(set_A), len(set_p), k))
+    print('\tApplicants: {}\tProjects: {}\tk: {}'.format(len(set_students_dblp), len(set_p), k))
     if full_output:
         for project in set_p:
             print('\t->{}:\trequirements:{}'.format(project[0], list(project[1])))
 
     start_group_heuristic = time.time()
-    res_gh = group_heuristic_teams(set_A, set_p, k)
+    res_gh = group_heuristic_teams(set_students_dblp, set_p, k)
     end_group_heuristic = time.time()
     time_group_heuristic = end_group_heuristic - start_group_heuristic
     if log_graphs['time_p']:
@@ -225,7 +334,7 @@ def test_with_projects(set_p, k, full_output):
         dt_time_k[0][1].append(time_group_heuristic)
 
     start_single_heuristic = time.time()
-    res_sh = single_heuristic_teams(set_A, set_p, k)
+    res_sh = single_heuristic_teams(set_students_dblp, set_p, k)
     end_single_heuristic = time.time()
     time_single_heuristic = end_single_heuristic - start_single_heuristic
     if log_graphs['time_p']:
@@ -236,7 +345,7 @@ def test_with_projects(set_p, k, full_output):
         dt_time_k[1][1].append(time_single_heuristic)
 
     start_pair_heuristic = time.time()
-    res_ph = pair_heuristic_teams(set_A, set_p, k)
+    res_ph = pair_heuristic_teams(set_students_dblp, set_p, k)
     end_pair_heuristic = time.time()
     time_pair_heuristic = end_pair_heuristic - start_pair_heuristic
     if log_graphs['time_p']:
@@ -246,19 +355,19 @@ def test_with_projects(set_p, k, full_output):
         dt_time_k[2][0].append(k)
         dt_time_k[2][1].append(time_pair_heuristic)
 
-    res_bf = None
-    time_brute_force = None
-    if brute_force:
-        start_brute_force = time.time()
-        res_bf = brute_force_teams(set_A, set_p, k)
-        end_brute_force = time.time()
-        time_brute_force = end_brute_force - start_brute_force
+    res_naive = None
+    time_naive = None
+    if naive:
+        start_naive = time.time()
+        res_naive = naive_teams(set_students_dblp, set_p, k)
+        end_naive = time.time()
+        time_naive = end_naive - start_naive
         if log_graphs['time_p']:
             dt_time_p[3][0].append(len(set_p))
-            dt_time_p[3][1].append(time_brute_force)
+            dt_time_p[3][1].append(time_naive)
         if log_graphs['time_k']:
             dt_time_k[3][0].append(k)
-            dt_time_k[3][1].append(time_brute_force)
+            dt_time_k[3][1].append(time_naive)
 
     print('\nHeuristic results:\tTook: {0:.3f}s'.format(time_group_heuristic))
     gh_teams_scores = []
@@ -356,56 +465,56 @@ def test_with_projects(set_p, k, full_output):
                                                       ph_score_sum,
                                                       ph_score_fd))
 
-    if brute_force:
-        print('\nBrute force results:\tTook: {0:.3f}s'.format(time_brute_force))
-        bf_teams_scores = []
-        for project, team in res_bf.items():
-            bf_teams_scores.append(team[1])
+    if naive:
+        print('\nNaive approach results:\tTook: {0:.3f}s'.format(time_naive))
+        naive_teams_scores = []
+        for project, team in res_naive.items():
+            naive_teams_scores.append(team[1])
             if full_output:
                 print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], team[1]))
                 for member in team[0]:
                     print('\t\t->Applicant {0!s}:'
                           '\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0], score_ap(member, project),
                                                                    list(member[1])))
-        bf_score_max = max(bf_teams_scores)
-        bf_score_min = min(bf_teams_scores)
-        bf_score_range = bf_score_max - bf_score_min
-        bf_score_mean = mean(bf_teams_scores)
-        bf_score_sum = sum(bf_teams_scores)
-        bf_score_fd = sum([abs(s - bf_score_mean) for s in bf_teams_scores]) / len(bf_teams_scores)
+        naive_score_max = max(naive_teams_scores)
+        naive_score_min = min(naive_teams_scores)
+        naive_score_range = naive_score_max - naive_score_min
+        naive_score_mean = mean(naive_teams_scores)
+        naive_score_sum = sum(naive_teams_scores)
+        naive_score_fd = sum([abs(s - naive_score_mean) for s in naive_teams_scores]) / len(naive_teams_scores)
         if log_graphs['fairness']:
             dt_fairness[3][0].append(len(set_p) * k)
-            dt_fairness[3][1].append(bf_score_fd)
+            dt_fairness[3][1].append(naive_score_fd)
         if log_graphs['maxs']:
             dt_maxs[3][0].append(len(set_p) * k)
-            dt_maxs[3][1].append(bf_score_sum)
+            dt_maxs[3][1].append(naive_score_sum)
         print('Scores:\tMax:{0:.3f}\tMin:{1:.3f}'
               '\tRange:{2:.3f}\tMean:{3:.3f}'
-              '\tSum:{4:.3f}\tf-deviation:{5:.3f}'.format(bf_score_max,
-                                                          bf_score_min,
-                                                          bf_score_range,
-                                                          bf_score_mean,
-                                                          bf_score_sum,
-                                                          bf_score_fd))
+              '\tSum:{4:.3f}\tf-deviation:{5:.3f}'.format(naive_score_max,
+                                                          naive_score_min,
+                                                          naive_score_range,
+                                                          naive_score_mean,
+                                                          naive_score_sum,
+                                                          naive_score_fd))
 
 
 def plot_graphs():
     fig_time, axs_time = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
 
-    axs_time[0].plot(dt_time_p[0][0], dt_time_p[0][1], label='Simple heuristic')
+    axs_time[0].plot(dt_time_p[0][0], dt_time_p[0][1], label='Heuristic')
     axs_time[0].plot(dt_time_p[1][0], dt_time_p[1][1], label='K-rounds')
     axs_time[0].plot(dt_time_p[2][0], dt_time_p[2][1], label='Pairs-rounds')
-    if brute_force:
-        axs_time[0].plot(dt_time_p[3][0], dt_time_p[3][1], label='Brute force')
+    if naive:
+        axs_time[0].plot(dt_time_p[3][0], dt_time_p[3][1], label='Naive')
     axs_time[0].set_xlabel("Amount of projects")
     axs_time[0].set_ylabel("Time (s)")
     axs_time[0].legend()
 
-    axs_time[1].plot(dt_time_k[0][0], dt_time_k[0][1], label='Simple heuristic')
+    axs_time[1].plot(dt_time_k[0][0], dt_time_k[0][1], label='Heuristic')
     axs_time[1].plot(dt_time_k[1][0], dt_time_k[1][1], label='K-rounds')
     axs_time[1].plot(dt_time_k[2][0], dt_time_k[2][1], label='Pairs-rounds')
-    if brute_force:
-        axs_time[1].plot(dt_time_k[3][0], dt_time_k[3][1], label='Brute force')
+    if naive:
+        axs_time[1].plot(dt_time_k[3][0], dt_time_k[3][1], label='Naive')
     axs_time[1].set_xlabel("k")
     axs_time[1].set_ylabel("Time (s)")
     axs_time[1].legend()
@@ -416,7 +525,7 @@ def plot_graphs():
     fig_fairness, ax_fairness = plt.subplots(figsize=(10, 12))
 
     colors = ("red", "green", "blue")
-    groups = ("Simple heuristic", "K-rounds", "Pairs-rounds")
+    groups = ("Heuristic", "K-rounds", "Pairs-rounds")
     data = tuple(dt_fairness)
     for data, clr, group in zip(data, colors, groups):
         x = data[0]
@@ -425,11 +534,11 @@ def plot_graphs():
         z = np.polyfit(x, y, 1)
         p = np.poly1d(z)
         ax_fairness.plot(x, p(x), color=clr, linestyle='dashed', linewidth=1.0)
-    if brute_force:
+    if naive:
         data = dt_fairness[3]
         x = data[0]
         y = data[1]
-        ax_fairness.scatter(x, y, alpha=0.8, c="yellow", edgecolors='none', s=30, label="Brute force")
+        ax_fairness.scatter(x, y, alpha=0.8, c="yellow", edgecolors='none', s=30, label="Naive")
         z = np.polyfit(x, y, 1)
         p = np.poly1d(z)
         ax_fairness.plot(x, p(x), color="yellow", linestyle='dashed', linewidth=1.0)
@@ -443,7 +552,7 @@ def plot_graphs():
     fig_maxs, ax_maxs = plt.subplots(figsize=(10, 12))
 
     colors = ("red", "green", "blue")
-    groups = ("Simple heuristic", "K-rounds", "Pairs-rounds")
+    groups = ("Heuristic", "K-rounds", "Pairs-rounds")
     data = tuple(dt_maxs)
     for data, clr, group in zip(data, colors, groups):
         x = data[0]
@@ -452,11 +561,11 @@ def plot_graphs():
         z = np.polyfit(x, y, 1)
         p = np.poly1d(z)
         ax_maxs.plot(x, p(x), color=clr, linestyle='dashed', linewidth=1.0)
-    if brute_force:
+    if naive:
         data = dt_maxs[3]
         x = data[0]
         y = data[1]
-        ax_maxs.scatter(x, y, alpha=0.8, c="yellow", edgecolors='none', s=30, label="Brute force")
+        ax_maxs.scatter(x, y, alpha=0.8, c="yellow", edgecolors='none', s=30, label="Naive")
         z = np.polyfit(x, y, 1)
         p = np.poly1d(z)
         ax_maxs.plot(x, p(x), color="yellow", linestyle='dashed', linewidth=1.0)
@@ -468,10 +577,10 @@ def plot_graphs():
     fig_maxs.savefig("results_maxs.png", dpi=250)
 
 
-def plot_graphs_bf():
+def plot_graphs_naive():
     fig_time, ax_time = plt.subplots(figsize=(5, 5))
 
-    objects = ("Simple heuristic", "K-rounds", "Pairs-rounds", "Brute force")
+    objects = ("Heuristic", "K-rounds", "Pairs-rounds", "Naive")
     y_pos = np.arange(len(objects))
     performance = [dt_time_p[0][1][0], dt_time_p[1][1][0], dt_time_p[2][1][0], dt_time_p[3][1][0]]
 
@@ -481,7 +590,7 @@ def plot_graphs_bf():
     ax_time.legend(loc=2)
 
     fig_time.tight_layout()
-    fig_time.savefig("results_time_bf.png", dpi=250)
+    fig_time.savefig("results_time_naive.png", dpi=250)
 
 
 log_graphs = defaultdict(bool)
@@ -489,9 +598,9 @@ dt_time_p = [[[], []], [[], []], [[], []]]
 dt_time_k = [[[], []], [[], []], [[], []]]
 dt_maxs = [[[], []], [[], []], [[], []]]
 dt_fairness = [[[], []], [[], []], [[], []]]
-brute_force = False
+naive = False
 
-if brute_force:
+if naive:
     dt_time_p.append([[], []])
     dt_time_k.append([[], []])
     dt_maxs.append([[], []])
@@ -500,47 +609,48 @@ if brute_force:
 # Execute algorithms and print results
 if __name__ == "__main__":
 
-    prepare_data()
+    prepare_data_dblp()
+    prepare_data_imdb()
 
     log_graphs['fairness'] = True
     log_graphs['maxs'] = True
     log_graphs['time_p'] = True
 
-    if brute_force:
+    if naive:
         try:
-            stats = pickle.load(open("stats_bf.dat", "rb"))
+            stats = pickle.load(open("stats_naive.dat", "rb"))
             dt_time_p, dt_time_k, dt_fairness, dt_maxs = stats
         except (OSError, IOError) as e:
-            set_A = random.sample(set_A, 100)
+            set_students_dblp = random.sample(set_students_dblp, 100)
             log_graphs['time_k'] = True
-            generated_set_p = generate_set_p(4, 20, most_freq)
+            generated_set_p = generate_set_p(4, 20, skills_dblp)
             test_with_projects(generated_set_p, 4, True)
-            pickle.dump((dt_time_p, dt_time_k, dt_fairness, dt_maxs), open("stats_bf.dat", "wb"))
-        plot_graphs_bf()
+            pickle.dump((dt_time_p, dt_time_k, dt_fairness, dt_maxs), open("stats_naive.dat", "wb"))
+        plot_graphs_naive()
     else:
         try:
             stats = pickle.load(open("stats.dat", "rb"))
             dt_time_p, dt_time_k, dt_fairness, dt_maxs = stats
         except (OSError, IOError) as e:
             for p in range(3, 30, 3):
-                generated_set_p = generate_set_p(p, 20, most_freq)
+                generated_set_p = generate_set_p(p, 20, skills_dblp)
                 test_with_projects(generated_set_p, 9, False)
             log_graphs['time_p'] = False
 
             log_graphs['time_k'] = True
             for k in range(3, 30, 3):
-                generated_set_p = generate_set_p(11, 20, most_freq)
+                generated_set_p = generate_set_p(11, 20, skills_dblp)
                 test_with_projects(generated_set_p, k, False)
             log_graphs['time_k'] = False
 
             for p in random.sample(range(5, 35), 10):
                 for k in random.sample(range(3, 12), 5):
-                    generated_set_p = generate_set_p(p, 20, most_freq[-200:])
+                    generated_set_p = generate_set_p(p, 20, skills_dblp[-200:])
                     test_with_projects(generated_set_p, k, False)
 
             for p in random.sample(range(5, 35), 10):
                 for k in random.sample(range(3, 12), 5):
-                    generated_set_p = generate_set_p(p, 20, most_freq[:200])
+                    generated_set_p = generate_set_p(p, 20, skills_dblp[:200])
                     test_with_projects(generated_set_p, k, False)
 
             pickle.dump((dt_time_p, dt_time_k, dt_fairness, dt_maxs), open("stats.dat", "wb"))
