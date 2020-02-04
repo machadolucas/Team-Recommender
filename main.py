@@ -334,6 +334,8 @@ def test_dataset(dataset_id):
     active_dataset = dataset_id
     skills_per_project = 10
     skill_set = skills_dblp if dataset_id == 0 else skills_imdb
+    print('\n---------- Dataset ' + str(active_dataset) + ' ----------')
+    print("---", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
     global dt_time_p
     global dt_time_k
@@ -341,59 +343,48 @@ def test_dataset(dataset_id):
     global dt_maxs
     if naive:
         # Test group 4
-        try:
-            stats = pickle.load(open("stats_naive.dat", "rb"))
-            dt_time_p, dt_time_k, dt_fairness, dt_maxs = stats
-        except (OSError, IOError) as e:
-            if dataset_id == 0:
-                global set_students_dblp
-                set_students_dblp = random.sample(set_students_dblp, 100)
-            else:
-                global set_students_imdb
-                set_students_imdb = random.sample(set_students_imdb, 100)
+        if dataset_id == 0:
+            global set_students_dblp
+            set_students_dblp = random.sample(set_students_dblp, 100)
+        else:
+            global set_students_imdb
+            set_students_imdb = random.sample(set_students_imdb, 100)
 
-            log_graphs['time_k'] = True
-            generated_set_p = generate_set_p(4, skills_per_project, skill_set)
-            test_with_projects(generated_set_p, 4, True)
-            pickle.dump((dt_time_p, dt_time_k, dt_fairness, dt_maxs), open("stats_naive.dat", "wb"))
+        log_graphs['time_k'] = True
+        generated_set_p = generate_set_p(4, skills_per_project, skill_set)
+        test_with_projects(generated_set_p, 4, True)
 
     else:
-        try:
-            stats = pickle.load(open("stats.dat", "rb"))
-            dt_time_p, dt_time_k, dt_fairness, dt_maxs = stats
-        except (OSError, IOError) as e:
-            # Test group 1
-            log_graphs['time_p'] = True
-            for p in range(3, 30, 3):
-                generated_set_p = generate_set_p(p, skills_per_project, skill_set)
-                test_with_projects(generated_set_p, 9, False)
-            log_graphs['time_p'] = False
+        # Test group 1
+        log_graphs['time_p'] = True
+        for p in range(3, 30, 3):
+            generated_set_p = generate_set_p(p, skills_per_project, skill_set)
+            test_with_projects(generated_set_p, 9, False)
+        log_graphs['time_p'] = False
 
-            log_graphs['time_k'] = True
-            # Test group 2
-            for k in range(3, 30, 3):
-                generated_set_p = generate_set_p(11, skills_per_project, skill_set)
-                test_with_projects(generated_set_p, k, False)
-            log_graphs['time_k'] = False
+        log_graphs['time_k'] = True
+        # Test group 2
+        for k in range(3, 30, 3):
+            generated_set_p = generate_set_p(11, skills_per_project, skill_set)
+            test_with_projects(generated_set_p, k, False)
+        log_graphs['time_k'] = False
 
-            # Test group 3
-            if dataset_id == 0:
-                for p in random.sample(range(5, 35), 10):
-                    for k in random.sample(range(3, 12), 5):
-                        generated_set_p = generate_set_p(p, skills_per_project, skill_set[-200:])
-                        test_with_projects(generated_set_p, k, False)
+        # Test group 3
+        if dataset_id == 0:
+            for p in random.sample(range(5, 35), 10):
+                for k in random.sample(range(3, 12), 5):
+                    generated_set_p = generate_set_p(p, skills_per_project, skill_set[-200:])
+                    test_with_projects(generated_set_p, k, False)
 
-                for p in random.sample(range(5, 35), 10):
-                    for k in random.sample(range(3, 12), 5):
-                        generated_set_p = generate_set_p(p, skills_per_project, skill_set[:200])
-                        test_with_projects(generated_set_p, k, False)
-            else:
-                for p in random.sample(range(5, 35), 10):
-                    for k in random.sample(range(3, 12), 5):
-                        generated_set_p = generate_set_p(p, skills_per_project, skill_set)
-                        test_with_projects(generated_set_p, k, False)
-
-            pickle.dump((dt_time_p, dt_time_k, dt_fairness, dt_maxs), open("stats.dat", "wb"))
+            for p in random.sample(range(5, 35), 10):
+                for k in random.sample(range(3, 12), 5):
+                    generated_set_p = generate_set_p(p, skills_per_project, skill_set[:200])
+                    test_with_projects(generated_set_p, k, False)
+        else:
+            for p in random.sample(range(5, 35), 10):
+                for k in random.sample(range(3, 12), 5):
+                    generated_set_p = generate_set_p(p, skills_per_project, skill_set)
+                    test_with_projects(generated_set_p, k, False)
 
 
 # Do tests and print results with a given set of projects
@@ -588,7 +579,7 @@ dt_fairness = [[[[], []], [[], []], [[], []]], [[[], []], [[], []], [[], []]]]
 # If true, uses naive method
 naive = False
 # If 0, uses DBLP. If 1, uses IMDB
-active_dataset = 0
+active_dataset = None
 
 if naive:
     for dataset in dt_time_p:
@@ -599,6 +590,30 @@ if naive:
         dataset.append([[], []])
     for dataset in dt_fairness:
         dataset.append([[], []])
+
+
+def execute():
+    global dt_time_p
+    global dt_time_k
+    global dt_fairness
+    global dt_maxs
+
+    if naive:
+        try:
+            stats = pickle.load(open("stats_naive.dat", "rb"))
+            dt_time_p, dt_time_k, dt_fairness, dt_maxs = stats
+        except (OSError, IOError) as e:
+            test_dataset(0)
+            pickle.dump((dt_time_p, dt_time_k, dt_fairness, dt_maxs), open("stats_naive.dat", "wb"))
+    else:
+        try:
+            stats = pickle.load(open("stats.dat", "rb"))
+            dt_time_p, dt_time_k, dt_fairness, dt_maxs = stats
+        except (OSError, IOError) as e:
+            test_dataset(0)
+            test_dataset(1)
+            pickle.dump((dt_time_p, dt_time_k, dt_fairness, dt_maxs), open("stats.dat", "wb"))
+
 
 # Execute algorithms and print results
 if __name__ == "__main__":
@@ -612,19 +627,14 @@ if __name__ == "__main__":
     log_graphs['maxs'] = True
     log_graphs['time_p'] = True
 
-    print('\n---------- DBLP dataset ----------')
-    print("---", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
-    test_dataset(0)
+    execute()
 
-    print('\n---------- IMDB dataset ----------')
+    print('\n---------- Plot images ----------')
     print("---", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
-    test_dataset(1)
-
-    print('\n---------- END ----------')
-    print("---", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
-'''
     if naive:
         plot_graphs_naive()
     else:
         plot_graphs()
-'''
+
+    print('\n---------- END ----------')
+    print("---", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
