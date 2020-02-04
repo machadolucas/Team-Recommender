@@ -10,6 +10,7 @@ import pandas as pd
 from statistics import mean
 from collections import defaultdict
 from nltk.corpus import wordnet as wn
+from datetime import datetime
 
 '''
 DBLP Number of students: 7428
@@ -329,10 +330,10 @@ def global_optimization_pair_rounds_teams(students, projects, k):
 
 # Do tests with a dataset
 def test_dataset(dataset_id):
+    global active_dataset
+    active_dataset = dataset_id
     skills_per_project = 10
-    skill_set = skills_dblp
-    if dataset_id == 1:
-        skill_set = skills_imdb
+    skill_set = skills_dblp if dataset_id == 0 else skills_imdb
 
     global dt_time_p
     global dt_time_k
@@ -362,6 +363,7 @@ def test_dataset(dataset_id):
             dt_time_p, dt_time_k, dt_fairness, dt_maxs = stats
         except (OSError, IOError) as e:
             # Test group 1
+            log_graphs['time_p'] = True
             for p in range(3, 30, 3):
                 generated_set_p = generate_set_p(p, skills_per_project, skill_set)
                 test_with_projects(generated_set_p, 9, False)
@@ -388,7 +390,7 @@ def test_dataset(dataset_id):
             else:
                 for p in random.sample(range(5, 35), 10):
                     for k in random.sample(range(3, 12), 5):
-                        generated_set_p = generate_set_p(p, skills_per_project, skill_set[-200:])
+                        generated_set_p = generate_set_p(p, skills_per_project, skill_set)
                         test_with_projects(generated_set_p, k, False)
 
             pickle.dump((dt_time_p, dt_time_k, dt_fairness, dt_maxs), open("stats.dat", "wb"))
@@ -500,59 +502,43 @@ def plot_graphs():
     fig_time.tight_layout()
     fig_time.savefig("results_time.png", dpi=250)
 
-    fig_fairness, ax_fairness = plt.subplots(figsize=(10, 12))
-
-    colors = ("red", "green", "blue")
-    groups = ("Heuristic", "K-rounds", "Pairs-rounds")
-    data = tuple(dt_fairness)
-    for data, clr, group in zip(data, colors, groups):
-        x = data[0]
-        y = data[1]
-        ax_fairness.scatter(x, y, alpha=0.8, c=clr, edgecolors='none', s=30, label=group)
-        z = np.polyfit(x, y, 1)
-        p = np.poly1d(z)
-        ax_fairness.plot(x, p(x), color=clr, linestyle='dashed', linewidth=1.0)
-    if naive:
-        data = dt_fairness[3]
-        x = data[0]
-        y = data[1]
-        ax_fairness.scatter(x, y, alpha=0.8, c="yellow", edgecolors='none', s=30, label="Naive")
-        z = np.polyfit(x, y, 1)
-        p = np.poly1d(z)
-        ax_fairness.plot(x, p(x), color="yellow", linestyle='dashed', linewidth=1.0)
-    ax_fairness.set_xlabel("choices")
-    ax_fairness.set_ylabel("fairness-deviation")
-    ax_fairness.legend(loc=2)
-
+    # results_fairness.png for DBLP and IMDB
+    fig_fairness, ax_fairness = plt.subplots(nrows=1, ncols=2, figsize=(20, 12))
+    subplot_scatter_data(ax_fairness, 0, dt_fairness[0], "scoreTP sum")
+    subplot_scatter_data(ax_fairness, 1, dt_fairness[1], "scoreTP sum")
     fig_fairness.tight_layout()
     fig_fairness.savefig("results_fairness.png", dpi=250)
 
-    fig_maxs, ax_maxs = plt.subplots(figsize=(10, 12))
+    # results_maxs.png for DBLP and IMDB
+    fig_maxs, ax_maxs = plt.subplots(nrows=1, ncols=2, figsize=(20, 12))
+    subplot_scatter_data(ax_maxs, 0, dt_maxs[0], "scoreTP sum")
+    subplot_scatter_data(ax_maxs, 1, dt_maxs[1], "scoreTP sum")
+    fig_maxs.tight_layout()
+    fig_maxs.savefig("results_maxs.png", dpi=250)
 
+
+def subplot_scatter_data(ax_scatter, sub_x, data_source, y_label):
     colors = ("red", "green", "blue")
-    groups = ("Heuristic", "K-rounds", "Pairs-rounds")
-    data = tuple(dt_maxs)
+    groups = ("Local Heuristic", "Global K-rounds", "Global Pairs-rounds")
+    data = tuple(data_source)
     for data, clr, group in zip(data, colors, groups):
         x = data[0]
         y = data[1]
-        ax_maxs.scatter(x, y, alpha=0.8, c=clr, edgecolors='none', s=30, label=group)
+        ax_scatter[sub_x].scatter(x, y, alpha=0.8, c=clr, edgecolors='none', s=30, label=group)
         z = np.polyfit(x, y, 1)
         p = np.poly1d(z)
-        ax_maxs.plot(x, p(x), color=clr, linestyle='dashed', linewidth=1.0)
+        ax_scatter[sub_x].plot(x, p(x), color=clr, linestyle='dashed', linewidth=1.0)
     if naive:
-        data = dt_maxs[3]
+        data = data_source[3]
         x = data[0]
         y = data[1]
-        ax_maxs.scatter(x, y, alpha=0.8, c="yellow", edgecolors='none', s=30, label="Naive")
+        ax_scatter[sub_x].scatter(x, y, alpha=0.8, c="yellow", edgecolors='none', s=30, label="Naive")
         z = np.polyfit(x, y, 1)
         p = np.poly1d(z)
-        ax_maxs.plot(x, p(x), color="yellow", linestyle='dashed', linewidth=1.0)
-    ax_maxs.set_xlabel("choices")
-    ax_maxs.set_ylabel("scoreTP sum")
-    ax_maxs.legend(loc=2)
-
-    fig_maxs.tight_layout()
-    fig_maxs.savefig("results_maxs.png", dpi=250)
+        ax_scatter[sub_x].plot(x, p(x), color="yellow", linestyle='dashed', linewidth=1.0)
+    ax_scatter[sub_x].set_xlabel("choices")
+    ax_scatter[sub_x].set_ylabel(y_label)
+    ax_scatter[sub_x].legend(loc=2)
 
 
 def subplot_time_data(axs_time, sub_x, sub_y, data, label):
@@ -616,6 +602,8 @@ if naive:
 
 # Execute algorithms and print results
 if __name__ == "__main__":
+    print('\n---------- START ----------')
+    print("---", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
 
     prepare_data_dblp()
     prepare_data_imdb()
@@ -624,14 +612,19 @@ if __name__ == "__main__":
     log_graphs['maxs'] = True
     log_graphs['time_p'] = True
 
-    active_dataset = 0
-    test_dataset(active_dataset)
-    active_dataset = 1
-    test_dataset(active_dataset)
+    print('\n---------- DBLP dataset ----------')
+    print("---", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+    test_dataset(0)
 
+    print('\n---------- IMDB dataset ----------')
+    print("---", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+    test_dataset(1)
+
+    print('\n---------- END ----------')
+    print("---", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+'''
     if naive:
         plot_graphs_naive()
     else:
         plot_graphs()
-
-    print('\n---------- END ----------')
+'''

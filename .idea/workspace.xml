@@ -4,6 +4,7 @@
     <list default="true" id="4cc2a949-c4da-4fc7-bf40-5b917b517a91" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results_time_bf.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +107,7 @@
       <workItem from="1578830023992" duration="168000" />
       <workItem from="1578830204168" duration="10205000" />
       <workItem from="1580319292323" duration="599000" />
-      <workItem from="1580807959184" duration="15394000" />
+      <workItem from="1580807959184" duration="18243000" />
     </task>
     <servers />
   </component>
