@@ -102,49 +102,45 @@ def prepare_data_imdb():
                 if len(split_line) > 1:
                     set_students_imdb.add((index, frozenset(split_line[1:])))
         temp_f.close()
+        print('Found IMDB "IMDB_skill.csv" pre-processed dataset file.')
 
     except IOError:
-        global directors
-        try:
-            directors = pickle.load(open("data-imdb/directors.dat", "rb"))
-            print('Found IMDB "directors.dat" pre-computed data file.')
-        except (OSError, IOError) as e:
-            print('Not found IMDB "directors.dat" pre-computed term similarities file. Calculating...')
-            # Reads all 9.798.254 names and removes not needed columns - https://datasets.imdbws.com/name.basics.tsv.gz
-            namebasics = pd.read_csv('data-imdb/name.basics.tsv', delimiter='\t', encoding='utf-8', low_memory=False)
-            del namebasics['birthYear']
-            del namebasics['deathYear']
-            # Filters to 301.153 directors from names, and removes comma char
-            directors = namebasics[namebasics['primaryProfession'].str.match('(?<!_)director', na=False)]
-            del directors['primaryProfession']
-            directors['primaryName'] = directors['primaryName'].str.replace(',', '')
-            # Filters to 274.058 directors who have at least one movie
-            directors = directors[directors['knownForTitles'].str.len() > 2]
-            directors = directors.set_index('nconst')
-            # Converts strings of titles to lists
-            directors.knownForTitles = directors.knownForTitles.apply(lambda x: x.split(','))
+        print(
+            'Not found "IMDB_skill.csv" pre-processed dataset. Composing from "data-imdb/name.basics.tsv" and "data-imdb/title.basics.tsv"...')
+        # Reads all 9.798.254 names and removes not needed columns - https://datasets.imdbws.com/name.basics.tsv.gz
+        namebasics = pd.read_csv('data-imdb/name.basics.tsv', delimiter='\t', encoding='utf-8', low_memory=False)
+        del namebasics['birthYear']
+        del namebasics['deathYear']
+        # Filters to 301.153 directors from names, and removes comma char
+        directors = namebasics[namebasics['primaryProfession'].str.match('(?<!_)director', na=False)]
+        del directors['primaryProfession']
+        directors['primaryName'] = directors['primaryName'].str.replace(',', '')
+        # Filters to 274.058 directors who have at least one movie
+        directors = directors[directors['knownForTitles'].str.len() > 2]
+        directors = directors.set_index('nconst')
+        # Converts strings of titles to lists
+        directors.knownForTitles = directors.knownForTitles.apply(lambda x: x.split(','))
 
-            # Reads titles file and removes not needed columns - https://datasets.imdbws.com/title.basics.tsv.gz
-            titlebasics = pd.read_csv('data-imdb/title.basics.tsv', delimiter='\t', encoding='utf-8', low_memory=False)
-            del titlebasics['titleType']
-            del titlebasics['originalTitle']
-            del titlebasics['isAdult']
-            del titlebasics['startYear']
-            del titlebasics['endYear']
-            del titlebasics['runtimeMinutes']
-            # Removes null items
-            titlebasics = titlebasics.dropna()
-            titlebasics = titlebasics.set_index('tconst')
-            # Get list of all 28 genres
-            genres = set(",".join(list(map(lambda x: str(x), titlebasics.genres.unique()))).split(','))
-            genres.remove('\\N')
+        # Reads titles file and removes not needed columns - https://datasets.imdbws.com/title.basics.tsv.gz
+        titlebasics = pd.read_csv('data-imdb/title.basics.tsv', delimiter='\t', encoding='utf-8', low_memory=False)
+        del titlebasics['titleType']
+        del titlebasics['originalTitle']
+        del titlebasics['isAdult']
+        del titlebasics['startYear']
+        del titlebasics['endYear']
+        del titlebasics['runtimeMinutes']
+        # Removes null items
+        titlebasics = titlebasics.dropna()
+        titlebasics = titlebasics.set_index('tconst')
+        # Get list of all 28 genres
+        genres = set(",".join(list(map(lambda x: str(x), titlebasics.genres.unique()))).split(','))
+        genres.remove('\\N')
 
-            # Get all genres of knownForTitles for all directors, filter out directors without genres
-            directors.knownForTitles = directors.knownForTitles.apply(
-                lambda x: [get_genres_from_titles(titlebasics, m) for m in x if get_genres_from_titles(titlebasics, m)])
-            directors.knownForTitles = directors.knownForTitles.apply(lambda x: ",".join(x))
-            directors = directors[directors['knownForTitles'].str.len() > 2]
-            pickle.dump(directors, open("data-imdb/directors.dat", "wb"))
+        # Get all genres of knownForTitles for all directors, filter out directors without genres
+        directors.knownForTitles = directors.knownForTitles.apply(
+            lambda x: [get_genres_from_titles(titlebasics, m) for m in x if get_genres_from_titles(titlebasics, m)])
+        directors.knownForTitles = directors.knownForTitles.apply(lambda x: ",".join(x))
+        directors = directors[directors['knownForTitles'].str.len() > 2]
 
         # Saves "skills" file and remove quotes chars
         directors.to_csv('data-imdb/IMDB_skill.csv', index=False, header=False, encoding='utf-8')
@@ -333,7 +329,7 @@ def global_optimization_pair_rounds_teams(students, projects, k):
 
 # Do tests with a dataset
 def test_dataset(dataset_id):
-    skills_per_project = 8
+    skills_per_project = 10
     skill_set = skills_dblp
     if dataset_id == 1:
         skill_set = skills_imdb
@@ -417,199 +413,89 @@ def test_with_projects(set_p, k, full_output):
         start_naive = time.time()
         res_naive = naive_teams(set_students, set_p, k)
         end_naive = time.time()
-        time_naive = end_naive - start_naive
-        if log_graphs['time_p']:
-            dt_time_p[3][0].append(len(set_p))
-            dt_time_p[3][1].append(time_naive)
-        if log_graphs['time_k']:
-            dt_time_k[3][0].append(k)
-            dt_time_k[3][1].append(time_naive)
+        time_naive = save_alg_times(k, set_p, start_naive, end_naive, 3)
 
     # Local optimization heuristic
     start_local_h = time.time()
     res_local_h = local_optimization_heuristic_teams(set_students, set_p, k)
     end_local_h = time.time()
-    time_local_h = end_local_h - start_local_h
-    if log_graphs['time_p']:
-        dt_time_p[0][0].append(len(set_p))
-        dt_time_p[0][1].append(time_local_h)
-    if log_graphs['time_k']:
-        dt_time_k[0][0].append(k)
-        dt_time_k[0][1].append(time_local_h)
+    time_local_h = save_alg_times(k, set_p, start_local_h, end_local_h, 0)
 
     # Global optimization k-rounds
     start_global_k = time.time()
     res_global_k = global_optimization_k_rounds_teams(set_students, set_p, k)
     end_global_k = time.time()
-    time_global_k = end_global_k - start_global_k
-    if log_graphs['time_p']:
-        dt_time_p[1][0].append(len(set_p))
-        dt_time_p[1][1].append(time_global_k)
-    if log_graphs['time_k']:
-        dt_time_k[1][0].append(k)
-        dt_time_k[1][1].append(time_global_k)
+    time_global_k = save_alg_times(k, set_p, start_global_k, end_global_k, 1)
 
     # Global optimization pair-rounds
     start_global_p = time.time()
     res_global_p = global_optimization_pair_rounds_teams(set_students, set_p, k)
     end_global_p = time.time()
-    time_global_p = end_global_p - start_global_p
-    if log_graphs['time_p']:
-        dt_time_p[2][0].append(len(set_p))
-        dt_time_p[2][1].append(time_global_p)
-    if log_graphs['time_k']:
-        dt_time_k[2][0].append(k)
-        dt_time_k[2][1].append(time_global_p)
+    time_global_p = save_alg_times(k, set_p, start_global_p, end_global_p, 2)
 
     if naive:
         print('\nNaive approach results:\tTook: {0:.3f}s'.format(time_naive))
-        naive_teams_scores = []
-        for project, team in res_naive.items():
-            naive_teams_scores.append(team[1])
-            if full_output:
-                print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], team[1]))
-                for member in team[0]:
-                    print('\t\t->Applicant {0!s}:'
-                          '\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0], score_ap(member, project),
-                                                                   list(member[1])))
-        naive_score_max = max(naive_teams_scores)
-        naive_score_min = min(naive_teams_scores)
-        naive_score_range = naive_score_max - naive_score_min
-        naive_score_mean = mean(naive_teams_scores)
-        naive_score_sum = sum(naive_teams_scores)
-        naive_score_fd = sum([abs(s - naive_score_mean) for s in naive_teams_scores]) / len(naive_teams_scores)
-        if log_graphs['fairness']:
-            dt_fairness[3][0].append(len(set_p) * k)
-            dt_fairness[3][1].append(naive_score_fd)
-        if log_graphs['maxs']:
-            dt_maxs[3][0].append(len(set_p) * k)
-            dt_maxs[3][1].append(naive_score_sum)
-        print('Scores:\tMax:{0:.3f}\tMin:{1:.3f}'
-              '\tRange:{2:.3f}\tMean:{3:.3f}'
-              '\tSum:{4:.3f}\tf-deviation:{5:.3f}'.format(naive_score_max,
-                                                          naive_score_min,
-                                                          naive_score_range,
-                                                          naive_score_mean,
-                                                          naive_score_sum,
-                                                          naive_score_fd))
+        save_print_alg_results(full_output, k, res_naive, set_p, 3)
 
     print('\nLocal optimization heuristic results:\tTook: {0:.3f}s'.format(time_local_h))
-    local_h_teams_scores = []
-    for project, team in res_local_h.items():
-        score_team = score_tp([m[0] for m in team], project)
-        local_h_teams_scores.append(score_team)
-        if full_output:
-            print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
-            for member in team:
-                print('\t\t->Applicant {0!s}:'
-                      '\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1], list(member[0][1])))
-
-    local_h_score_max = max(local_h_teams_scores)
-    local_h_score_min = min(local_h_teams_scores)
-    local_h_score_range = local_h_score_max - local_h_score_min
-    local_h_score_mean = mean(local_h_teams_scores)
-    local_h_score_sum = sum(local_h_teams_scores)
-    local_h_score_fd = sum([abs(s - local_h_score_mean) for s in local_h_teams_scores]) / len(local_h_teams_scores)
-    if log_graphs['fairness']:
-        dt_fairness[0][0].append(len(set_p) * k)
-        dt_fairness[0][1].append(local_h_score_fd)
-    if log_graphs['maxs']:
-        dt_maxs[0][0].append(len(set_p) * k)
-        dt_maxs[0][1].append(local_h_score_sum)
-    print('Scores:\tMax:{0:.3f}\tMin:{1:.3f}'
-          '\tRange:{2:.3f}\tMean:{3:.3f}'
-          '\tSum:{4:.3f}\tf-deviation:{5:.3f}'.format(local_h_score_max,
-                                                      local_h_score_min,
-                                                      local_h_score_range,
-                                                      local_h_score_mean,
-                                                      local_h_score_sum,
-                                                      local_h_score_fd))
+    save_print_alg_results(full_output, k, res_local_h, set_p, 0)
 
     print('\nGlobal optimization K-rounds results:\tTook: {0:.3f}s'.format(time_global_k))
-    global_k_teams_scores = []
-    for project, team in res_global_k.items():
-        score_team = score_tp([m[0] for m in team], project)
-        global_k_teams_scores.append(score_team)
-        if full_output:
-            print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
-            for member in team:
-                print('\t\t->Applicant {0!s}:'
-                      '\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1], list(member[0][1])))
-
-    global_k_score_max = max(global_k_teams_scores)
-    global_k_score_min = min(global_k_teams_scores)
-    global_k_score_range = global_k_score_max - global_k_score_min
-    global_k_score_mean = mean(global_k_teams_scores)
-    global_k_score_sum = sum(global_k_teams_scores)
-    global_k_score_fd = sum([abs(s - global_k_score_mean) for s in global_k_teams_scores]) / len(global_k_teams_scores)
-    if log_graphs['fairness']:
-        dt_fairness[1][0].append(len(set_p) * k)
-        dt_fairness[1][1].append(global_k_score_fd)
-    if log_graphs['maxs']:
-        dt_maxs[1][0].append(len(set_p) * k)
-        dt_maxs[1][1].append(global_k_score_sum)
-    print('Scores:\tMax:{0:.3f}\tMin:{1:.3f}'
-          '\tRange:{2:.3f}\tMean:{3:.3f}'
-          '\tSum:{4:.3f}\tf-deviation:{5:.3f}'.format(global_k_score_max,
-                                                      global_k_score_min,
-                                                      global_k_score_range,
-                                                      global_k_score_mean,
-                                                      global_k_score_sum,
-                                                      global_k_score_fd))
+    save_print_alg_results(full_output, k, res_global_k, set_p, 1)
 
     print('\nGlobal optimization Pair-rounds results:\tTook: {0:.3f}s'.format(time_global_p))
-    global_p_teams_scores = []
-    for project, team in res_global_p.items():
-        score_team = score_tp([m[0] for m in team], project)
-        global_p_teams_scores.append(score_team)
+    save_print_alg_results(full_output, k, res_global_p, set_p, 2)
+
+
+def save_alg_times(k, set_p, start_time, end_time, alg_id):
+    total_time = end_time - start_time
+    if log_graphs['time_p']:
+        dt_time_p[active_dataset][alg_id][0].append(len(set_p))
+        dt_time_p[active_dataset][alg_id][1].append(total_time)
+    if log_graphs['time_k']:
+        dt_time_k[active_dataset][alg_id][0].append(k)
+        dt_time_k[active_dataset][alg_id][1].append(total_time)
+    return total_time
+
+
+def save_print_alg_results(full_output, k, results, set_p, alg_id):
+    alg_teams_scores = []
+    for project, team in results.items():
+        score_team = team[1] if naive else score_tp([m[0] for m in team], project)
+        alg_teams_scores.append(score_team)
         if full_output:
             print('\t->{0!s}:\tscoreTP:{1:.3f}'.format(project[0], score_team))
             for member in team:
                 print('\t\t->Applicant {0!s}:'
                       '\tscoreAP:{1:.3f}\tskills:{2!s}'.format(member[0][0], member[1], list(member[0][1])))
-
-    global_p_score_max = max(global_p_teams_scores)
-    global_p_score_min = min(global_p_teams_scores)
-    global_p_score_range = global_p_score_max - global_p_score_min
-    global_p_score_mean = mean(global_p_teams_scores)
-    global_p_score_sum = sum(global_p_teams_scores)
-    global_p_score_fd = sum([abs(s - global_p_score_mean) for s in global_p_teams_scores]) / len(global_p_teams_scores)
+    alg_score_max = max(alg_teams_scores)
+    alg_score_min = min(alg_teams_scores)
+    alg_score_range = alg_score_max - alg_score_min
+    alg_score_mean = mean(alg_teams_scores)
+    alg_score_sum = sum(alg_teams_scores)
+    alg_score_fd = sum([abs(s - alg_score_mean) for s in alg_teams_scores]) / len(alg_teams_scores)
     if log_graphs['fairness']:
-        dt_fairness[2][0].append(len(set_p) * k)
-        dt_fairness[2][1].append(global_p_score_fd)
+        dt_fairness[active_dataset][alg_id][0].append(len(set_p) * k)
+        dt_fairness[active_dataset][alg_id][1].append(alg_score_fd)
     if log_graphs['maxs']:
-        dt_maxs[2][0].append(len(set_p) * k)
-        dt_maxs[2][1].append(global_p_score_sum)
+        dt_maxs[active_dataset][alg_id][0].append(len(set_p) * k)
+        dt_maxs[active_dataset][alg_id][1].append(alg_score_sum)
     print('Scores:\tMax:{0:.3f}\tMin:{1:.3f}'
           '\tRange:{2:.3f}\tMean:{3:.3f}'
-          '\tSum:{4:.3f}\tf-deviation:{5:.3f}'.format(global_p_score_max,
-                                                      global_p_score_min,
-                                                      global_p_score_range,
-                                                      global_p_score_mean,
-                                                      global_p_score_sum,
-                                                      global_p_score_fd))
+          '\tSum:{4:.3f}\tf-deviation:{5:.3f}'.format(alg_score_max, alg_score_min,
+                                                      alg_score_range, alg_score_mean,
+                                                      alg_score_sum, alg_score_fd))
 
 
 def plot_graphs():
-    fig_time, axs_time = plt.subplots(nrows=1, ncols=2, figsize=(10, 5))
+    fig_time, axs_time = plt.subplots(nrows=2, ncols=2, figsize=(10, 10))
 
-    axs_time[0].plot(dt_time_p[0][0], dt_time_p[0][1], label='Heuristic')
-    axs_time[0].plot(dt_time_p[1][0], dt_time_p[1][1], label='K-rounds')
-    axs_time[0].plot(dt_time_p[2][0], dt_time_p[2][1], label='Pairs-rounds')
-    if naive:
-        axs_time[0].plot(dt_time_p[3][0], dt_time_p[3][1], label='Naive')
-    axs_time[0].set_xlabel("Amount of projects")
-    axs_time[0].set_ylabel("Time (s)")
-    axs_time[0].legend()
-
-    axs_time[1].plot(dt_time_k[0][0], dt_time_k[0][1], label='Heuristic')
-    axs_time[1].plot(dt_time_k[1][0], dt_time_k[1][1], label='K-rounds')
-    axs_time[1].plot(dt_time_k[2][0], dt_time_k[2][1], label='Pairs-rounds')
-    if naive:
-        axs_time[1].plot(dt_time_k[3][0], dt_time_k[3][1], label='Naive')
-    axs_time[1].set_xlabel("k")
-    axs_time[1].set_ylabel("Time (s)")
-    axs_time[1].legend()
+    # results_time.png for DBLP
+    subplot_time_data(axs_time, 0, 0, dt_time_p[0], "Amount of projects")
+    subplot_time_data(axs_time, 0, 1, dt_time_k[0], "k")
+    # results_time.png for IMDB
+    subplot_time_data(axs_time, 1, 0, dt_time_p[1], "Amount of projects")
+    subplot_time_data(axs_time, 1, 1, dt_time_k[1], "k")
 
     fig_time.tight_layout()
     fig_time.savefig("results_time.png", dpi=250)
@@ -669,6 +555,17 @@ def plot_graphs():
     fig_maxs.savefig("results_maxs.png", dpi=250)
 
 
+def subplot_time_data(axs_time, sub_x, sub_y, data, label):
+    axs_time[sub_x][sub_y].plot(data[0][0], data[0][1], label='Local Heuristic')
+    axs_time[sub_x][sub_y].plot(data[1][0], data[1][1], label='Global K-rounds')
+    axs_time[sub_x][sub_y].plot(data[2][0], data[2][1], label='Global Pairs-rounds')
+    if naive:
+        axs_time[sub_x][sub_y].plot(data[3][0], data[3][1], label='Naive')
+    axs_time[sub_x][sub_y].set_xlabel(label)
+    axs_time[sub_x][sub_y].set_ylabel("Time (s)")
+    axs_time[sub_x][sub_y].legend()
+
+
 def plot_graphs_naive():
     fig_time, ax_time = plt.subplots(figsize=(5, 5))
 
@@ -687,25 +584,35 @@ def plot_graphs_naive():
 
 # Dict with variables to control logging of data to the structures below
 log_graphs = defaultdict(bool)
+
+# Each one of the structures below is a multidimensional array to store experiment results in the following format:
+# struct[dataset][algorithm][axisX][value/axisY], in which:
+# dataset is 0 for DBLP and 1 for IMDB
+# algorithm is 0 for local heuristic, 1 for global k-rounds, 2 for global pair-rounds, 3 for naive
+
 # Data of time consumed by algorithms when varying amount of projects
-dt_time_p = [[[], []], [[], []], [[], []]]
+dt_time_p = [[[[], []], [[], []], [[], []]], [[[], []], [[], []], [[], []]]]
 # Data of time consumed by algorithms when varying amount of team member
-dt_time_k = [[[], []], [[], []], [[], []]]
+dt_time_k = [[[[], []], [[], []], [[], []]], [[[], []], [[], []], [[], []]]]
 # Data of Sums of scoreTP values over amount of choices made
-dt_maxs = [[[], []], [[], []], [[], []]]
+dt_maxs = [[[[], []], [[], []], [[], []]], [[[], []], [[], []], [[], []]]]
 # Data of Fairness-deviation over amount of choices made
-dt_fairness = [[[], []], [[], []], [[], []]]
+dt_fairness = [[[[], []], [[], []], [[], []]], [[[], []], [[], []], [[], []]]]
 
 # If true, uses naive method
-naive = True
+naive = False
 # If 0, uses DBLP. If 1, uses IMDB
 active_dataset = 0
 
 if naive:
-    dt_time_p.append([[], []])
-    dt_time_k.append([[], []])
-    dt_maxs.append([[], []])
-    dt_fairness.append([[], []])
+    for dataset in dt_time_p:
+        dataset.append([[], []])
+    for dataset in dt_time_k:
+        dataset.append([[], []])
+    for dataset in dt_maxs:
+        dataset.append([[], []])
+    for dataset in dt_fairness:
+        dataset.append([[], []])
 
 # Execute algorithms and print results
 if __name__ == "__main__":
@@ -719,13 +626,12 @@ if __name__ == "__main__":
 
     active_dataset = 0
     test_dataset(active_dataset)
-    # active_dataset = 1
-    # test_dataset(active_dataset)
+    active_dataset = 1
+    test_dataset(active_dataset)
 
-    print('\n---------- END ----------')
-'''
     if naive:
         plot_graphs_naive()
     else:
         plot_graphs()
-'''
+
+    print('\n---------- END ----------')
