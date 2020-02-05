@@ -332,7 +332,7 @@ def global_optimization_pair_rounds_teams(students, projects, k):
 def test_dataset(dataset_id):
     global active_dataset
     active_dataset = dataset_id
-    skills_per_project = 10
+    skills_per_project = 15
     skill_set = skills_dblp if dataset_id == 0 else skills_imdb
     print('\n---------- Dataset ' + str(active_dataset) + ' ----------')
     print("---", datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
@@ -484,31 +484,31 @@ def plot_graphs():
     fig_time, axs_time = plt.subplots(nrows=2, ncols=2, figsize=(10, 10))
 
     # results_time.png for DBLP
-    subplot_time_data(axs_time, 0, 0, dt_time_p[0], "Amount of projects")
-    subplot_time_data(axs_time, 0, 1, dt_time_k[0], "k")
+    subplot_time_data(axs_time, 0, 0, dt_time_p[0], "Amount of projects", "DBLP dataset")
+    subplot_time_data(axs_time, 0, 1, dt_time_k[0], "k", "DBLP dataset")
     # results_time.png for IMDB
-    subplot_time_data(axs_time, 1, 0, dt_time_p[1], "Amount of projects")
-    subplot_time_data(axs_time, 1, 1, dt_time_k[1], "k")
+    subplot_time_data(axs_time, 1, 0, dt_time_p[1], "Amount of projects", "IMDB dataset")
+    subplot_time_data(axs_time, 1, 1, dt_time_k[1], "k", "IMDB dataset")
 
     fig_time.tight_layout()
     fig_time.savefig("results_time.png", dpi=250)
 
     # results_fairness.png for DBLP and IMDB
     fig_fairness, ax_fairness = plt.subplots(nrows=1, ncols=2, figsize=(20, 12))
-    subplot_scatter_data(ax_fairness, 0, dt_fairness[0], "scoreTP sum")
-    subplot_scatter_data(ax_fairness, 1, dt_fairness[1], "scoreTP sum")
+    subplot_scatter_data(ax_fairness, 0, dt_fairness[0], "scoreTP sum", "DBLP dataset")
+    subplot_scatter_data(ax_fairness, 1, dt_fairness[1], "scoreTP sum", "IMDB dataset")
     fig_fairness.tight_layout()
     fig_fairness.savefig("results_fairness.png", dpi=250)
 
     # results_maxs.png for DBLP and IMDB
     fig_maxs, ax_maxs = plt.subplots(nrows=1, ncols=2, figsize=(20, 12))
-    subplot_scatter_data(ax_maxs, 0, dt_maxs[0], "scoreTP sum")
-    subplot_scatter_data(ax_maxs, 1, dt_maxs[1], "scoreTP sum")
+    subplot_scatter_data(ax_maxs, 0, dt_maxs[0], "scoreTP sum", "DBLP dataset")
+    subplot_scatter_data(ax_maxs, 1, dt_maxs[1], "scoreTP sum", "IMDB dataset")
     fig_maxs.tight_layout()
     fig_maxs.savefig("results_maxs.png", dpi=250)
 
 
-def subplot_scatter_data(ax_scatter, sub_x, data_source, y_label):
+def subplot_scatter_data(ax_scatter, sub_x, data_source, y_label, title):
     colors = ("red", "green", "blue")
     groups = ("Local Heuristic", "Global K-rounds", "Global Pairs-rounds")
     data = tuple(data_source)
@@ -530,9 +530,10 @@ def subplot_scatter_data(ax_scatter, sub_x, data_source, y_label):
     ax_scatter[sub_x].set_xlabel("choices")
     ax_scatter[sub_x].set_ylabel(y_label)
     ax_scatter[sub_x].legend(loc=2)
+    ax_scatter[sub_x].title.set_text(title)
 
 
-def subplot_time_data(axs_time, sub_x, sub_y, data, label):
+def subplot_time_data(axs_time, sub_x, sub_y, data, label, title):
     axs_time[sub_x][sub_y].plot(data[0][0], data[0][1], label='Local Heuristic')
     axs_time[sub_x][sub_y].plot(data[1][0], data[1][1], label='Global K-rounds')
     axs_time[sub_x][sub_y].plot(data[2][0], data[2][1], label='Global Pairs-rounds')
@@ -541,6 +542,7 @@ def subplot_time_data(axs_time, sub_x, sub_y, data, label):
     axs_time[sub_x][sub_y].set_xlabel(label)
     axs_time[sub_x][sub_y].set_ylabel("Time (s)")
     axs_time[sub_x][sub_y].legend()
+    axs_time[sub_x][sub_y].title.set_text(title)
 
 
 def plot_graphs_naive():

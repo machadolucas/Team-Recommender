@@ -1,0 +1,2254 @@
+$ python main.py
+[nltk_data] Downloading package wordnet to
+[nltk_data]     /home/machadolucas/nltk_data...
+[nltk_data]   Package wordnet is already up-to-date!
+
+---------- START ----------
+--- 05/02/2020 09:01:25
+Found DBLP "distances.dat" pre-computed term similarities file.
+Found IMDB "IMDB_skill.csv" pre-processed dataset file.
+Found IMDB "distances.dat" pre-computed term similarities file.
+
+---------- Dataset 0 ----------
+--- 05/02/2020 09:01:27
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 3	k: 9
+
+Local optimization heuristic results:	Took: 0.592s
+Scores:	Max:694.186	Min:286.797	Range:407.390	Mean:449.512	Sum:1348.536	f-deviation:163.116
+
+Global optimization K-rounds results:	Took: 0.594s
+Scores:	Max:547.789	Min:357.601	Range:190.188	Mean:438.785	Sum:1316.356	f-deviation:72.669
+
+Global optimization Pair-rounds results:	Took: 0.595s
+Scores:	Max:619.275	Min:370.581	Range:248.694	Mean:475.102	Sum:1425.306	f-deviation:96.115
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 6	k: 9
+
+Local optimization heuristic results:	Took: 1.195s
+Scores:	Max:402.201	Min:155.026	Range:247.175	Mean:293.084	Sum:1758.506	f-deviation:76.519
+
+Global optimization K-rounds results:	Took: 1.194s
+Scores:	Max:388.866	Min:167.171	Range:221.694	Mean:303.663	Sum:1821.975	f-deviation:63.028
+
+Global optimization Pair-rounds results:	Took: 1.198s
+Scores:	Max:416.571	Min:172.390	Range:244.181	Mean:324.040	Sum:1944.237	f-deviation:60.735
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 9	k: 9
+
+Local optimization heuristic results:	Took: 1.745s
+Scores:	Max:501.865	Min:75.658	Range:426.206	Mean:251.904	Sum:2267.138	f-deviation:99.567
+
+Global optimization K-rounds results:	Took: 1.740s
+Scores:	Max:454.621	Min:96.251	Range:358.370	Mean:254.671	Sum:2292.039	f-deviation:79.839
+
+Global optimization Pair-rounds results:	Took: 1.743s
+Scores:	Max:489.345	Min:98.027	Range:391.319	Mean:272.858	Sum:2455.719	f-deviation:90.339
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 12	k: 9
+
+Local optimization heuristic results:	Took: 2.350s
+Scores:	Max:773.789	Min:104.204	Range:669.585	Mean:277.709	Sum:3332.505	f-deviation:108.164
+
+Global optimization K-rounds results:	Took: 2.358s
+Scores:	Max:448.571	Min:139.601	Range:308.971	Mean:273.441	Sum:3281.289	f-deviation:69.597
+
+Global optimization Pair-rounds results:	Took: 2.362s
+Scores:	Max:540.570	Min:141.573	Range:398.997	Mean:294.500	Sum:3534.002	f-deviation:77.336
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 15	k: 9
+
+Local optimization heuristic results:	Took: 2.956s
+Scores:	Max:486.328	Min:98.692	Range:387.636	Mean:214.490	Sum:3217.343	f-deviation:61.561
+
+Global optimization K-rounds results:	Took: 2.964s
+Scores:	Max:302.269	Min:97.676	Range:204.593	Mean:224.391	Sum:3365.865	f-deviation:51.782
+
+Global optimization Pair-rounds results:	Took: 2.964s
+Scores:	Max:335.140	Min:108.108	Range:227.032	Mean:239.545	Sum:3593.178	f-deviation:57.693
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 18	k: 9
+
+Local optimization heuristic results:	Took: 3.584s
+Scores:	Max:409.679	Min:65.090	Range:344.589	Mean:211.838	Sum:3813.090	f-deviation:65.586
+
+Global optimization K-rounds results:	Took: 3.593s
+Scores:	Max:347.277	Min:81.983	Range:265.294	Mean:218.781	Sum:3938.054	f-deviation:46.502
+
+Global optimization Pair-rounds results:	Took: 3.596s
+Scores:	Max:365.495	Min:86.299	Range:279.196	Mean:233.559	Sum:4204.067	f-deviation:51.920
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 21	k: 9
+
+Local optimization heuristic results:	Took: 4.166s
+Scores:	Max:441.875	Min:105.986	Range:335.890	Mean:228.212	Sum:4792.447	f-deviation:76.658
+
+Global optimization K-rounds results:	Took: 4.165s
+Scores:	Max:360.334	Min:138.795	Range:221.539	Mean:234.320	Sum:4920.710	f-deviation:43.938
+
+Global optimization Pair-rounds results:	Took: 4.175s
+Scores:	Max:387.412	Min:143.045	Range:244.367	Mean:249.714	Sum:5243.990	f-deviation:52.583
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 24	k: 9
+
+Local optimization heuristic results:	Took: 4.699s
+Scores:	Max:444.542	Min:76.161	Range:368.380	Mean:201.248	Sum:4829.957	f-deviation:82.543
+
+Global optimization K-rounds results:	Took: 4.709s
+Scores:	Max:336.109	Min:86.175	Range:249.933	Mean:203.748	Sum:4889.952	f-deviation:49.088
+
+Global optimization Pair-rounds results:	Took: 4.707s
+Scores:	Max:363.956	Min:90.708	Range:273.247	Mean:216.762	Sum:5202.278	f-deviation:56.485
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 27	k: 9
+
+Local optimization heuristic results:	Took: 5.357s
+Scores:	Max:567.715	Min:100.239	Range:467.475	Mean:193.761	Sum:5231.535	f-deviation:54.592
+
+Global optimization K-rounds results:	Took: 5.373s
+Scores:	Max:274.922	Min:140.272	Range:134.649	Mean:201.051	Sum:5428.390	f-deviation:40.286
+
+Global optimization Pair-rounds results:	Took: 5.367s
+Scores:	Max:350.209	Min:143.093	Range:207.117	Mean:213.052	Sum:5752.411	f-deviation:44.732
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 3
+
+Local optimization heuristic results:	Took: 2.139s
+Scores:	Max:178.144	Min:44.927	Range:133.217	Mean:108.186	Sum:1190.050	f-deviation:38.227
+
+Global optimization K-rounds results:	Took: 2.130s
+Scores:	Max:184.225	Min:55.639	Range:128.586	Mean:109.711	Sum:1206.826	f-deviation:30.501
+
+Global optimization Pair-rounds results:	Took: 2.135s
+Scores:	Max:226.871	Min:64.377	Range:162.495	Mean:133.839	Sum:1472.226	f-deviation:40.817
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 6
+
+Local optimization heuristic results:	Took: 2.192s
+Scores:	Max:401.206	Min:86.502	Range:314.704	Mean:189.730	Sum:2087.028	f-deviation:46.157
+
+Global optimization K-rounds results:	Took: 2.186s
+Scores:	Max:253.551	Min:101.467	Range:152.084	Mean:192.731	Sum:2120.036	f-deviation:38.209
+
+Global optimization Pair-rounds results:	Took: 2.193s
+Scores:	Max:295.887	Min:96.296	Range:199.591	Mean:191.596	Sum:2107.557	f-deviation:40.427
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 9
+
+Local optimization heuristic results:	Took: 2.143s
+Scores:	Max:703.478	Min:141.250	Range:562.227	Mean:274.832	Sum:3023.154	f-deviation:111.392
+
+Global optimization K-rounds results:	Took: 2.145s
+Scores:	Max:416.415	Min:166.707	Range:249.708	Mean:269.478	Sum:2964.258	f-deviation:61.021
+
+Global optimization Pair-rounds results:	Took: 2.157s
+Scores:	Max:502.728	Min:174.152	Range:328.576	Mean:290.826	Sum:3199.085	f-deviation:73.561
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 12
+
+Local optimization heuristic results:	Took: 2.226s
+Scores:	Max:596.155	Min:112.248	Range:483.907	Mean:336.379	Sum:3700.170	f-deviation:107.433
+
+Global optimization K-rounds results:	Took: 2.223s
+Scores:	Max:509.779	Min:148.548	Range:361.231	Mean:345.855	Sum:3804.406	f-deviation:87.001
+
+Global optimization Pair-rounds results:	Took: 2.218s
+Scores:	Max:514.405	Min:141.706	Range:372.699	Mean:341.845	Sum:3760.290	f-deviation:81.785
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 15
+
+Local optimization heuristic results:	Took: 2.211s
+Scores:	Max:782.498	Min:209.667	Range:572.830	Mean:351.358	Sum:3864.943	f-deviation:128.471
+
+Global optimization K-rounds results:	Took: 2.210s
+Scores:	Max:519.794	Min:240.500	Range:279.295	Mean:354.092	Sum:3895.009	f-deviation:65.361
+
+Global optimization Pair-rounds results:	Took: 2.218s
+Scores:	Max:561.879	Min:251.302	Range:310.577	Mean:369.924	Sum:4069.167	f-deviation:75.167
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 18
+
+Local optimization heuristic results:	Took: 2.226s
+Scores:	Max:697.932	Min:216.004	Range:481.929	Mean:391.557	Sum:4307.129	f-deviation:129.571
+
+Global optimization K-rounds results:	Took: 2.224s
+Scores:	Max:665.787	Min:289.671	Range:376.116	Mean:408.806	Sum:4496.863	f-deviation:92.778
+
+Global optimization Pair-rounds results:	Took: 2.219s
+Scores:	Max:663.984	Min:281.753	Range:382.231	Mean:406.449	Sum:4470.937	f-deviation:93.753
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 21
+
+Local optimization heuristic results:	Took: 2.211s
+Scores:	Max:811.848	Min:228.194	Range:583.654	Mean:440.561	Sum:4846.172	f-deviation:150.295
+
+Global optimization K-rounds results:	Took: 2.213s
+Scores:	Max:666.637	Min:312.869	Range:353.768	Mean:453.481	Sum:4988.296	f-deviation:87.159
+
+Global optimization Pair-rounds results:	Took: 2.217s
+Scores:	Max:699.923	Min:318.852	Range:381.071	Mean:464.852	Sum:5113.368	f-deviation:90.826
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 24
+
+Local optimization heuristic results:	Took: 2.245s
+Scores:	Max:1081.648	Min:262.944	Range:818.704	Mean:498.041	Sum:5478.448	f-deviation:125.695
+
+Global optimization K-rounds results:	Took: 2.240s
+Scores:	Max:621.959	Min:368.255	Range:253.703	Mean:517.013	Sum:5687.145	f-deviation:70.462
+
+Global optimization Pair-rounds results:	Took: 2.238s
+Scores:	Max:614.286	Min:375.247	Range:239.039	Mean:514.433	Sum:5658.759	f-deviation:74.001
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 27
+
+Local optimization heuristic results:	Took: 2.269s
+Scores:	Max:963.803	Min:218.864	Range:744.938	Mean:509.185	Sum:5601.040	f-deviation:160.421
+
+Global optimization K-rounds results:	Took: 2.267s
+Scores:	Max:707.579	Min:334.183	Range:373.396	Mean:522.902	Sum:5751.921	f-deviation:87.440
+
+Global optimization Pair-rounds results:	Took: 2.272s
+Scores:	Max:733.039	Min:331.825	Range:401.214	Mean:533.071	Sum:5863.776	f-deviation:90.671
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 34	k: 6
+
+Local optimization heuristic results:	Took: 6.731s
+Scores:	Max:211.714	Min:24.418	Range:187.296	Mean:92.935	Sum:3159.782	f-deviation:34.558
+
+Global optimization K-rounds results:	Took: 6.712s
+Scores:	Max:171.917	Min:33.341	Range:138.575	Mean:95.000	Sum:3230.003	f-deviation:27.387
+
+Global optimization Pair-rounds results:	Took: 6.702s
+Scores:	Max:184.076	Min:30.149	Range:153.927	Mean:94.609	Sum:3216.707	f-deviation:28.717
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 34	k: 8
+
+Local optimization heuristic results:	Took: 6.780s
+Scores:	Max:606.640	Min:39.704	Range:566.936	Mean:119.709	Sum:4070.101	f-deviation:46.862
+
+Global optimization K-rounds results:	Took: 6.768s
+Scores:	Max:284.520	Min:41.068	Range:243.452	Mean:119.287	Sum:4055.772	f-deviation:31.507
+
+Global optimization Pair-rounds results:	Took: 6.740s
+Scores:	Max:357.461	Min:41.023	Range:316.438	Mean:119.158	Sum:4051.370	f-deviation:32.980
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 34	k: 11
+
+Local optimization heuristic results:	Took: 6.826s
+Scores:	Max:571.631	Min:47.496	Range:524.135	Mean:131.898	Sum:4484.516	f-deviation:50.724
+
+Global optimization K-rounds results:	Took: 6.829s
+Scores:	Max:247.003	Min:51.138	Range:195.865	Mean:134.240	Sum:4564.153	f-deviation:32.036
+
+Global optimization Pair-rounds results:	Took: 6.847s
+Scores:	Max:310.514	Min:53.599	Range:256.915	Mean:140.825	Sum:4788.061	f-deviation:34.594
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 34	k: 3
+
+Local optimization heuristic results:	Took: 6.608s
+Scores:	Max:159.101	Min:5.512	Range:153.590	Mean:60.384	Sum:2053.045	f-deviation:22.398
+
+Global optimization K-rounds results:	Took: 6.606s
+Scores:	Max:102.506	Min:6.559	Range:95.947	Mean:61.483	Sum:2090.422	f-deviation:19.334
+
+Global optimization Pair-rounds results:	Took: 6.614s
+Scores:	Max:147.275	Min:8.299	Range:138.975	Mean:74.294	Sum:2525.985	f-deviation:24.415
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 34	k: 4
+
+Local optimization heuristic results:	Took: 6.617s
+Scores:	Max:198.453	Min:17.621	Range:180.832	Mean:71.728	Sum:2438.763	f-deviation:29.536
+
+Global optimization K-rounds results:	Took: 6.612s
+Scores:	Max:133.751	Min:21.066	Range:112.685	Mean:71.455	Sum:2429.468	f-deviation:22.358
+
+Global optimization Pair-rounds results:	Took: 6.599s
+Scores:	Max:151.540	Min:19.898	Range:131.642	Mean:71.993	Sum:2447.762	f-deviation:25.341
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 6
+
+Local optimization heuristic results:	Took: 2.206s
+Scores:	Max:321.518	Min:62.392	Range:259.125	Mean:151.286	Sum:1664.149	f-deviation:54.008
+
+Global optimization K-rounds results:	Took: 2.208s
+Scores:	Max:201.666	Min:80.634	Range:121.032	Mean:150.419	Sum:1654.607	f-deviation:32.288
+
+Global optimization Pair-rounds results:	Took: 2.207s
+Scores:	Max:237.321	Min:76.030	Range:161.292	Mean:150.830	Sum:1659.126	f-deviation:37.492
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 3
+
+Local optimization heuristic results:	Took: 2.191s
+Scores:	Max:171.043	Min:68.287	Range:102.756	Mean:103.302	Sum:1136.318	f-deviation:26.367
+
+Global optimization K-rounds results:	Took: 2.190s
+Scores:	Max:173.699	Min:68.666	Range:105.033	Mean:105.004	Sum:1155.048	f-deviation:19.218
+
+Global optimization Pair-rounds results:	Took: 2.193s
+Scores:	Max:207.968	Min:80.269	Range:127.700	Mean:127.589	Sum:1403.484	f-deviation:26.342
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 8
+
+Local optimization heuristic results:	Took: 2.184s
+Scores:	Max:468.839	Min:91.962	Range:376.877	Mean:181.913	Sum:2001.048	f-deviation:74.668
+
+Global optimization K-rounds results:	Took: 2.184s
+Scores:	Max:282.873	Min:113.219	Range:169.654	Mean:176.768	Sum:1944.443	f-deviation:39.880
+
+Global optimization Pair-rounds results:	Took: 2.189s
+Scores:	Max:327.387	Min:108.418	Range:218.969	Mean:177.943	Sum:1957.376	f-deviation:48.247
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 4
+
+Local optimization heuristic results:	Took: 2.162s
+Scores:	Max:253.156	Min:48.241	Range:204.915	Mean:112.117	Sum:1233.287	f-deviation:45.978
+
+Global optimization K-rounds results:	Took: 2.161s
+Scores:	Max:167.069	Min:54.574	Range:112.495	Mean:110.150	Sum:1211.653	f-deviation:31.863
+
+Global optimization Pair-rounds results:	Took: 2.155s
+Scores:	Max:204.594	Min:51.843	Range:152.751	Mean:111.113	Sum:1222.243	f-deviation:38.214
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 11	k: 7
+
+Local optimization heuristic results:	Took: 2.165s
+Scores:	Max:304.175	Min:86.566	Range:217.609	Mean:170.257	Sum:1872.829	f-deviation:47.568
+
+Global optimization K-rounds results:	Took: 2.168s
+Scores:	Max:245.286	Min:98.513	Range:146.773	Mean:173.227	Sum:1905.501	f-deviation:32.915
+
+Global optimization Pair-rounds results:	Took: 2.173s
+Scores:	Max:274.844	Min:107.325	Range:167.519	Mean:189.904	Sum:2088.941	f-deviation:38.641
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 19	k: 10
+
+Local optimization heuristic results:	Took: 3.827s
+Scores:	Max:324.904	Min:68.818	Range:256.086	Mean:160.794	Sum:3055.082	f-deviation:50.545
+
+Global optimization K-rounds results:	Took: 3.818s
+Scores:	Max:270.553	Min:88.721	Range:181.831	Mean:167.301	Sum:3178.714	f-deviation:34.473
+
+Global optimization Pair-rounds results:	Took: 3.811s
+Scores:	Max:264.015	Min:84.365	Range:179.651	Mean:165.708	Sum:3148.453	f-deviation:36.946
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 19	k: 7
+
+Local optimization heuristic results:	Took: 3.782s
+Scores:	Max:338.338	Min:35.801	Range:302.537	Mean:138.295	Sum:2627.613	f-deviation:58.904
+
+Global optimization K-rounds results:	Took: 3.793s
+Scores:	Max:223.868	Min:42.693	Range:181.175	Mean:137.155	Sum:2605.947	f-deviation:37.688
+
+Global optimization Pair-rounds results:	Took: 3.892s
+Scores:	Max:242.551	Min:46.183	Range:196.368	Mean:150.756	Sum:2864.361	f-deviation:45.575
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 19	k: 5
+
+Local optimization heuristic results:	Took: 3.747s
+Scores:	Max:315.013	Min:27.903	Range:287.110	Mean:97.836	Sum:1858.883	f-deviation:44.106
+
+Global optimization K-rounds results:	Took: 3.747s
+Scores:	Max:184.119	Min:34.399	Range:149.720	Mean:95.732	Sum:1818.909	f-deviation:29.121
+
+Global optimization Pair-rounds results:	Took: 3.759s
+Scores:	Max:247.676	Min:36.789	Range:210.887	Mean:109.109	Sum:2073.063	f-deviation:37.225
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 19	k: 11
+
+Local optimization heuristic results:	Took: 3.823s
+Scores:	Max:487.444	Min:86.950	Range:400.494	Mean:181.050	Sum:3439.954	f-deviation:62.066
+
+Global optimization K-rounds results:	Took: 3.824s
+Scores:	Max:260.104	Min:124.017	Range:136.088	Mean:182.124	Sum:3460.356	f-deviation:34.826
+
+Global optimization Pair-rounds results:	Took: 3.833s
+Scores:	Max:300.324	Min:124.878	Range:175.446	Mean:191.667	Sum:3641.670	f-deviation:40.158
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 19	k: 3
+
+Local optimization heuristic results:	Took: 3.720s
+Scores:	Max:128.969	Min:21.816	Range:107.153	Mean:68.896	Sum:1309.017	f-deviation:22.146
+
+Global optimization K-rounds results:	Took: 3.870s
+Scores:	Max:112.729	Min:22.811	Range:89.919	Mean:69.707	Sum:1324.436	f-deviation:18.112
+
+Global optimization Pair-rounds results:	Took: 3.743s
+Scores:	Max:143.512	Min:26.393	Range:117.119	Mean:84.401	Sum:1603.623	f-deviation:23.377
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 17	k: 6
+
+Local optimization heuristic results:	Took: 3.381s
+Scores:	Max:303.890	Min:70.809	Range:233.081	Mean:125.836	Sum:2139.210	f-deviation:34.312
+
+Global optimization K-rounds results:	Took: 3.351s
+Scores:	Max:177.050	Min:90.786	Range:86.264	Mean:128.040	Sum:2176.686	f-deviation:21.445
+
+Global optimization Pair-rounds results:	Took: 3.376s
+Scores:	Max:215.312	Min:84.668	Range:130.645	Mean:127.678	Sum:2170.525	f-deviation:24.624
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 17	k: 11
+
+Local optimization heuristic results:	Took: 3.352s
+Scores:	Max:428.768	Min:48.222	Range:380.546	Mean:167.376	Sum:2845.395	f-deviation:74.281
+
+Global optimization K-rounds results:	Took: 3.351s
+Scores:	Max:316.921	Min:66.816	Range:250.105	Mean:166.590	Sum:2832.038	f-deviation:48.405
+
+Global optimization Pair-rounds results:	Took: 3.353s
+Scores:	Max:336.769	Min:68.037	Range:268.732	Mean:175.827	Sum:2989.055	f-deviation:53.706
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 17	k: 3
+
+Local optimization heuristic results:	Took: 3.326s
+Scores:	Max:138.671	Min:36.787	Range:101.884	Mean:84.593	Sum:1438.085	f-deviation:26.102
+
+Global optimization K-rounds results:	Took: 3.321s
+Scores:	Max:150.869	Min:43.646	Range:107.222	Mean:86.899	Sum:1477.280	f-deviation:23.582
+
+Global optimization Pair-rounds results:	Took: 3.331s
+Scores:	Max:175.982	Min:49.676	Range:126.307	Mean:104.618	Sum:1778.500	f-deviation:29.521
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 17	k: 4
+
+Local optimization heuristic results:	Took: 3.348s
+Scores:	Max:253.316	Min:57.686	Range:195.630	Mean:107.066	Sum:1820.118	f-deviation:33.088
+
+Global optimization K-rounds results:	Took: 3.344s
+Scores:	Max:162.368	Min:69.365	Range:93.003	Mean:107.916	Sum:1834.574	f-deviation:24.641
+
+Global optimization Pair-rounds results:	Took: 3.342s
+Scores:	Max:195.619	Min:64.869	Range:130.750	Mean:107.569	Sum:1828.673	f-deviation:27.712
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 17	k: 10
+
+Local optimization heuristic results:	Took: 3.447s
+Scores:	Max:336.347	Min:62.559	Range:273.787	Mean:172.156	Sum:2926.651	f-deviation:59.810
+
+Global optimization K-rounds results:	Took: 3.448s
+Scores:	Max:336.739	Min:59.887	Range:276.851	Mean:183.418	Sum:3118.100	f-deviation:56.749
+
+Global optimization Pair-rounds results:	Took: 3.445s
+Scores:	Max:322.181	Min:59.080	Range:263.101	Mean:181.157	Sum:3079.676	f-deviation:56.571
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 29	k: 11
+
+Local optimization heuristic results:	Took: 5.790s
+Scores:	Max:574.949	Min:40.805	Range:534.143	Mean:159.753	Sum:4632.850	f-deviation:66.300
+
+Global optimization K-rounds results:	Took: 5.792s
+Scores:	Max:258.277	Min:48.551	Range:209.725	Mean:160.393	Sum:4651.401	f-deviation:42.017
+
+Global optimization Pair-rounds results:	Took: 5.806s
+Scores:	Max:320.445	Min:49.787	Range:270.658	Mean:168.578	Sum:4888.753	f-deviation:46.789
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 29	k: 6
+
+Local optimization heuristic results:	Took: 5.743s
+Scores:	Max:422.666	Min:37.269	Range:385.397	Mean:111.529	Sum:3234.352	f-deviation:41.721
+
+Global optimization K-rounds results:	Took: 5.740s
+Scores:	Max:220.649	Min:41.885	Range:178.764	Mean:112.044	Sum:3249.281	f-deviation:28.867
+
+Global optimization Pair-rounds results:	Took: 5.787s
+Scores:	Max:277.566	Min:40.848	Range:236.718	Mean:111.892	Sum:3244.874	f-deviation:31.543
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 29	k: 10
+
+Local optimization heuristic results:	Took: 5.807s
+Scores:	Max:376.433	Min:59.517	Range:316.916	Mean:126.486	Sum:3668.102	f-deviation:48.046
+
+Global optimization K-rounds results:	Took: 5.811s
+Scores:	Max:253.236	Min:57.503	Range:195.733	Mean:131.422	Sum:3811.251	f-deviation:35.268
+
+Global optimization Pair-rounds results:	Took: 5.800s
+Scores:	Max:274.264	Min:60.620	Range:213.644	Mean:130.191	Sum:3775.537	f-deviation:34.889
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 29	k: 8
+
+Local optimization heuristic results:	Took: 5.774s
+Scores:	Max:293.042	Min:35.320	Range:257.722	Mean:119.104	Sum:3454.016	f-deviation:40.269
+
+Global optimization K-rounds results:	Took: 5.772s
+Scores:	Max:187.712	Min:39.228	Range:148.483	Mean:122.096	Sum:3540.796	f-deviation:28.012
+
+Global optimization Pair-rounds results:	Took: 5.769s
+Scores:	Max:203.437	Min:39.368	Range:164.068	Mean:121.150	Sum:3513.347	f-deviation:29.617
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 29	k: 9
+
+Local optimization heuristic results:	Took: 5.830s
+Scores:	Max:280.071	Min:56.340	Range:223.731	Mean:126.595	Sum:3671.263	f-deviation:45.742
+
+Global optimization K-rounds results:	Took: 5.848s
+Scores:	Max:251.734	Min:56.029	Range:195.705	Mean:131.790	Sum:3821.902	f-deviation:34.681
+
+Global optimization Pair-rounds results:	Took: 5.854s
+Scores:	Max:251.899	Min:58.888	Range:193.011	Mean:138.907	Sum:4028.300	f-deviation:38.283
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 22	k: 3
+
+Local optimization heuristic results:	Took: 4.323s
+Scores:	Max:179.222	Min:20.415	Range:158.807	Mean:73.448	Sum:1615.863	f-deviation:31.472
+
+Global optimization K-rounds results:	Took: 4.312s
+Scores:	Max:151.913	Min:22.519	Range:129.394	Mean:72.666	Sum:1598.662	f-deviation:22.625
+
+Global optimization Pair-rounds results:	Took: 4.322s
+Scores:	Max:182.099	Min:26.841	Range:155.258	Mean:88.940	Sum:1956.688	f-deviation:29.531
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 22	k: 9
+
+Local optimization heuristic results:	Took: 4.390s
+Scores:	Max:220.550	Min:50.483	Range:170.067	Mean:135.878	Sum:2989.308	f-deviation:39.614
+
+Global optimization K-rounds results:	Took: 4.393s
+Scores:	Max:210.979	Min:60.114	Range:150.865	Mean:145.067	Sum:3191.479	f-deviation:41.289
+
+Global optimization Pair-rounds results:	Took: 4.408s
+Scores:	Max:227.670	Min:62.423	Range:165.246	Mean:153.275	Sum:3372.056	f-deviation:42.084
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 22	k: 10
+
+Local optimization heuristic results:	Took: 4.365s
+Scores:	Max:404.119	Min:44.695	Range:359.425	Mean:157.236	Sum:3459.199	f-deviation:70.724
+
+Global optimization K-rounds results:	Took: 4.365s
+Scores:	Max:284.363	Min:61.882	Range:222.481	Mean:155.628	Sum:3423.806	f-deviation:49.459
+
+Global optimization Pair-rounds results:	Took: 4.356s
+Scores:	Max:282.913	Min:59.074	Range:223.839	Mean:155.793	Sum:3427.442	f-deviation:52.116
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 22	k: 6
+
+Local optimization heuristic results:	Took: 4.307s
+Scores:	Max:217.915	Min:18.212	Range:199.703	Mean:108.586	Sum:2388.888	f-deviation:39.169
+
+Global optimization K-rounds results:	Took: 4.312s
+Scores:	Max:199.566	Min:21.674	Range:177.892	Mean:110.168	Sum:2423.706	f-deviation:28.067
+
+Global optimization Pair-rounds results:	Took: 4.308s
+Scores:	Max:206.391	Min:20.544	Range:185.847	Mean:109.501	Sum:2409.016	f-deviation:30.210
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 22	k: 11
+
+Local optimization heuristic results:	Took: 4.371s
+Scores:	Max:455.411	Min:69.487	Range:385.924	Mean:179.712	Sum:3953.653	f-deviation:78.181
+
+Global optimization K-rounds results:	Took: 4.373s
+Scores:	Max:323.279	Min:89.169	Range:234.110	Mean:180.188	Sum:3964.129	f-deviation:45.749
+
+Global optimization Pair-rounds results:	Took: 4.376s
+Scores:	Max:357.551	Min:90.765	Range:266.786	Mean:189.794	Sum:4175.468	f-deviation:51.168
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 26	k: 7
+
+Local optimization heuristic results:	Took: 5.151s
+Scores:	Max:418.258	Min:26.270	Range:391.988	Mean:119.579	Sum:3109.056	f-deviation:50.153
+
+Global optimization K-rounds results:	Took: 5.147s
+Scores:	Max:215.583	Min:35.772	Range:179.810	Mean:118.474	Sum:3080.321	f-deviation:37.507
+
+Global optimization Pair-rounds results:	Took: 5.161s
+Scores:	Max:280.835	Min:36.357	Range:244.478	Mean:129.301	Sum:3361.822	f-deviation:43.270
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 26	k: 11
+
+Local optimization heuristic results:	Took: 5.172s
+Scores:	Max:339.633	Min:45.589	Range:294.044	Mean:149.443	Sum:3885.515	f-deviation:52.277
+
+Global optimization K-rounds results:	Took: 5.171s
+Scores:	Max:250.191	Min:62.042	Range:188.149	Mean:156.022	Sum:4056.573	f-deviation:39.064
+
+Global optimization Pair-rounds results:	Took: 5.169s
+Scores:	Max:269.946	Min:62.557	Range:207.389	Mean:163.098	Sum:4240.556	f-deviation:40.281
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 26	k: 4
+
+Local optimization heuristic results:	Took: 5.103s
+Scores:	Max:255.863	Min:17.874	Range:237.990	Mean:71.029	Sum:1846.762	f-deviation:34.513
+
+Global optimization K-rounds results:	Took: 5.097s
+Scores:	Max:153.936	Min:20.325	Range:133.611	Mean:70.263	Sum:1826.828	f-deviation:26.453
+
+Global optimization Pair-rounds results:	Took: 5.093s
+Scores:	Max:190.947	Min:19.827	Range:171.120	Mean:70.710	Sum:1838.460	f-deviation:29.623
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 26	k: 9
+
+Local optimization heuristic results:	Took: 5.182s
+Scores:	Max:354.298	Min:71.114	Range:283.183	Mean:146.764	Sum:3815.858	f-deviation:45.324
+
+Global optimization K-rounds results:	Took: 5.213s
+Scores:	Max:239.692	Min:83.172	Range:156.520	Mean:150.721	Sum:3918.758	f-deviation:27.411
+
+Global optimization Pair-rounds results:	Took: 5.208s
+Scores:	Max:254.870	Min:88.272	Range:166.598	Mean:159.787	Sum:4154.472	f-deviation:30.648
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 26	k: 6
+
+Local optimization heuristic results:	Took: 5.117s
+Scores:	Max:273.075	Min:38.348	Range:234.727	Mean:108.103	Sum:2810.671	f-deviation:45.623
+
+Global optimization K-rounds results:	Took: 5.108s
+Scores:	Max:180.420	Min:42.065	Range:138.355	Mean:109.374	Sum:2843.735	f-deviation:36.597
+
+Global optimization Pair-rounds results:	Took: 5.120s
+Scores:	Max:181.165	Min:41.473	Range:139.692	Mean:108.510	Sum:2821.253	f-deviation:38.120
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 32	k: 10
+
+Local optimization heuristic results:	Took: 6.399s
+Scores:	Max:577.932	Min:44.381	Range:533.551	Mean:137.461	Sum:4398.765	f-deviation:58.267
+
+Global optimization K-rounds results:	Took: 6.403s
+Scores:	Max:259.100	Min:65.130	Range:193.970	Mean:136.289	Sum:4361.247	f-deviation:33.886
+
+Global optimization Pair-rounds results:	Took: 6.390s
+Scores:	Max:315.970	Min:62.689	Range:253.281	Mean:136.374	Sum:4363.957	f-deviation:36.874
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 32	k: 7
+
+Local optimization heuristic results:	Took: 6.361s
+Scores:	Max:297.498	Min:23.781	Range:273.717	Mean:110.525	Sum:3536.786	f-deviation:42.504
+
+Global optimization K-rounds results:	Took: 6.358s
+Scores:	Max:200.362	Min:29.247	Range:171.115	Mean:112.379	Sum:3596.118	f-deviation:30.222
+
+Global optimization Pair-rounds results:	Took: 6.372s
+Scores:	Max:219.133	Min:31.333	Range:187.800	Mean:121.595	Sum:3891.039	f-deviation:35.162
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 32	k: 5
+
+Local optimization heuristic results:	Took: 6.327s
+Scores:	Max:225.952	Min:20.824	Range:205.128	Mean:92.335	Sum:2954.705	f-deviation:31.978
+
+Global optimization K-rounds results:	Took: 6.328s
+Scores:	Max:170.922	Min:25.446	Range:145.476	Mean:94.369	Sum:3019.812	f-deviation:24.690
+
+Global optimization Pair-rounds results:	Took: 6.332s
+Scores:	Max:209.112	Min:27.173	Range:181.939	Mean:105.731	Sum:3383.388	f-deviation:29.461
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 32	k: 3
+
+Local optimization heuristic results:	Took: 6.281s
+Scores:	Max:130.186	Min:22.028	Range:108.158	Mean:58.365	Sum:1867.668	f-deviation:17.699
+
+Global optimization K-rounds results:	Took: 6.279s
+Scores:	Max:101.785	Min:25.852	Range:75.934	Mean:59.946	Sum:1918.282	f-deviation:16.017
+
+Global optimization Pair-rounds results:	Took: 6.286s
+Scores:	Max:123.227	Min:30.784	Range:92.443	Mean:72.245	Sum:2311.840	f-deviation:19.495
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 32	k: 6
+
+Local optimization heuristic results:	Took: 6.371s
+Scores:	Max:325.663	Min:23.797	Range:301.866	Mean:102.171	Sum:3269.458	f-deviation:40.915
+
+Global optimization K-rounds results:	Took: 6.354s
+Scores:	Max:207.707	Min:29.054	Range:178.653	Mean:101.898	Sum:3260.737	f-deviation:29.744
+
+Global optimization Pair-rounds results:	Took: 6.358s
+Scores:	Max:224.284	Min:26.831	Range:197.454	Mean:101.972	Sum:3263.120	f-deviation:32.323
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 30	k: 5
+
+Local optimization heuristic results:	Took: 5.964s
+Scores:	Max:216.234	Min:43.766	Range:172.469	Mean:94.915	Sum:2847.463	f-deviation:30.119
+
+Global optimization K-rounds results:	Took: 5.959s
+Scores:	Max:168.625	Min:52.583	Range:116.042	Mean:96.877	Sum:2906.320	f-deviation:21.882
+
+Global optimization Pair-rounds results:	Took: 5.965s
+Scores:	Max:194.925	Min:57.977	Range:136.949	Mean:108.687	Sum:3260.616	f-deviation:27.178
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 30	k: 4
+
+Local optimization heuristic results:	Took: 5.956s
+Scores:	Max:308.495	Min:13.591	Range:294.904	Mean:80.745	Sum:2422.357	f-deviation:34.649
+
+Global optimization K-rounds results:	Took: 5.954s
+Scores:	Max:172.571	Min:14.265	Range:158.306	Mean:79.663	Sum:2389.902	f-deviation:24.847
+
+Global optimization Pair-rounds results:	Took: 5.943s
+Scores:	Max:226.710	Min:14.021	Range:212.689	Mean:79.962	Sum:2398.863	f-deviation:28.865
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 30	k: 7
+
+Local optimization heuristic results:	Took: 6.004s
+Scores:	Max:278.875	Min:30.222	Range:248.653	Mean:115.696	Sum:3470.871	f-deviation:36.313
+
+Global optimization K-rounds results:	Took: 6.016s
+Scores:	Max:197.885	Min:34.523	Range:163.363	Mean:118.979	Sum:3569.370	f-deviation:27.688
+
+Global optimization Pair-rounds results:	Took: 6.022s
+Scores:	Max:227.605	Min:36.908	Range:190.697	Mean:128.547	Sum:3856.399	f-deviation:31.633
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 30	k: 10
+
+Local optimization heuristic results:	Took: 5.981s
+Scores:	Max:597.061	Min:61.566	Range:535.496	Mean:154.463	Sum:4633.880	f-deviation:74.139
+
+Global optimization K-rounds results:	Took: 5.978s
+Scores:	Max:273.658	Min:59.282	Range:214.376	Mean:150.887	Sum:4526.606	f-deviation:47.571
+
+Global optimization Pair-rounds results:	Took: 5.956s
+Scores:	Max:331.892	Min:59.718	Range:272.173	Mean:151.367	Sum:4541.020	f-deviation:50.687
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 30	k: 11
+
+Local optimization heuristic results:	Took: 6.113s
+Scores:	Max:564.818	Min:32.550	Range:532.268	Mean:155.845	Sum:4675.341	f-deviation:67.167
+
+Global optimization K-rounds results:	Took: 6.107s
+Scores:	Max:250.143	Min:47.180	Range:202.963	Mean:157.031	Sum:4710.941	f-deviation:44.185
+
+Global optimization Pair-rounds results:	Took: 6.105s
+Scores:	Max:312.780	Min:47.107	Range:265.673	Mean:165.384	Sum:4961.526	f-deviation:49.716
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 8	k: 4
+
+Local optimization heuristic results:	Took: 1.594s
+Scores:	Max:215.371	Min:67.673	Range:147.698	Mean:129.475	Sum:1035.804	f-deviation:44.356
+
+Global optimization K-rounds results:	Took: 1.595s
+Scores:	Max:188.777	Min:75.102	Range:113.675	Mean:129.847	Sum:1038.779	f-deviation:32.430
+
+Global optimization Pair-rounds results:	Took: 1.591s
+Scores:	Max:192.696	Min:73.389	Range:119.307	Mean:129.837	Sum:1038.695	f-deviation:38.631
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 8	k: 5
+
+Local optimization heuristic results:	Took: 1.571s
+Scores:	Max:246.080	Min:74.277	Range:171.803	Mean:128.048	Sum:1024.386	f-deviation:30.267
+
+Global optimization K-rounds results:	Took: 1.567s
+Scores:	Max:166.956	Min:90.065	Range:76.891	Mean:128.925	Sum:1031.399	f-deviation:20.436
+
+Global optimization Pair-rounds results:	Took: 1.573s
+Scores:	Max:212.251	Min:97.933	Range:114.318	Mean:146.021	Sum:1168.165	f-deviation:26.122
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 8	k: 6
+
+Local optimization heuristic results:	Took: 1.584s
+Scores:	Max:315.002	Min:61.608	Range:253.395	Mean:137.711	Sum:1101.691	f-deviation:60.883
+
+Global optimization K-rounds results:	Took: 1.575s
+Scores:	Max:225.121	Min:58.622	Range:166.499	Mean:139.054	Sum:1112.432	f-deviation:45.191
+
+Global optimization Pair-rounds results:	Took: 1.577s
+Scores:	Max:240.601	Min:60.729	Range:179.872	Mean:138.284	Sum:1106.270	f-deviation:47.350
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 8	k: 9
+
+Local optimization heuristic results:	Took: 1.588s
+Scores:	Max:547.746	Min:70.054	Range:477.693	Mean:205.064	Sum:1640.515	f-deviation:93.345
+
+Global optimization K-rounds results:	Took: 1.593s
+Scores:	Max:348.774	Min:92.161	Range:256.613	Mean:195.442	Sum:1563.535	f-deviation:57.580
+
+Global optimization Pair-rounds results:	Took: 1.600s
+Scores:	Max:413.162	Min:94.242	Range:318.920	Mean:212.593	Sum:1700.743	f-deviation:67.181
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 8	k: 3
+
+Local optimization heuristic results:	Took: 1.550s
+Scores:	Max:100.872	Min:39.473	Range:61.399	Mean:75.491	Sum:603.932	f-deviation:20.038
+
+Global optimization K-rounds results:	Took: 1.551s
+Scores:	Max:102.141	Min:42.086	Range:60.054	Mean:77.443	Sum:619.546	f-deviation:20.634
+
+Global optimization Pair-rounds results:	Took: 1.552s
+Scores:	Max:124.213	Min:51.815	Range:72.397	Mean:93.616	Sum:748.931	f-deviation:21.837
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 13	k: 5
+
+Local optimization heuristic results:	Took: 2.400s
+Scores:	Max:403.594	Min:125.486	Range:278.108	Mean:203.577	Sum:2646.496	f-deviation:56.795
+
+Global optimization K-rounds results:	Took: 2.395s
+Scores:	Max:298.208	Min:127.801	Range:170.407	Mean:208.236	Sum:2707.065	f-deviation:39.107
+
+Global optimization Pair-rounds results:	Took: 2.401s
+Scores:	Max:327.093	Min:147.971	Range:179.122	Mean:235.416	Sum:3060.403	f-deviation:48.321
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 13	k: 10
+
+Local optimization heuristic results:	Took: 2.452s
+Scores:	Max:914.905	Min:199.378	Range:715.527	Mean:390.202	Sum:5072.624	f-deviation:132.913
+
+Global optimization K-rounds results:	Took: 2.452s
+Scores:	Max:521.532	Min:228.909	Range:292.623	Mean:392.001	Sum:5096.012	f-deviation:78.622
+
+Global optimization Pair-rounds results:	Took: 2.450s
+Scores:	Max:590.830	Min:224.473	Range:366.357	Mean:391.482	Sum:5089.268	f-deviation:85.143
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 13	k: 6
+
+Local optimization heuristic results:	Took: 2.430s
+Scores:	Max:545.471	Min:174.766	Range:370.705	Mean:273.051	Sum:3549.664	f-deviation:61.995
+
+Global optimization K-rounds results:	Took: 2.426s
+Scores:	Max:357.651	Min:207.576	Range:150.075	Mean:279.751	Sum:3636.761	f-deviation:32.914
+
+Global optimization Pair-rounds results:	Took: 2.419s
+Scores:	Max:393.090	Min:198.918	Range:194.172	Mean:277.396	Sum:3606.152	f-deviation:38.850
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 13	k: 4
+
+Local optimization heuristic results:	Took: 2.414s
+Scores:	Max:392.786	Min:93.044	Range:299.741	Mean:205.985	Sum:2677.804	f-deviation:56.130
+
+Global optimization K-rounds results:	Took: 2.406s
+Scores:	Max:290.343	Min:114.184	Range:176.158	Mean:208.857	Sum:2715.142	f-deviation:34.528
+
+Global optimization Pair-rounds results:	Took: 2.411s
+Scores:	Max:315.689	Min:105.525	Range:210.163	Mean:208.592	Sum:2711.697	f-deviation:43.375
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 13	k: 11
+
+Local optimization heuristic results:	Took: 2.484s
+Scores:	Max:1070.728	Min:241.649	Range:829.079	Mean:434.240	Sum:5645.118	f-deviation:155.484
+
+Global optimization K-rounds results:	Took: 2.485s
+Scores:	Max:597.988	Min:318.120	Range:279.868	Mean:435.216	Sum:5657.812	f-deviation:73.821
+
+Global optimization Pair-rounds results:	Took: 2.485s
+Scores:	Max:711.361	Min:321.299	Range:390.062	Mean:461.485	Sum:5999.305	f-deviation:90.752
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 29	k: 10
+
+Local optimization heuristic results:	Took: 5.489s
+Scores:	Max:673.828	Min:124.564	Range:549.264	Mean:278.908	Sum:8088.333	f-deviation:88.866
+
+Global optimization K-rounds results:	Took: 5.499s
+Scores:	Max:412.948	Min:158.362	Range:254.585	Mean:289.712	Sum:8401.640	f-deviation:46.709
+
+Global optimization Pair-rounds results:	Took: 5.482s
+Scores:	Max:421.694	Min:157.707	Range:263.987	Mean:287.338	Sum:8332.809	f-deviation:53.587
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 29	k: 3
+
+Local optimization heuristic results:	Took: 5.395s
+Scores:	Max:247.705	Min:69.711	Range:177.993	Mean:130.058	Sum:3771.669	f-deviation:31.499
+
+Global optimization K-rounds results:	Took: 5.393s
+Scores:	Max:187.180	Min:77.589	Range:109.591	Mean:132.739	Sum:3849.422	f-deviation:23.124
+
+Global optimization Pair-rounds results:	Took: 5.394s
+Scores:	Max:234.718	Min:92.631	Range:142.087	Mean:161.420	Sum:4681.175	f-deviation:30.632
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 29	k: 8
+
+Local optimization heuristic results:	Took: 5.562s
+Scores:	Max:633.274	Min:117.522	Range:515.752	Mean:255.111	Sum:7398.228	f-deviation:87.884
+
+Global optimization K-rounds results:	Took: 5.515s
+Scores:	Max:380.369	Min:167.598	Range:212.771	Mean:259.571	Sum:7527.563	f-deviation:44.019
+
+Global optimization Pair-rounds results:	Took: 5.486s
+Scores:	Max:387.538	Min:157.530	Range:230.007	Mean:259.201	Sum:7516.833	f-deviation:52.272
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 29	k: 11
+
+Local optimization heuristic results:	Took: 5.479s
+Scores:	Max:1139.469	Min:144.956	Range:994.513	Mean:312.498	Sum:9062.439	f-deviation:108.371
+
+Global optimization K-rounds results:	Took: 5.481s
+Scores:	Max:516.646	Min:197.226	Range:319.419	Mean:316.741	Sum:9185.499	f-deviation:48.836
+
+Global optimization Pair-rounds results:	Took: 5.494s
+Scores:	Max:643.844	Min:200.256	Range:443.588	Mean:333.017	Sum:9657.489	f-deviation:57.383
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 29	k: 4
+
+Local optimization heuristic results:	Took: 5.383s
+Scores:	Max:359.442	Min:48.243	Range:311.199	Mean:153.218	Sum:4443.331	f-deviation:53.684
+
+Global optimization K-rounds results:	Took: 5.382s
+Scores:	Max:252.417	Min:56.812	Range:195.605	Mean:153.747	Sum:4458.663	f-deviation:35.887
+
+Global optimization Pair-rounds results:	Took: 5.377s
+Scores:	Max:280.777	Min:52.062	Range:228.716	Mean:152.497	Sum:4422.415	f-deviation:41.611
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 22	k: 5
+
+Local optimization heuristic results:	Took: 4.077s
+Scores:	Max:659.391	Min:98.074	Range:561.317	Mean:193.863	Sum:4264.993	f-deviation:59.681
+
+Global optimization K-rounds results:	Took: 4.076s
+Scores:	Max:378.133	Min:104.016	Range:274.118	Mean:192.927	Sum:4244.396	f-deviation:34.946
+
+Global optimization Pair-rounds results:	Took: 4.089s
+Scores:	Max:507.325	Min:120.104	Range:387.222	Mean:219.536	Sum:4829.792	f-deviation:43.620
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 22	k: 6
+
+Local optimization heuristic results:	Took: 4.065s
+Scores:	Max:471.337	Min:120.847	Range:350.491	Mean:217.401	Sum:4782.831	f-deviation:55.760
+
+Global optimization K-rounds results:	Took: 4.067s
+Scores:	Max:303.126	Min:143.756	Range:159.369	Mean:224.987	Sum:4949.717	f-deviation:37.433
+
+Global optimization Pair-rounds results:	Took: 4.067s
+Scores:	Max:327.588	Min:141.786	Range:185.802	Mean:222.033	Sum:4884.731	f-deviation:40.300
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 22	k: 4
+
+Local optimization heuristic results:	Took: 4.051s
+Scores:	Max:397.505	Min:96.319	Range:301.186	Mean:175.482	Sum:3860.614	f-deviation:48.554
+
+Global optimization K-rounds results:	Took: 4.051s
+Scores:	Max:238.283	Min:115.800	Range:122.484	Mean:178.171	Sum:3919.759	f-deviation:32.684
+
+Global optimization Pair-rounds results:	Took: 4.050s
+Scores:	Max:302.370	Min:105.672	Range:196.698	Mean:175.826	Sum:3868.181	f-deviation:36.837
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 22	k: 8
+
+Local optimization heuristic results:	Took: 4.104s
+Scores:	Max:770.960	Min:147.175	Range:623.786	Mean:277.001	Sum:6094.026	f-deviation:106.531
+
+Global optimization K-rounds results:	Took: 4.105s
+Scores:	Max:401.600	Min:183.149	Range:218.451	Mean:276.642	Sum:6086.135	f-deviation:59.648
+
+Global optimization Pair-rounds results:	Took: 4.114s
+Scores:	Max:482.399	Min:181.236	Range:301.164	Mean:276.139	Sum:6075.065	f-deviation:69.002
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 22	k: 10
+
+Local optimization heuristic results:	Took: 4.130s
+Scores:	Max:787.518	Min:82.706	Range:704.812	Mean:315.820	Sum:6948.031	f-deviation:113.748
+
+Global optimization K-rounds results:	Took: 4.130s
+Scores:	Max:513.975	Min:106.508	Range:407.467	Mean:317.850	Sum:6992.698	f-deviation:57.135
+
+Global optimization Pair-rounds results:	Took: 4.127s
+Scores:	Max:539.890	Min:101.793	Range:438.097	Mean:317.213	Sum:6978.694	f-deviation:65.835
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 26	k: 11
+
+Local optimization heuristic results:	Took: 4.874s
+Scores:	Max:872.041	Min:137.532	Range:734.509	Mean:300.288	Sum:7807.496	f-deviation:92.486
+
+Global optimization K-rounds results:	Took: 4.878s
+Scores:	Max:410.565	Min:120.593	Range:289.972	Mean:313.624	Sum:8154.225	f-deviation:53.197
+
+Global optimization Pair-rounds results:	Took: 4.890s
+Scores:	Max:499.646	Min:128.312	Range:371.334	Mean:328.209	Sum:8533.436	f-deviation:57.898
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 26	k: 9
+
+Local optimization heuristic results:	Took: 4.862s
+Scores:	Max:786.837	Min:112.373	Range:674.464	Mean:291.818	Sum:7587.261	f-deviation:89.903
+
+Global optimization K-rounds results:	Took: 4.863s
+Scores:	Max:391.870	Min:137.964	Range:253.905	Mean:299.717	Sum:7792.645	f-deviation:44.969
+
+Global optimization Pair-rounds results:	Took: 4.878s
+Scores:	Max:490.146	Min:145.044	Range:345.102	Mean:318.687	Sum:8285.873	f-deviation:51.563
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 26	k: 7
+
+Local optimization heuristic results:	Took: 4.814s
+Scores:	Max:633.614	Min:122.817	Range:510.797	Mean:241.110	Sum:6268.851	f-deviation:76.334
+
+Global optimization K-rounds results:	Took: 4.824s
+Scores:	Max:337.752	Min:142.276	Range:195.476	Mean:245.224	Sum:6375.814	f-deviation:48.008
+
+Global optimization Pair-rounds results:	Took: 4.831s
+Scores:	Max:433.441	Min:150.994	Range:282.447	Mean:265.481	Sum:6902.493	f-deviation:55.474
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 26	k: 5
+
+Local optimization heuristic results:	Took: 4.825s
+Scores:	Max:648.881	Min:100.954	Range:547.927	Mean:183.489	Sum:4770.722	f-deviation:46.621
+
+Global optimization K-rounds results:	Took: 4.819s
+Scores:	Max:358.635	Min:119.987	Range:238.648	Mean:185.210	Sum:4815.462	f-deviation:30.653
+
+Global optimization Pair-rounds results:	Took: 4.834s
+Scores:	Max:490.226	Min:130.574	Range:359.652	Mean:209.630	Sum:5450.370	f-deviation:38.574
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 26	k: 3
+
+Local optimization heuristic results:	Took: 4.777s
+Scores:	Max:323.937	Min:76.868	Range:247.070	Mean:134.055	Sum:3485.440	f-deviation:34.288
+
+Global optimization K-rounds results:	Took: 4.782s
+Scores:	Max:204.314	Min:80.807	Range:123.507	Mean:136.632	Sum:3552.437	f-deviation:22.620
+
+Global optimization Pair-rounds results:	Took: 4.794s
+Scores:	Max:301.620	Min:96.475	Range:205.146	Mean:165.832	Sum:4311.622	f-deviation:31.833
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 15	k: 3
+
+Local optimization heuristic results:	Took: 2.757s
+Scores:	Max:360.119	Min:80.817	Range:279.302	Mean:156.972	Sum:2354.579	f-deviation:44.451
+
+Global optimization K-rounds results:	Took: 2.758s
+Scores:	Max:242.708	Min:90.046	Range:152.662	Mean:158.961	Sum:2384.409	f-deviation:30.462
+
+Global optimization Pair-rounds results:	Took: 2.765s
+Scores:	Max:349.032	Min:107.432	Range:241.600	Mean:191.397	Sum:2870.949	f-deviation:41.003
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 15	k: 11
+
+Local optimization heuristic results:	Took: 2.809s
+Scores:	Max:1026.737	Min:236.796	Range:789.941	Mean:396.628	Sum:5949.424	f-deviation:144.898
+
+Global optimization K-rounds results:	Took: 2.810s
+Scores:	Max:559.772	Min:280.742	Range:279.029	Mean:398.280	Sum:5974.207	f-deviation:71.853
+
+Global optimization Pair-rounds results:	Took: 2.826s
+Scores:	Max:667.458	Min:287.165	Range:380.293	Mean:420.093	Sum:6301.399	f-deviation:85.072
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 15	k: 10
+
+Local optimization heuristic results:	Took: 2.807s
+Scores:	Max:671.896	Min:200.321	Range:471.575	Mean:355.041	Sum:5325.612	f-deviation:98.155
+
+Global optimization K-rounds results:	Took: 2.809s
+Scores:	Max:465.216	Min:257.940	Range:207.276	Mean:367.384	Sum:5510.758	f-deviation:61.725
+
+Global optimization Pair-rounds results:	Took: 2.816s
+Scores:	Max:470.543	Min:250.301	Range:220.242	Mean:364.804	Sum:5472.060	f-deviation:66.326
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 15	k: 9
+
+Local optimization heuristic results:	Took: 2.808s
+Scores:	Max:788.751	Min:139.820	Range:648.931	Mean:346.872	Sum:5203.077	f-deviation:147.539
+
+Global optimization K-rounds results:	Took: 2.807s
+Scores:	Max:586.995	Min:179.726	Range:407.269	Mean:342.826	Sum:5142.383	f-deviation:74.471
+
+Global optimization Pair-rounds results:	Took: 2.822s
+Scores:	Max:655.661	Min:187.870	Range:467.790	Mean:368.148	Sum:5522.216	f-deviation:90.466
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 15	k: 8
+
+Local optimization heuristic results:	Took: 2.789s
+Scores:	Max:709.076	Min:162.120	Range:546.955	Mean:299.245	Sum:4488.681	f-deviation:85.061
+
+Global optimization K-rounds results:	Took: 2.784s
+Scores:	Max:409.815	Min:199.763	Range:210.052	Mean:304.350	Sum:4565.247	f-deviation:49.736
+
+Global optimization Pair-rounds results:	Took: 2.788s
+Scores:	Max:473.954	Min:191.421	Range:282.533	Mean:304.393	Sum:4565.896	f-deviation:58.518
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 10	k: 5
+
+Local optimization heuristic results:	Took: 1.848s
+Scores:	Max:631.348	Min:180.476	Range:450.872	Mean:265.749	Sum:2657.492	f-deviation:82.650
+
+Global optimization K-rounds results:	Took: 1.848s
+Scores:	Max:405.386	Min:203.083	Range:202.303	Mean:265.004	Sum:2650.042	f-deviation:47.384
+
+Global optimization Pair-rounds results:	Took: 1.853s
+Scores:	Max:538.450	Min:226.329	Range:312.121	Mean:301.236	Sum:3012.362	f-deviation:64.479
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 10	k: 3
+
+Local optimization heuristic results:	Took: 1.840s
+Scores:	Max:412.718	Min:104.388	Range:308.329	Mean:174.630	Sum:1746.299	f-deviation:58.701
+
+Global optimization K-rounds results:	Took: 1.839s
+Scores:	Max:291.509	Min:109.232	Range:182.277	Mean:173.534	Sum:1735.338	f-deviation:41.025
+
+Global optimization Pair-rounds results:	Took: 1.843s
+Scores:	Max:414.825	Min:137.955	Range:276.871	Mean:213.472	Sum:2134.725	f-deviation:56.087
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 10	k: 4
+
+Local optimization heuristic results:	Took: 1.847s
+Scores:	Max:504.906	Min:131.014	Range:373.892	Mean:249.422	Sum:2494.225	f-deviation:81.585
+
+Global optimization K-rounds results:	Took: 1.848s
+Scores:	Max:333.500	Min:141.363	Range:192.137	Mean:249.966	Sum:2499.661	f-deviation:48.125
+
+Global optimization Pair-rounds results:	Took: 1.847s
+Scores:	Max:408.842	Min:140.138	Range:268.704	Mean:249.670	Sum:2496.700	f-deviation:61.660
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 10	k: 11
+
+Local optimization heuristic results:	Took: 1.891s
+Scores:	Max:803.565	Min:229.366	Range:574.199	Mean:435.468	Sum:4354.681	f-deviation:140.436
+
+Global optimization K-rounds results:	Took: 1.891s
+Scores:	Max:580.767	Min:249.286	Range:331.481	Mean:443.326	Sum:4433.261	f-deviation:75.037
+
+Global optimization Pair-rounds results:	Took: 1.891s
+Scores:	Max:605.206	Min:260.191	Range:345.016	Mean:469.526	Sum:4695.257	f-deviation:91.282
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 10	k: 10
+
+Local optimization heuristic results:	Took: 1.879s
+Scores:	Max:945.777	Min:236.406	Range:709.371	Mean:455.295	Sum:4552.949	f-deviation:153.460
+
+Global optimization K-rounds results:	Took: 1.882s
+Scores:	Max:597.643	Min:317.310	Range:280.333	Mean:456.341	Sum:4563.415	f-deviation:68.326
+
+Global optimization Pair-rounds results:	Took: 1.875s
+Scores:	Max:638.244	Min:304.554	Range:333.690	Mean:457.056	Sum:4570.557	f-deviation:83.923
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 23	k: 10
+
+Local optimization heuristic results:	Took: 4.322s
+Scores:	Max:957.632	Min:138.161	Range:819.471	Mean:319.601	Sum:7350.820	f-deviation:97.534
+
+Global optimization K-rounds results:	Took: 4.325s
+Scores:	Max:476.190	Min:193.875	Range:282.315	Mean:329.556	Sum:7579.780	f-deviation:61.079
+
+Global optimization Pair-rounds results:	Took: 4.311s
+Scores:	Max:560.866	Min:193.357	Range:367.508	Mean:326.768	Sum:7515.672	f-deviation:62.865
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 23	k: 7
+
+Local optimization heuristic results:	Took: 4.281s
+Scores:	Max:623.820	Min:97.192	Range:526.627	Mean:250.838	Sum:5769.263	f-deviation:83.345
+
+Global optimization K-rounds results:	Took: 4.269s
+Scores:	Max:376.119	Min:120.408	Range:255.711	Mean:253.764	Sum:5836.566	f-deviation:42.788
+
+Global optimization Pair-rounds results:	Took: 4.287s
+Scores:	Max:432.321	Min:125.822	Range:306.499	Mean:275.391	Sum:6333.987	f-deviation:52.254
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 23	k: 9
+
+Local optimization heuristic results:	Took: 4.304s
+Scores:	Max:934.443	Min:140.267	Range:794.176	Mean:293.518	Sum:6750.919	f-deviation:111.256
+
+Global optimization K-rounds results:	Took: 4.340s
+Scores:	Max:485.498	Min:173.928	Range:311.570	Mean:294.435	Sum:6772.006	f-deviation:61.052
+
+Global optimization Pair-rounds results:	Took: 4.319s
+Scores:	Max:595.988	Min:178.187	Range:417.801	Mean:313.321	Sum:7206.377	f-deviation:71.588
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 23	k: 3
+
+Local optimization heuristic results:	Took: 4.233s
+Scores:	Max:235.472	Min:82.066	Range:153.406	Mean:135.329	Sum:3112.575	f-deviation:31.432
+
+Global optimization K-rounds results:	Took: 4.230s
+Scores:	Max:218.523	Min:96.771	Range:121.752	Mean:139.440	Sum:3207.116	f-deviation:24.666
+
+Global optimization Pair-rounds results:	Took: 4.242s
+Scores:	Max:260.346	Min:110.433	Range:149.913	Mean:169.012	Sum:3887.284	f-deviation:30.309
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 23	k: 8
+
+Local optimization heuristic results:	Took: 4.305s
+Scores:	Max:627.652	Min:120.925	Range:506.727	Mean:267.573	Sum:6154.176	f-deviation:84.143
+
+Global optimization K-rounds results:	Took: 4.295s
+Scores:	Max:466.004	Min:149.606	Range:316.398	Mean:276.195	Sum:6352.484	f-deviation:54.922
+
+Global optimization Pair-rounds results:	Took: 4.297s
+Scores:	Max:496.435	Min:141.925	Range:354.510	Mean:274.293	Sum:6308.748	f-deviation:54.999
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 9	k: 3
+
+Local optimization heuristic results:	Took: 1.667s
+Scores:	Max:364.925	Min:145.000	Range:219.925	Mean:198.920	Sum:1790.282	f-deviation:47.387
+
+Global optimization K-rounds results:	Took: 1.669s
+Scores:	Max:264.704	Min:155.173	Range:109.531	Mean:200.969	Sum:1808.720	f-deviation:31.313
+
+Global optimization Pair-rounds results:	Took: 1.672s
+Scores:	Max:370.493	Min:182.284	Range:188.208	Mean:245.026	Sum:2205.234	f-deviation:44.917
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 9	k: 4
+
+Local optimization heuristic results:	Took: 1.654s
+Scores:	Max:296.128	Min:136.242	Range:159.886	Mean:222.218	Sum:1999.958	f-deviation:43.985
+
+Global optimization K-rounds results:	Took: 1.654s
+Scores:	Max:295.760	Min:155.008	Range:140.752	Mean:229.575	Sum:2066.179	f-deviation:29.994
+
+Global optimization Pair-rounds results:	Took: 1.654s
+Scores:	Max:302.762	Min:152.924	Range:149.838	Mean:226.962	Sum:2042.661	f-deviation:29.264
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 9	k: 5
+
+Local optimization heuristic results:	Took: 1.688s
+Scores:	Max:562.158	Min:122.938	Range:439.220	Mean:299.579	Sum:2696.210	f-deviation:79.974
+
+Global optimization K-rounds results:	Took: 1.690s
+Scores:	Max:376.090	Min:142.262	Range:233.827	Mean:302.373	Sum:2721.357	f-deviation:52.251
+
+Global optimization Pair-rounds results:	Took: 1.692s
+Scores:	Max:482.957	Min:161.226	Range:321.731	Mean:340.568	Sum:3065.116	f-deviation:65.285
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 9	k: 8
+
+Local optimization heuristic results:	Took: 1.663s
+Scores:	Max:536.610	Min:184.541	Range:352.069	Mean:312.993	Sum:2816.935	f-deviation:73.952
+
+Global optimization K-rounds results:	Took: 1.664s
+Scores:	Max:426.538	Min:167.792	Range:258.746	Mean:329.579	Sum:2966.214	f-deviation:66.166
+
+Global optimization Pair-rounds results:	Took: 1.663s
+Scores:	Max:407.888	Min:171.419	Range:236.469	Mean:326.618	Sum:2939.561	f-deviation:68.986
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 9	k: 6
+
+Local optimization heuristic results:	Took: 1.667s
+Scores:	Max:522.311	Min:161.944	Range:360.367	Mean:271.963	Sum:2447.671	f-deviation:93.935
+
+Global optimization K-rounds results:	Took: 1.660s
+Scores:	Max:363.598	Min:186.182	Range:177.416	Mean:270.269	Sum:2432.418	f-deviation:50.573
+
+Global optimization Pair-rounds results:	Took: 1.659s
+Scores:	Max:388.935	Min:183.797	Range:205.138	Mean:269.070	Sum:2421.626	f-deviation:61.262
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 28	k: 4
+
+Local optimization heuristic results:	Took: 5.153s
+Scores:	Max:325.013	Min:65.735	Range:259.278	Mean:148.507	Sum:4158.210	f-deviation:41.491
+
+Global optimization K-rounds results:	Took: 5.150s
+Scores:	Max:203.656	Min:80.325	Range:123.331	Mean:151.428	Sum:4239.974	f-deviation:28.081
+
+Global optimization Pair-rounds results:	Took: 5.149s
+Scores:	Max:241.522	Min:73.003	Range:168.518	Mean:149.792	Sum:4194.164	f-deviation:32.425
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 28	k: 10
+
+Local optimization heuristic results:	Took: 5.270s
+Scores:	Max:731.657	Min:176.285	Range:555.372	Mean:307.000	Sum:8595.991	f-deviation:89.983
+
+Global optimization K-rounds results:	Took: 5.272s
+Scores:	Max:393.152	Min:230.473	Range:162.679	Mean:318.825	Sum:8927.105	f-deviation:37.739
+
+Global optimization Pair-rounds results:	Took: 5.273s
+Scores:	Max:410.186	Min:220.104	Range:190.082	Mean:316.709	Sum:8867.864	f-deviation:43.986
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 28	k: 6
+
+Local optimization heuristic results:	Took: 5.222s
+Scores:	Max:423.342	Min:128.522	Range:294.820	Mean:214.326	Sum:6001.142	f-deviation:57.761
+
+Global optimization K-rounds results:	Took: 5.232s
+Scores:	Max:314.286	Min:168.834	Range:145.452	Mean:222.080	Sum:6218.243	f-deviation:34.071
+
+Global optimization Pair-rounds results:	Took: 5.227s
+Scores:	Max:341.050	Min:152.638	Range:188.412	Mean:219.361	Sum:6142.107	f-deviation:39.289
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 28	k: 11
+
+Local optimization heuristic results:	Took: 5.247s
+Scores:	Max:744.069	Min:151.750	Range:592.320	Mean:316.611	Sum:8865.109	f-deviation:104.928
+
+Global optimization K-rounds results:	Took: 5.251s
+Scores:	Max:462.465	Min:224.074	Range:238.391	Mean:325.471	Sum:9113.193	f-deviation:42.002
+
+Global optimization Pair-rounds results:	Took: 5.262s
+Scores:	Max:490.451	Min:225.762	Range:264.688	Mean:341.351	Sum:9557.817	f-deviation:51.215
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 28	k: 3
+
+Local optimization heuristic results:	Took: 5.178s
+Scores:	Max:488.277	Min:65.040	Range:423.236	Mean:137.034	Sum:3836.954	f-deviation:47.609
+
+Global optimization K-rounds results:	Took: 5.180s
+Scores:	Max:301.240	Min:74.094	Range:227.146	Mean:135.874	Sum:3804.479	f-deviation:32.279
+
+Global optimization Pair-rounds results:	Took: 5.194s
+Scores:	Max:455.624	Min:83.391	Range:372.233	Mean:166.635	Sum:4665.783	f-deviation:45.769
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 32	k: 8
+
+Local optimization heuristic results:	Took: 5.987s
+Scores:	Max:769.171	Min:108.594	Range:660.577	Mean:241.899	Sum:7740.781	f-deviation:90.645
+
+Global optimization K-rounds results:	Took: 5.996s
+Scores:	Max:373.169	Min:143.695	Range:229.473	Mean:243.080	Sum:7778.562	f-deviation:46.839
+
+Global optimization Pair-rounds results:	Took: 6.001s
+Scores:	Max:459.698	Min:142.191	Range:317.507	Mean:241.923	Sum:7741.527	f-deviation:54.799
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 32	k: 10
+
+Local optimization heuristic results:	Took: 6.010s
+Scores:	Max:1044.323	Min:120.233	Range:924.090	Mean:288.431	Sum:9229.794	f-deviation:116.826
+
+Global optimization K-rounds results:	Took: 6.013s
+Scores:	Max:501.657	Min:158.950	Range:342.707	Mean:289.099	Sum:9251.157	f-deviation:57.039
+
+Global optimization Pair-rounds results:	Took: 6.005s
+Scores:	Max:571.627	Min:151.683	Range:419.944	Mean:288.759	Sum:9240.294	f-deviation:65.393
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 32	k: 11
+
+Local optimization heuristic results:	Took: 6.028s
+Scores:	Max:794.209	Min:150.138	Range:644.070	Mean:291.900	Sum:9340.804	f-deviation:116.247
+
+Global optimization K-rounds results:	Took: 6.026s
+Scores:	Max:505.112	Min:192.806	Range:312.307	Mean:298.522	Sum:9552.689	f-deviation:56.182
+
+Global optimization Pair-rounds results:	Took: 6.012s
+Scores:	Max:554.361	Min:194.374	Range:359.987	Mean:313.265	Sum:10024.484	f-deviation:68.016
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 32	k: 9
+
+Local optimization heuristic results:	Took: 5.982s
+Scores:	Max:594.284	Min:98.893	Range:495.391	Mean:260.281	Sum:8328.983	f-deviation:91.173
+
+Global optimization K-rounds results:	Took: 5.984s
+Scores:	Max:397.321	Min:143.238	Range:254.084	Mean:271.161	Sum:8677.152	f-deviation:48.799
+
+Global optimization Pair-rounds results:	Took: 5.997s
+Scores:	Max:418.231	Min:144.563	Range:273.668	Mean:286.834	Sum:9178.699	f-deviation:58.108
+
+---------- Test input: ----------
+	Applicants: 7428	Projects: 32	k: 6
+
+Local optimization heuristic results:	Took: 5.943s
+Scores:	Max:486.581	Min:95.617	Range:390.964	Mean:201.894	Sum:6460.593	f-deviation:64.436
+
+Global optimization K-rounds results:	Took: 5.988s
+Scores:	Max:304.934	Min:132.049	Range:172.885	Mean:205.511	Sum:6576.344	f-deviation:38.004
+
+Global optimization Pair-rounds results:	Took: 5.944s
+Scores:	Max:322.213	Min:121.413	Range:200.800	Mean:204.555	Sum:6545.762	f-deviation:46.032
+
+---------- Dataset 1 ----------
+--- 05/02/2020 09:24:58
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 3	k: 9
+
+Local optimization heuristic results:	Took: 7.214s
+Scores:	Max:173.213	Min:155.390	Range:17.823	Mean:164.599	Sum:493.797	f-deviation:6.139
+
+Global optimization K-rounds results:	Took: 7.203s
+Scores:	Max:172.200	Min:157.003	Range:15.196	Mean:165.760	Sum:497.280	f-deviation:5.838
+
+Global optimization Pair-rounds results:	Took: 7.322s
+Scores:	Max:190.707	Min:173.841	Range:16.866	Mean:183.570	Sum:550.711	f-deviation:6.486
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 6	k: 9
+
+Local optimization heuristic results:	Took: 14.310s
+Scores:	Max:163.080	Min:142.264	Range:20.816	Mean:151.500	Sum:908.997	f-deviation:6.857
+
+Global optimization K-rounds results:	Took: 14.314s
+Scores:	Max:163.400	Min:145.453	Range:17.947	Mean:152.993	Sum:917.960	f-deviation:5.799
+
+Global optimization Pair-rounds results:	Took: 14.548s
+Scores:	Max:180.830	Min:161.304	Range:19.527	Mean:168.950	Sum:1013.699	f-deviation:5.706
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 9	k: 9
+
+Local optimization heuristic results:	Took: 21.675s
+Scores:	Max:180.404	Min:141.694	Range:38.710	Mean:156.294	Sum:1406.648	f-deviation:7.216
+
+Global optimization K-rounds results:	Took: 21.653s
+Scores:	Max:178.526	Min:142.155	Range:36.370	Mean:157.162	Sum:1414.454	f-deviation:7.044
+
+Global optimization Pair-rounds results:	Took: 21.939s
+Scores:	Max:198.496	Min:157.636	Range:40.860	Mean:173.816	Sum:1564.344	f-deviation:7.786
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 12	k: 9
+
+Local optimization heuristic results:	Took: 28.780s
+Scores:	Max:174.265	Min:128.819	Range:45.446	Mean:150.523	Sum:1806.272	f-deviation:13.681
+
+Global optimization K-rounds results:	Took: 28.892s
+Scores:	Max:175.680	Min:129.718	Range:45.963	Mean:151.537	Sum:1818.450	f-deviation:13.064
+
+Global optimization Pair-rounds results:	Took: 29.202s
+Scores:	Max:195.373	Min:144.446	Range:50.927	Mean:167.656	Sum:2011.875	f-deviation:14.460
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 15	k: 9
+
+Local optimization heuristic results:	Took: 36.150s
+Scores:	Max:168.442	Min:126.808	Range:41.634	Mean:151.749	Sum:2276.237	f-deviation:9.442
+
+Global optimization K-rounds results:	Took: 36.088s
+Scores:	Max:166.145	Min:128.108	Range:38.036	Mean:153.199	Sum:2297.992	f-deviation:9.050
+
+Global optimization Pair-rounds results:	Took: 36.596s
+Scores:	Max:185.296	Min:142.895	Range:42.401	Mean:169.335	Sum:2540.026	f-deviation:9.996
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 18	k: 9
+
+Local optimization heuristic results:	Took: 43.184s
+Scores:	Max:178.655	Min:133.047	Range:45.608	Mean:153.092	Sum:2755.652	f-deviation:9.615
+
+Global optimization K-rounds results:	Took: 43.225s
+Scores:	Max:173.819	Min:133.429	Range:40.389	Mean:154.526	Sum:2781.461	f-deviation:8.539
+
+Global optimization Pair-rounds results:	Took: 43.772s
+Scores:	Max:192.446	Min:148.971	Range:43.474	Mean:170.794	Sum:3074.301	f-deviation:8.988
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 21	k: 9
+
+Local optimization heuristic results:	Took: 50.398s
+Scores:	Max:179.666	Min:125.865	Range:53.801	Mean:151.848	Sum:3188.806	f-deviation:11.980
+
+Global optimization K-rounds results:	Took: 50.360s
+Scores:	Max:183.411	Min:129.211	Range:54.200	Mean:153.727	Sum:3228.264	f-deviation:11.624
+
+Global optimization Pair-rounds results:	Took: 51.057s
+Scores:	Max:201.656	Min:143.270	Range:58.387	Mean:169.729	Sum:3564.306	f-deviation:12.537
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 24	k: 9
+
+Local optimization heuristic results:	Took: 57.816s
+Scores:	Max:181.426	Min:125.487	Range:55.939	Mean:149.026	Sum:3576.635	f-deviation:11.058
+
+Global optimization K-rounds results:	Took: 57.694s
+Scores:	Max:176.316	Min:127.092	Range:49.224	Mean:150.758	Sum:3618.195	f-deviation:11.093
+
+Global optimization Pair-rounds results:	Took: 58.718s
+Scores:	Max:195.348	Min:140.703	Range:54.644	Mean:166.563	Sum:3997.517	f-deviation:12.244
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 27	k: 9
+
+Local optimization heuristic results:	Took: 65.186s
+Scores:	Max:177.660	Min:123.991	Range:53.669	Mean:148.652	Sum:4013.609	f-deviation:11.384
+
+Global optimization K-rounds results:	Took: 64.899s
+Scores:	Max:178.205	Min:123.613	Range:54.592	Mean:150.335	Sum:4059.042	f-deviation:11.624
+
+Global optimization Pair-rounds results:	Took: 65.732s
+Scores:	Max:198.768	Min:137.215	Range:61.552	Mean:166.029	Sum:4482.770	f-deviation:12.635
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 11	k: 3
+
+Local optimization heuristic results:	Took: 24.245s
+Scores:	Max:62.101	Min:47.485	Range:14.615	Mean:52.852	Sum:581.368	f-deviation:3.053
+
+Global optimization K-rounds results:	Took: 24.227s
+Scores:	Max:62.101	Min:47.485	Range:14.615	Mean:53.095	Sum:584.047	f-deviation:3.171
+
+Global optimization Pair-rounds results:	Took: 24.603s
+Scores:	Max:82.411	Min:63.154	Range:19.257	Mean:70.162	Sum:771.777	f-deviation:4.312
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 11	k: 6
+
+Local optimization heuristic results:	Took: 25.392s
+Scores:	Max:116.683	Min:88.607	Range:28.075	Mean:104.423	Sum:1148.652	f-deviation:6.859
+
+Global optimization K-rounds results:	Took: 25.469s
+Scores:	Max:121.771	Min:87.801	Range:33.971	Mean:105.515	Sum:1160.665	f-deviation:7.170
+
+Global optimization Pair-rounds results:	Took: 25.412s
+Scores:	Max:121.460	Min:88.487	Range:32.972	Mean:105.449	Sum:1159.939	f-deviation:7.121
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 11	k: 9
+
+Local optimization heuristic results:	Took: 26.618s
+Scores:	Max:182.347	Min:140.066	Range:42.282	Mean:157.223	Sum:1729.454	f-deviation:9.235
+
+Global optimization K-rounds results:	Took: 26.549s
+Scores:	Max:183.054	Min:142.733	Range:40.321	Mean:158.791	Sum:1746.706	f-deviation:8.119
+
+Global optimization Pair-rounds results:	Took: 26.885s
+Scores:	Max:202.628	Min:157.955	Range:44.673	Mean:175.296	Sum:1928.255	f-deviation:9.980
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 11	k: 12
+
+Local optimization heuristic results:	Took: 27.490s
+Scores:	Max:221.639	Min:181.142	Range:40.496	Mean:202.033	Sum:2222.362	f-deviation:10.851
+
+Global optimization K-rounds results:	Took: 27.535s
+Scores:	Max:224.839	Min:179.615	Range:45.224	Mean:204.302	Sum:2247.322	f-deviation:10.334
+
+Global optimization Pair-rounds results:	Took: 27.686s
+Scores:	Max:225.390	Min:179.525	Range:45.865	Mean:204.252	Sum:2246.772	f-deviation:10.341
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 11	k: 15
+
+Local optimization heuristic results:	Took: 28.821s
+Scores:	Max:276.022	Min:219.265	Range:56.757	Mean:246.166	Sum:2707.822	f-deviation:12.447
+
+Global optimization K-rounds results:	Took: 28.811s
+Scores:	Max:284.751	Min:219.149	Range:65.602	Mean:249.281	Sum:2742.096	f-deviation:13.383
+
+Global optimization Pair-rounds results:	Took: 29.206s
+Scores:	Max:301.849	Min:234.667	Range:67.183	Mean:264.970	Sum:2914.665	f-deviation:14.119
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 11	k: 18
+
+Local optimization heuristic results:	Took: 29.610s
+Scores:	Max:334.155	Min:273.637	Range:60.518	Mean:294.876	Sum:3243.631	f-deviation:12.041
+
+Global optimization K-rounds results:	Took: 29.668s
+Scores:	Max:327.536	Min:280.729	Range:46.808	Mean:298.635	Sum:3284.988	f-deviation:12.738
+
+Global optimization Pair-rounds results:	Took: 29.780s
+Scores:	Max:326.182	Min:281.532	Range:44.650	Mean:298.418	Sum:3282.594	f-deviation:12.409
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 11	k: 21
+
+Local optimization heuristic results:	Took: 30.642s
+Scores:	Max:419.875	Min:307.448	Range:112.427	Mean:349.253	Sum:3841.782	f-deviation:15.735
+
+Global optimization K-rounds results:	Took: 30.698s
+Scores:	Max:399.902	Min:307.732	Range:92.170	Mean:353.378	Sum:3887.163	f-deviation:15.779
+
+Global optimization Pair-rounds results:	Took: 31.297s
+Scores:	Max:419.565	Min:323.645	Range:95.920	Mean:369.487	Sum:4064.358	f-deviation:16.810
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 11	k: 24
+
+Local optimization heuristic results:	Took: 31.856s
+Scores:	Max:433.025	Min:336.041	Range:96.983	Mean:382.057	Sum:4202.623	f-deviation:24.743
+
+Global optimization K-rounds results:	Took: 31.844s
+Scores:	Max:437.765	Min:333.735	Range:104.030	Mean:386.986	Sum:4256.848	f-deviation:27.003
+
+Global optimization Pair-rounds results:	Took: 32.106s
+Scores:	Max:437.953	Min:333.449	Range:104.503	Mean:386.784	Sum:4254.621	f-deviation:27.060
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 11	k: 27
+
+Local optimization heuristic results:	Took: 32.772s
+Scores:	Max:493.200	Min:357.526	Range:135.674	Mean:431.636	Sum:4748.001	f-deviation:35.205
+
+Global optimization K-rounds results:	Took: 32.864s
+Scores:	Max:476.900	Min:357.978	Range:118.923	Mean:437.329	Sum:4810.615	f-deviation:32.694
+
+Global optimization Pair-rounds results:	Took: 33.328s
+Scores:	Max:493.315	Min:370.532	Range:122.783	Mean:452.608	Sum:4978.686	f-deviation:33.533
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 19	k: 5
+
+Local optimization heuristic results:	Took: 43.367s
+Scores:	Max:103.214	Min:68.558	Range:34.656	Mean:84.498	Sum:1605.453	f-deviation:4.555
+
+Global optimization K-rounds results:	Took: 43.359s
+Scores:	Max:101.944	Min:69.466	Range:32.478	Mean:85.488	Sum:1624.272	f-deviation:4.658
+
+Global optimization Pair-rounds results:	Took: 43.991s
+Scores:	Max:121.899	Min:82.961	Range:38.938	Mean:101.770	Sum:1933.634	f-deviation:5.476
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 19	k: 4
+
+Local optimization heuristic results:	Took: 42.918s
+Scores:	Max:77.988	Min:56.462	Range:21.526	Mean:69.024	Sum:1311.451	f-deviation:4.291
+
+Global optimization K-rounds results:	Took: 42.943s
+Scores:	Max:76.476	Min:57.993	Range:18.483	Mean:69.494	Sum:1320.381	f-deviation:3.830
+
+Global optimization Pair-rounds results:	Took: 42.895s
+Scores:	Max:76.813	Min:58.035	Range:18.778	Mean:69.413	Sum:1318.840	f-deviation:3.972
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 19	k: 7
+
+Local optimization heuristic results:	Took: 44.842s
+Scores:	Max:144.409	Min:99.653	Range:44.756	Mean:115.651	Sum:2197.365	f-deviation:9.029
+
+Global optimization K-rounds results:	Took: 44.481s
+Scores:	Max:140.844	Min:100.302	Range:40.542	Mean:116.784	Sum:2218.894	f-deviation:8.490
+
+Global optimization Pair-rounds results:	Took: 45.079s
+Scores:	Max:160.402	Min:114.723	Range:45.679	Mean:132.732	Sum:2521.913	f-deviation:9.638
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 19	k: 3
+
+Local optimization heuristic results:	Took: 42.048s
+Scores:	Max:59.292	Min:42.075	Range:17.217	Mean:52.237	Sum:992.500	f-deviation:2.749
+
+Global optimization K-rounds results:	Took: 42.049s
+Scores:	Max:58.689	Min:42.985	Range:15.704	Mean:52.467	Sum:996.877	f-deviation:2.576
+
+Global optimization Pair-rounds results:	Took: 42.683s
+Scores:	Max:77.365	Min:55.621	Range:21.744	Mean:69.257	Sum:1315.880	f-deviation:3.320
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 19	k: 9
+
+Local optimization heuristic results:	Took: 45.906s
+Scores:	Max:178.523	Min:137.776	Range:40.746	Mean:150.021	Sum:2850.392	f-deviation:8.629
+
+Global optimization K-rounds results:	Took: 45.820s
+Scores:	Max:175.464	Min:141.075	Range:34.389	Mean:151.649	Sum:2881.324	f-deviation:7.386
+
+Global optimization Pair-rounds results:	Took: 46.385s
+Scores:	Max:193.952	Min:154.909	Range:39.044	Mean:167.521	Sum:3182.894	f-deviation:8.364
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 6	k: 5
+
+Local optimization heuristic results:	Took: 13.671s
+Scores:	Max:94.780	Min:75.295	Range:19.485	Mean:86.140	Sum:516.842	f-deviation:5.884
+
+Global optimization K-rounds results:	Took: 13.746s
+Scores:	Max:94.376	Min:77.749	Range:16.627	Mean:86.815	Sum:520.888	f-deviation:5.683
+
+Global optimization Pair-rounds results:	Took: 13.911s
+Scores:	Max:112.867	Min:91.086	Range:21.780	Mean:103.297	Sum:619.782	f-deviation:6.882
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 6	k: 7
+
+Local optimization heuristic results:	Took: 14.000s
+Scores:	Max:137.629	Min:108.667	Range:28.962	Mean:122.914	Sum:737.485	f-deviation:6.332
+
+Global optimization K-rounds results:	Took: 14.189s
+Scores:	Max:135.978	Min:107.706	Range:28.272	Mean:123.534	Sum:741.205	f-deviation:6.645
+
+Global optimization Pair-rounds results:	Took: 14.221s
+Scores:	Max:154.938	Min:123.488	Range:31.449	Mean:140.425	Sum:842.548	f-deviation:7.454
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 6	k: 6
+
+Local optimization heuristic results:	Took: 13.890s
+Scores:	Max:116.829	Min:92.994	Range:23.835	Mean:104.801	Sum:628.805	f-deviation:7.719
+
+Global optimization K-rounds results:	Took: 14.054s
+Scores:	Max:116.964	Min:93.354	Range:23.611	Mean:105.121	Sum:630.726	f-deviation:8.072
+
+Global optimization Pair-rounds results:	Took: 13.864s
+Scores:	Max:115.954	Min:93.962	Range:21.992	Mean:105.196	Sum:631.179	f-deviation:7.489
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 6	k: 4
+
+Local optimization heuristic results:	Took: 13.438s
+Scores:	Max:77.302	Min:66.969	Range:10.333	Mean:71.169	Sum:427.013	f-deviation:2.793
+
+Global optimization K-rounds results:	Took: 13.408s
+Scores:	Max:77.302	Min:66.615	Range:10.688	Mean:71.340	Sum:428.042	f-deviation:2.814
+
+Global optimization Pair-rounds results:	Took: 13.486s
+Scores:	Max:77.302	Min:66.615	Range:10.688	Mean:71.307	Sum:427.844	f-deviation:2.822
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 6	k: 10
+
+Local optimization heuristic results:	Took: 14.674s
+Scores:	Max:174.849	Min:156.860	Range:17.989	Mean:166.013	Sum:996.079	f-deviation:5.953
+
+Global optimization K-rounds results:	Took: 14.699s
+Scores:	Max:173.931	Min:155.610	Range:18.321	Mean:167.603	Sum:1005.619	f-deviation:5.992
+
+Global optimization Pair-rounds results:	Took: 14.759s
+Scores:	Max:174.189	Min:155.133	Range:19.056	Mean:167.403	Sum:1004.419	f-deviation:6.304
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 24	k: 6
+
+Local optimization heuristic results:	Took: 55.462s
+Scores:	Max:114.259	Min:86.432	Range:27.827	Mean:99.506	Sum:2388.149	f-deviation:6.053
+
+Global optimization K-rounds results:	Took: 55.355s
+Scores:	Max:110.849	Min:88.397	Range:22.452	Mean:100.437	Sum:2410.499	f-deviation:5.747
+
+Global optimization Pair-rounds results:	Took: 55.357s
+Scores:	Max:110.849	Min:89.031	Range:21.819	Mean:100.237	Sum:2405.681	f-deviation:5.776
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 24	k: 3
+
+Local optimization heuristic results:	Took: 52.819s
+Scores:	Max:63.299	Min:42.171	Range:21.128	Mean:52.263	Sum:1254.302	f-deviation:3.950
+
+Global optimization K-rounds results:	Took: 52.901s
+Scores:	Max:62.323	Min:43.406	Range:18.917	Mean:52.649	Sum:1263.571	f-deviation:3.687
+
+Global optimization Pair-rounds results:	Took: 53.646s
+Scores:	Max:82.379	Min:57.854	Range:24.525	Mean:69.256	Sum:1662.140	f-deviation:4.885
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 24	k: 10
+
+Local optimization heuristic results:	Took: 58.466s
+Scores:	Max:182.880	Min:140.504	Range:42.376	Mean:162.143	Sum:3891.426	f-deviation:9.171
+
+Global optimization K-rounds results:	Took: 58.559s
+Scores:	Max:190.976	Min:141.634	Range:49.342	Mean:163.878	Sum:3933.067	f-deviation:8.504
+
+Global optimization Pair-rounds results:	Took: 58.729s
+Scores:	Max:188.820	Min:140.672	Range:48.148	Mean:163.808	Sum:3931.399	f-deviation:8.800
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 24	k: 7
+
+Local optimization heuristic results:	Took: 55.877s
+Scores:	Max:137.652	Min:100.862	Range:36.790	Mean:120.261	Sum:2886.259	f-deviation:7.140
+
+Global optimization K-rounds results:	Took: 55.954s
+Scores:	Max:136.847	Min:105.526	Range:31.321	Mean:121.442	Sum:2914.613	f-deviation:6.758
+
+Global optimization Pair-rounds results:	Took: 57.352s
+Scores:	Max:156.343	Min:119.823	Range:36.519	Mean:137.959	Sum:3311.005	f-deviation:7.619
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 24	k: 8
+
+Local optimization heuristic results:	Took: 57.071s
+Scores:	Max:164.533	Min:122.146	Range:42.387	Mean:135.524	Sum:3252.570	f-deviation:8.243
+
+Global optimization K-rounds results:	Took: 57.056s
+Scores:	Max:164.026	Min:118.666	Range:45.359	Mean:136.721	Sum:3281.306	f-deviation:7.746
+
+Global optimization Pair-rounds results:	Took: 57.096s
+Scores:	Max:164.185	Min:119.678	Range:44.507	Mean:136.474	Sum:3275.367	f-deviation:7.985
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 22	k: 11
+
+Local optimization heuristic results:	Took: 54.231s
+Scores:	Max:210.264	Min:153.727	Range:56.537	Mean:180.412	Sum:3969.066	f-deviation:13.656
+
+Global optimization K-rounds results:	Took: 54.348s
+Scores:	Max:211.799	Min:152.324	Range:59.475	Mean:182.933	Sum:4024.517	f-deviation:12.785
+
+Global optimization Pair-rounds results:	Took: 55.033s
+Scores:	Max:228.357	Min:166.517	Range:61.840	Mean:198.630	Sum:4369.866	f-deviation:14.285
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 22	k: 5
+
+Local optimization heuristic results:	Took: 50.107s
+Scores:	Max:99.744	Min:74.275	Range:25.470	Mean:84.319	Sum:1855.022	f-deviation:5.401
+
+Global optimization K-rounds results:	Took: 50.123s
+Scores:	Max:99.955	Min:76.043	Range:23.912	Mean:85.027	Sum:1870.603	f-deviation:5.337
+
+Global optimization Pair-rounds results:	Took: 50.857s
+Scores:	Max:117.519	Min:90.652	Range:26.867	Mean:101.134	Sum:2224.939	f-deviation:6.039
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 22	k: 4
+
+Local optimization heuristic results:	Took: 49.133s
+Scores:	Max:87.206	Min:59.988	Range:27.218	Mean:69.708	Sum:1533.572	f-deviation:5.856
+
+Global optimization K-rounds results:	Took: 49.101s
+Scores:	Max:86.238	Min:60.271	Range:25.967	Mean:70.498	Sum:1550.948	f-deviation:5.864
+
+Global optimization Pair-rounds results:	Took: 49.148s
+Scores:	Max:86.987	Min:59.929	Range:27.058	Mean:70.370	Sum:1548.136	f-deviation:5.838
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 22	k: 10
+
+Local optimization heuristic results:	Took: 53.575s
+Scores:	Max:191.113	Min:139.674	Range:51.440	Mean:166.256	Sum:3657.636	f-deviation:11.596
+
+Global optimization K-rounds results:	Took: 53.551s
+Scores:	Max:194.478	Min:141.983	Range:52.495	Mean:168.418	Sum:3705.206	f-deviation:10.252
+
+Global optimization Pair-rounds results:	Took: 53.562s
+Scores:	Max:193.227	Min:141.502	Range:51.725	Mean:168.121	Sum:3698.662	f-deviation:10.454
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 22	k: 9
+
+Local optimization heuristic results:	Took: 52.818s
+Scores:	Max:168.939	Min:124.540	Range:44.399	Mean:147.671	Sum:3248.763	f-deviation:9.948
+
+Global optimization K-rounds results:	Took: 52.919s
+Scores:	Max:168.268	Min:130.655	Range:37.613	Mean:149.745	Sum:3294.390	f-deviation:10.077
+
+Global optimization Pair-rounds results:	Took: 53.485s
+Scores:	Max:186.404	Min:143.381	Range:43.024	Mean:165.276	Sum:3636.066	f-deviation:11.176
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 30	k: 3
+
+Local optimization heuristic results:	Took: 66.440s
+Scores:	Max:61.726	Min:43.819	Range:17.907	Mean:51.901	Sum:1557.032	f-deviation:3.534
+
+Global optimization K-rounds results:	Took: 66.439s
+Scores:	Max:62.518	Min:43.819	Range:18.700	Mean:52.223	Sum:1566.681	f-deviation:3.311
+
+Global optimization Pair-rounds results:	Took: 67.384s
+Scores:	Max:82.106	Min:58.488	Range:23.618	Mean:68.834	Sum:2065.024	f-deviation:4.395
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 30	k: 10
+
+Local optimization heuristic results:	Took: 72.944s
+Scores:	Max:190.095	Min:138.768	Range:51.327	Mean:163.688	Sum:4910.643	f-deviation:9.531
+
+Global optimization K-rounds results:	Took: 72.981s
+Scores:	Max:188.414	Min:142.635	Range:45.779	Mean:166.033	Sum:4980.981	f-deviation:8.859
+
+Global optimization Pair-rounds results:	Took: 73.028s
+Scores:	Max:189.118	Min:142.206	Range:46.912	Mean:165.922	Sum:4977.654	f-deviation:9.010
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 30	k: 8
+
+Local optimization heuristic results:	Took: 71.099s
+Scores:	Max:150.897	Min:104.843	Range:46.055	Mean:130.807	Sum:3924.207	f-deviation:11.740
+
+Global optimization K-rounds results:	Took: 71.118s
+Scores:	Max:156.806	Min:106.667	Range:50.139	Mean:132.504	Sum:3975.132	f-deviation:11.980
+
+Global optimization Pair-rounds results:	Took: 71.079s
+Scores:	Max:155.531	Min:104.761	Range:50.770	Mean:132.218	Sum:3966.548	f-deviation:11.950
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 30	k: 7
+
+Local optimization heuristic results:	Took: 70.082s
+Scores:	Max:138.382	Min:93.612	Range:44.770	Mean:116.170	Sum:3485.091	f-deviation:10.362
+
+Global optimization K-rounds results:	Took: 70.209s
+Scores:	Max:139.695	Min:93.478	Range:46.217	Mean:117.461	Sum:3523.817	f-deviation:9.959
+
+Global optimization Pair-rounds results:	Took: 71.187s
+Scores:	Max:159.574	Min:106.209	Range:53.366	Mean:133.384	Sum:4001.519	f-deviation:11.465
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 30	k: 9
+
+Local optimization heuristic results:	Took: 72.101s
+Scores:	Max:182.561	Min:117.831	Range:64.731	Mean:149.100	Sum:4473.005	f-deviation:12.360
+
+Global optimization K-rounds results:	Took: 72.001s
+Scores:	Max:181.239	Min:122.753	Range:58.486	Mean:151.099	Sum:4532.961	f-deviation:11.353
+
+Global optimization Pair-rounds results:	Took: 72.973s
+Scores:	Max:200.805	Min:134.887	Range:65.918	Mean:166.906	Sum:5007.189	f-deviation:12.513
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 34	k: 6
+
+Local optimization heuristic results:	Took: 78.267s
+Scores:	Max:115.856	Min:89.280	Range:26.576	Mean:102.375	Sum:3480.734	f-deviation:6.584
+
+Global optimization K-rounds results:	Took: 78.687s
+Scores:	Max:120.209	Min:91.285	Range:28.924	Mean:103.219	Sum:3509.429	f-deviation:6.090
+
+Global optimization Pair-rounds results:	Took: 78.381s
+Scores:	Max:117.775	Min:90.565	Range:27.210	Mean:103.088	Sum:3505.007	f-deviation:6.258
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 34	k: 4
+
+Local optimization heuristic results:	Took: 76.183s
+Scores:	Max:82.424	Min:55.800	Range:26.624	Mean:67.505	Sum:2295.171	f-deviation:4.398
+
+Global optimization K-rounds results:	Took: 76.104s
+Scores:	Max:80.188	Min:54.921	Range:25.267	Mean:68.097	Sum:2315.302	f-deviation:4.388
+
+Global optimization Pair-rounds results:	Took: 76.198s
+Scores:	Max:81.288	Min:55.652	Range:25.636	Mean:67.816	Sum:2305.736	f-deviation:4.259
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 34	k: 7
+
+Local optimization heuristic results:	Took: 79.527s
+Scores:	Max:152.809	Min:96.510	Range:56.299	Mean:115.988	Sum:3943.607	f-deviation:10.674
+
+Global optimization K-rounds results:	Took: 80.693s
+Scores:	Max:146.424	Min:102.077	Range:44.347	Mean:117.125	Sum:3982.256	f-deviation:9.449
+
+Global optimization Pair-rounds results:	Took: 80.574s
+Scores:	Max:167.541	Min:115.188	Range:52.353	Mean:132.915	Sum:4519.125	f-deviation:10.963
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 34	k: 8
+
+Local optimization heuristic results:	Took: 80.747s
+Scores:	Max:159.955	Min:113.864	Range:46.090	Mean:133.518	Sum:4539.596	f-deviation:7.871
+
+Global optimization K-rounds results:	Took: 80.986s
+Scores:	Max:155.642	Min:116.876	Range:38.767	Mean:135.403	Sum:4603.691	f-deviation:7.166
+
+Global optimization Pair-rounds results:	Took: 80.666s
+Scores:	Max:156.140	Min:115.214	Range:40.926	Mean:135.141	Sum:4594.788	f-deviation:7.313
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 34	k: 11
+
+Local optimization heuristic results:	Took: 83.776s
+Scores:	Max:218.500	Min:160.165	Range:58.335	Mean:182.460	Sum:6203.624	f-deviation:11.901
+
+Global optimization K-rounds results:	Took: 83.899s
+Scores:	Max:209.255	Min:164.069	Range:45.185	Mean:185.504	Sum:6307.129	f-deviation:11.351
+
+Global optimization Pair-rounds results:	Took: 84.897s
+Scores:	Max:228.184	Min:179.752	Range:48.432	Mean:201.115	Sum:6837.907	f-deviation:12.178
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 9	k: 8
+
+Local optimization heuristic results:	Took: 21.280s
+Scores:	Max:154.048	Min:132.490	Range:21.558	Mean:143.848	Sum:1294.632	f-deviation:7.625
+
+Global optimization K-rounds results:	Took: 21.314s
+Scores:	Max:156.590	Min:130.330	Range:26.260	Mean:145.263	Sum:1307.368	f-deviation:8.110
+
+Global optimization Pair-rounds results:	Took: 21.274s
+Scores:	Max:154.945	Min:131.544	Range:23.401	Mean:145.000	Sum:1304.997	f-deviation:7.861
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 9	k: 5
+
+Local optimization heuristic results:	Took: 20.558s
+Scores:	Max:104.258	Min:77.938	Range:26.319	Mean:88.451	Sum:796.056	f-deviation:4.736
+
+Global optimization K-rounds results:	Took: 20.529s
+Scores:	Max:106.899	Min:78.254	Range:28.644	Mean:89.140	Sum:802.257	f-deviation:5.249
+
+Global optimization Pair-rounds results:	Took: 20.797s
+Scores:	Max:126.157	Min:93.362	Range:32.795	Mean:106.231	Sum:956.077	f-deviation:5.856
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 9	k: 10
+
+Local optimization heuristic results:	Took: 21.863s
+Scores:	Max:194.875	Min:153.681	Range:41.193	Mean:171.659	Sum:1544.927	f-deviation:10.582
+
+Global optimization K-rounds results:	Took: 21.832s
+Scores:	Max:202.635	Min:154.534	Range:48.102	Mean:173.686	Sum:1563.178	f-deviation:11.784
+
+Global optimization Pair-rounds results:	Took: 21.885s
+Scores:	Max:202.635	Min:154.721	Range:47.914	Mean:173.394	Sum:1560.542	f-deviation:11.548
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 9	k: 6
+
+Local optimization heuristic results:	Took: 20.839s
+Scores:	Max:120.669	Min:92.420	Range:28.250	Mean:104.473	Sum:940.255	f-deviation:7.486
+
+Global optimization K-rounds results:	Took: 20.849s
+Scores:	Max:120.827	Min:95.197	Range:25.630	Mean:105.283	Sum:947.545	f-deviation:6.761
+
+Global optimization Pair-rounds results:	Took: 20.829s
+Scores:	Max:121.217	Min:94.138	Range:27.079	Mean:105.318	Sum:947.864	f-deviation:7.207
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 9	k: 4
+
+Local optimization heuristic results:	Took: 20.224s
+Scores:	Max:75.265	Min:67.182	Range:8.083	Mean:70.977	Sum:638.796	f-deviation:2.251
+
+Global optimization K-rounds results:	Took: 20.157s
+Scores:	Max:75.536	Min:67.432	Range:8.104	Mean:71.484	Sum:643.357	f-deviation:2.698
+
+Global optimization Pair-rounds results:	Took: 20.207s
+Scores:	Max:75.536	Min:67.645	Range:7.891	Mean:71.431	Sum:642.878	f-deviation:2.600
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 26	k: 4
+
+Local optimization heuristic results:	Took: 58.204s
+Scores:	Max:80.693	Min:60.585	Range:20.109	Mean:69.841	Sum:1815.864	f-deviation:4.272
+
+Global optimization K-rounds results:	Took: 58.429s
+Scores:	Max:79.485	Min:61.151	Range:18.335	Mean:70.279	Sum:1827.257	f-deviation:3.993
+
+Global optimization Pair-rounds results:	Took: 58.328s
+Scores:	Max:80.215	Min:61.827	Range:18.389	Mean:70.105	Sum:1822.737	f-deviation:3.938
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 26	k: 7
+
+Local optimization heuristic results:	Took: 60.703s
+Scores:	Max:137.319	Min:92.466	Range:44.852	Mean:116.506	Sum:3029.162	f-deviation:8.020
+
+Global optimization K-rounds results:	Took: 60.802s
+Scores:	Max:139.276	Min:93.954	Range:45.322	Mean:117.702	Sum:3060.252	f-deviation:7.194
+
+Global optimization Pair-rounds results:	Took: 61.658s
+Scores:	Max:158.697	Min:106.919	Range:51.778	Mean:133.775	Sum:3478.146	f-deviation:8.577
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 26	k: 9
+
+Local optimization heuristic results:	Took: 62.578s
+Scores:	Max:174.988	Min:126.047	Range:48.941	Mean:149.787	Sum:3894.461	f-deviation:11.653
+
+Global optimization K-rounds results:	Took: 62.418s
+Scores:	Max:177.450	Min:127.132	Range:50.317	Mean:151.465	Sum:3938.078	f-deviation:10.501
+
+Global optimization Pair-rounds results:	Took: 63.306s
+Scores:	Max:193.586	Min:140.832	Range:52.754	Mean:167.272	Sum:4349.081	f-deviation:11.568
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 26	k: 5
+
+Local optimization heuristic results:	Took: 59.005s
+Scores:	Max:95.016	Min:72.843	Range:22.173	Mean:84.761	Sum:2203.787	f-deviation:5.215
+
+Global optimization K-rounds results:	Took: 58.989s
+Scores:	Max:97.621	Min:74.628	Range:22.993	Mean:85.779	Sum:2230.258	f-deviation:5.662
+
+Global optimization Pair-rounds results:	Took: 59.960s
+Scores:	Max:115.387	Min:88.176	Range:27.211	Mean:101.992	Sum:2651.780	f-deviation:6.660
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 26	k: 11
+
+Local optimization heuristic results:	Took: 64.114s
+Scores:	Max:211.979	Min:152.612	Range:59.367	Mean:181.856	Sum:4728.252	f-deviation:11.496
+
+Global optimization K-rounds results:	Took: 64.267s
+Scores:	Max:217.136	Min:153.767	Range:63.369	Mean:184.875	Sum:4806.760	f-deviation:12.754
+
+Global optimization Pair-rounds results:	Took: 64.942s
+Scores:	Max:234.490	Min:167.657	Range:66.833	Mean:200.537	Sum:5213.970	f-deviation:13.522
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 27	k: 7
+
+Local optimization heuristic results:	Took: 62.842s
+Scores:	Max:147.511	Min:102.145	Range:45.367	Mean:118.988	Sum:3212.679	f-deviation:8.248
+
+Global optimization K-rounds results:	Took: 63.044s
+Scores:	Max:141.060	Min:103.775	Range:37.285	Mean:120.088	Sum:3242.381	f-deviation:7.810
+
+Global optimization Pair-rounds results:	Took: 64.158s
+Scores:	Max:162.434	Min:117.368	Range:45.066	Mean:136.198	Sum:3677.357	f-deviation:8.885
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 27	k: 4
+
+Local optimization heuristic results:	Took: 60.777s
+Scores:	Max:80.243	Min:52.065	Range:28.178	Mean:66.784	Sum:1803.175	f-deviation:6.049
+
+Global optimization K-rounds results:	Took: 60.804s
+Scores:	Max:82.363	Min:53.209	Range:29.153	Mean:67.077	Sum:1811.072	f-deviation:5.737
+
+Global optimization Pair-rounds results:	Took: 60.898s
+Scores:	Max:82.668	Min:52.360	Range:30.309	Mean:67.013	Sum:1809.357	f-deviation:5.813
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 27	k: 6
+
+Local optimization heuristic results:	Took: 62.465s
+Scores:	Max:113.616	Min:81.713	Range:31.903	Mean:100.684	Sum:2718.459	f-deviation:7.422
+
+Global optimization K-rounds results:	Took: 62.363s
+Scores:	Max:116.933	Min:84.726	Range:32.207	Mean:101.462	Sum:2739.481	f-deviation:7.019
+
+Global optimization Pair-rounds results:	Took: 62.437s
+Scores:	Max:116.349	Min:83.318	Range:33.031	Mean:101.273	Sum:2734.375	f-deviation:6.995
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 27	k: 10
+
+Local optimization heuristic results:	Took: 65.756s
+Scores:	Max:189.355	Min:149.604	Range:39.751	Mean:168.218	Sum:4541.890	f-deviation:8.806
+
+Global optimization K-rounds results:	Took: 65.807s
+Scores:	Max:189.181	Min:149.659	Range:39.521	Mean:170.890	Sum:4614.028	f-deviation:8.248
+
+Global optimization Pair-rounds results:	Took: 65.874s
+Scores:	Max:188.001	Min:150.629	Range:37.371	Mean:170.478	Sum:4602.895	f-deviation:8.222
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 27	k: 5
+
+Local optimization heuristic results:	Took: 61.399s
+Scores:	Max:100.269	Min:72.870	Range:27.399	Mean:85.577	Sum:2310.591	f-deviation:5.478
+
+Global optimization K-rounds results:	Took: 61.457s
+Scores:	Max:102.595	Min:75.341	Range:27.254	Mean:86.095	Sum:2324.564	f-deviation:5.589
+
+Global optimization Pair-rounds results:	Took: 62.273s
+Scores:	Max:120.748	Min:88.062	Range:32.686	Mean:102.358	Sum:2763.661	f-deviation:6.875
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 12	k: 8
+
+Local optimization heuristic results:	Took: 28.502s
+Scores:	Max:141.966	Min:116.951	Range:25.015	Mean:130.769	Sum:1569.231	f-deviation:7.073
+
+Global optimization K-rounds results:	Took: 28.501s
+Scores:	Max:145.638	Min:119.371	Range:26.267	Mean:132.022	Sum:1584.269	f-deviation:6.976
+
+Global optimization Pair-rounds results:	Took: 28.482s
+Scores:	Max:145.743	Min:119.401	Range:26.342	Mean:131.703	Sum:1580.440	f-deviation:6.715
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 12	k: 6
+
+Local optimization heuristic results:	Took: 27.739s
+Scores:	Max:112.215	Min:88.566	Range:23.649	Mean:100.644	Sum:1207.726	f-deviation:4.664
+
+Global optimization K-rounds results:	Took: 27.740s
+Scores:	Max:113.047	Min:91.171	Range:21.877	Mean:101.922	Sum:1223.060	f-deviation:4.506
+
+Global optimization Pair-rounds results:	Took: 27.717s
+Scores:	Max:113.143	Min:90.003	Range:23.140	Mean:101.841	Sum:1222.087	f-deviation:4.519
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 12	k: 5
+
+Local optimization heuristic results:	Took: 27.254s
+Scores:	Max:104.578	Min:80.988	Range:23.590	Mean:88.720	Sum:1064.645	f-deviation:3.549
+
+Global optimization K-rounds results:	Took: 27.288s
+Scores:	Max:105.729	Min:80.837	Range:24.892	Mean:89.317	Sum:1071.801	f-deviation:4.154
+
+Global optimization Pair-rounds results:	Took: 27.686s
+Scores:	Max:126.013	Min:96.200	Range:29.814	Mean:106.245	Sum:1274.942	f-deviation:4.567
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 12	k: 3
+
+Local optimization heuristic results:	Took: 26.655s
+Scores:	Max:60.334	Min:47.059	Range:13.275	Mean:52.914	Sum:634.970	f-deviation:3.690
+
+Global optimization K-rounds results:	Took: 26.607s
+Scores:	Max:61.583	Min:47.059	Range:14.524	Mean:53.322	Sum:639.867	f-deviation:3.982
+
+Global optimization Pair-rounds results:	Took: 26.979s
+Scores:	Max:81.364	Min:61.064	Range:20.299	Mean:70.267	Sum:843.201	f-deviation:5.146
+
+---------- Test input: ----------
+	Applicants: 267993	Projects: 12	k: 11
+
+Local optimization heuristic results:	Took: 29.633s
+Scores:	Max:203.809	Min:152.513	Range:51.297	Mean:176.132	Sum:2113.586	f-deviation:12.332
+
+Global optimization K-rounds results:	Took: 29.586s
+Scores:	Max:206.156	Min:153.464	Range:52.692	Mean:177.580	Sum:2130.956	f-deviation:11.924
+
+Global optimization Pair-rounds results:	Took: 29.943s
+Scores:	Max:224.222	Min:166.760	Range:57.462	Mean:192.937	Sum:2315.244	f-deviation:12.905
+
+---------- Plot images ----------
+--- 05/02/2020 11:56:40
+
+---------- END ----------
+--- 05/02/2020 11:56:42
