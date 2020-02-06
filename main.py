@@ -481,27 +481,27 @@ def save_print_alg_results(full_output, k, results, set_p, alg_id):
 
 
 def plot_graphs():
-    fig_time, axs_time = plt.subplots(nrows=2, ncols=2, figsize=(10, 10))
+    fig_time, axs_time = plt.subplots(nrows=2, ncols=2, figsize=(14, 10))
 
     # results_time.png for DBLP
-    subplot_time_data(axs_time, 0, 0, dt_time_p[0], "Amount of projects", "DBLP dataset")
-    subplot_time_data(axs_time, 0, 1, dt_time_k[0], "k", "DBLP dataset")
+    subplot_time_data(axs_time, 0, 0, dt_time_p[0], "Amount of projects", "DBLP dataset (varying amount of projects)")
+    subplot_time_data(axs_time, 1, 0, dt_time_k[0], "k", "DBLP dataset (varying k)")
     # results_time.png for IMDB
-    subplot_time_data(axs_time, 1, 0, dt_time_p[1], "Amount of projects", "IMDB dataset")
-    subplot_time_data(axs_time, 1, 1, dt_time_k[1], "k", "IMDB dataset")
+    subplot_time_data(axs_time, 0, 1, dt_time_p[1], "Amount of projects", "IMDB dataset (varying amount of projects)")
+    subplot_time_data(axs_time, 1, 1, dt_time_k[1], "k", "IMDB dataset (varying k)")
 
     fig_time.tight_layout()
     fig_time.savefig("results_time.png", dpi=250)
 
     # results_fairness.png for DBLP and IMDB
-    fig_fairness, ax_fairness = plt.subplots(nrows=1, ncols=2, figsize=(20, 12))
+    fig_fairness, ax_fairness = plt.subplots(nrows=1, ncols=2, figsize=(14, 10))
     subplot_scatter_data(ax_fairness, 0, dt_fairness[0], "scoreTP sum", "DBLP dataset")
     subplot_scatter_data(ax_fairness, 1, dt_fairness[1], "scoreTP sum", "IMDB dataset")
     fig_fairness.tight_layout()
     fig_fairness.savefig("results_fairness.png", dpi=250)
 
     # results_maxs.png for DBLP and IMDB
-    fig_maxs, ax_maxs = plt.subplots(nrows=1, ncols=2, figsize=(20, 12))
+    fig_maxs, ax_maxs = plt.subplots(nrows=1, ncols=2, figsize=(14, 10))
     subplot_scatter_data(ax_maxs, 0, dt_maxs[0], "scoreTP sum", "DBLP dataset")
     subplot_scatter_data(ax_maxs, 1, dt_maxs[1], "scoreTP sum", "IMDB dataset")
     fig_maxs.tight_layout()
@@ -515,7 +515,7 @@ def subplot_scatter_data(ax_scatter, sub_x, data_source, y_label, title):
     for data, clr, group in zip(data, colors, groups):
         x = data[0]
         y = data[1]
-        ax_scatter[sub_x].scatter(x, y, alpha=0.8, c=clr, edgecolors='none', s=30, label=group)
+        ax_scatter[sub_x].scatter(x, y, alpha=0.8, c=clr, edgecolors='none', s=10, label=group)
         z = np.polyfit(x, y, 1)
         p = np.poly1d(z)
         ax_scatter[sub_x].plot(x, p(x), color=clr, linestyle='dashed', linewidth=1.0)

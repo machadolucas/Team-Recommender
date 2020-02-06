@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4cc2a949-c4da-4fc7-bf40-5b917b517a91" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/output_example.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results_fairness.png" beforeDir="false" afterPath="$PROJECT_DIR$/results_fairness.png" afterDir="false" />
@@ -39,7 +38,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -111,6 +110,7 @@
       <workItem from="1578830204168" duration="10205000" />
       <workItem from="1580319292323" duration="599000" />
       <workItem from="1580807959184" duration="22322000" />
+      <workItem from="1580975555734" duration="1641000" />
     </task>
     <servers />
   </component>
@@ -188,10 +188,10 @@
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
     <state x="1553" y="632" width="724" height="856" key="RollbackChangesDialog/0.41.3840.2039@0.41.3840.2039" timestamp="1578839153987" />
-    <state x="1154" y="520" key="SettingsEditor" timestamp="1578830586675">
+    <state x="1154" y="520" key="SettingsEditor" timestamp="1580975682587">
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
-    <state x="1154" y="520" key="SettingsEditor/0.41.3840.2039@0.41.3840.2039" timestamp="1578830586675" />
+    <state x="1154" y="520" key="SettingsEditor/0.41.3840.2039@0.41.3840.2039" timestamp="1580975682587" />
     <state x="1591" y="605" width="648" height="909" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578510404531">
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
