@@ -5,8 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/results_fairness.png" beforeDir="false" afterPath="$PROJECT_DIR$/results_fairness.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results_maxs.png" beforeDir="false" afterPath="$PROJECT_DIR$/results_maxs.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results_time.png" beforeDir="false" afterPath="$PROJECT_DIR$/results_time.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +108,8 @@
       <workItem from="1578830204168" duration="10205000" />
       <workItem from="1580319292323" duration="599000" />
       <workItem from="1580807959184" duration="22322000" />
-      <workItem from="1580975555734" duration="1641000" />
+      <workItem from="1580975555734" duration="1913000" />
+      <workItem from="1580992965100" duration="84000" />
     </task>
     <servers />
   </component>
@@ -148,6 +147,10 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="100" y="141" width="3640" height="1839" key="DiffContextDialog" timestamp="1580993001413">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="100" y="141" width="3640" height="1839" key="DiffContextDialog/0.41.3840.2039@0.41.3840.2039" timestamp="1580993001413" />
     <state x="1193" y="1085" width="636" height="711" key="FileChooserDialogImpl" timestamp="1578830484427">
       <screen x="0" y="41" width="3840" height="2039" />
     </state>

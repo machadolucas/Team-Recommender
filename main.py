@@ -495,8 +495,8 @@ def plot_graphs():
 
     # results_fairness.png for DBLP and IMDB
     fig_fairness, ax_fairness = plt.subplots(nrows=1, ncols=2, figsize=(14, 10))
-    subplot_scatter_data(ax_fairness, 0, dt_fairness[0], "scoreTP sum", "DBLP dataset")
-    subplot_scatter_data(ax_fairness, 1, dt_fairness[1], "scoreTP sum", "IMDB dataset")
+    subplot_scatter_data(ax_fairness, 0, dt_fairness[0], "fairness-deviation", "DBLP dataset")
+    subplot_scatter_data(ax_fairness, 1, dt_fairness[1], "fairness-deviation", "IMDB dataset")
     fig_fairness.tight_layout()
     fig_fairness.savefig("results_fairness.png", dpi=250)
 
